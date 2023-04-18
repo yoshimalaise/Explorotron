@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { analyse } from './code-analyser.ts/code-analyser';
+import { analyse } from './code-analyser/code-analyser';
 
 /**
  * Manages webview panels
