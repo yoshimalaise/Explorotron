@@ -108,9 +108,11 @@ class WebPanel {
  * @param context vscode extension context
  */
 export function activate(context: vscode.ExtensionContext) {
+
   context.subscriptions.push(
-    vscode.commands.registerCommand('angular-webview.start', () => {
+    vscode.commands.registerCommand('code-microscope.start', (resource: vscode.Uri) => {
       WebPanel.createOrShow(context.extensionPath);
     })
   );
+  
 }

@@ -1,24 +1,29 @@
 {
-  "name": "vscode-webview-angular",
-  "description": "Starter template for your next VSCode extension based on Angular",
-  "version": "2.0.0",
+  "name": "vscode-code-microscope",
+  "description": "Explore JavaScript using an interactive tour based on CER best practises",
+  "version": "0.0.1",
   "engines": {
     "vscode": "^1.76.0"
   },
   "main": "./dist/ext-src/extension.js",
-  "publisher": "4gray",
+  "publisher": "yoshi",
   "contributes": {
     "commands": [
       {
-        "command": "angular-webview.start",
-        "title": "Open webview",
-        "category": "Angular"
+        "command": "code-microscope.start",
+        "title": "Start Exploration",
+        "category": "code-microscope"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "code-microscope.start",
+          "group": "navigation"
+        }
+      ]
+    }
   },
-  "activationEvents": [
-    "onCommand:angular-webview.start"
-  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -32,10 +37,12 @@
   "private": false,
   "dependencies": {
     "@angular/animations": "^15.2.4",
+    "@angular/cdk": "^15.2.7",
     "@angular/common": "^15.2.4",
     "@angular/compiler": "^15.2.4",
     "@angular/core": "^15.2.4",
     "@angular/forms": "^15.2.4",
+    "@angular/material": "^15.2.7",
     "@angular/platform-browser": "^15.2.4",
     "@angular/platform-browser-dynamic": "^15.2.4",
     "@angular/router": "^15.2.4",
