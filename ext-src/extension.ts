@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
+import { analyse } from './code-analyser.ts/code-analyser';
 
 /**
  * Manages webview panels
@@ -111,7 +112,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand('code-microscope.start', (resource: vscode.Uri) => {
-      console.log(resource.fsPath);
+      analyse(resource.fsPath);
       WebPanel.createOrShow(context.extensionPath);
     })
   );
