@@ -111,8 +111,9 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand('code-microscope.start', (resource: vscode.Uri) => {
+      console.log(resource.fsPath);
       WebPanel.createOrShow(context.extensionPath);
     })
   );
-  
+
 }

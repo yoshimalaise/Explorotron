@@ -19,7 +19,8 @@
       "explorer/context": [
         {
           "command": "code-microscope.start",
-          "group": "navigation"
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
         }
       ]
     }
