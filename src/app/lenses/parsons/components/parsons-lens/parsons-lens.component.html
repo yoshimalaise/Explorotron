@@ -1,0 +1,13 @@
+<div class="container">
+    <div cdkDropList class="parsons-list" (cdkDropListDropped)="drop($event)">
+        <div class="parsons-entry" *ngFor="let entry of entries" cdkDrag>
+            <mat-card class="line">
+                <pre>{{entry.lineCode}}</pre>
+                <div>
+                    <mat-icon *ngIf="entry.currIndex === entry.correctIndex" aria-hidden="false"  class="correct" aria-label="Example home icon" fontIcon="check"></mat-icon>
+                    <mat-icon *ngIf="entry.currIndex !== entry.correctIndex" aria-hidden="false" class="wrong" aria-label="Example home icon" fontIcon="dangerous"></mat-icon>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

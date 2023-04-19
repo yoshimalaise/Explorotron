@@ -15,6 +15,11 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.parsons",
+        "title": "Parsons",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.present",
         "title": "Present",
         "category": "study.lenses"
@@ -40,6 +45,11 @@
       "study.lenses": [
         {
           "command": "study.lenses.annotate",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.parsons",
           "group": "navigation",
           "when": "resourceLangId == javascript"
         },

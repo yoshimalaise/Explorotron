@@ -11,6 +11,7 @@ import { AnnotateModule } from './lenses/annotate/annotate.module';
 import { PresentationModule } from './lenses/presentation/presentation.module';
 import { FlowchartModule } from './lenses/flowchart/flowchart.module';
 import { PickFlowchartModule } from './lenses/pick-flowchart/pick-flowchart.module';
+import { ParsonsModule } from './lenses/parsons/parsons.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PickFlowchartModule } from './lenses/pick-flowchart/pick-flowchart.modu
     AnnotateModule,
     PresentationModule,
     FlowchartModule,
-    PickFlowchartModule
+    PickFlowchartModule,
+    ParsonsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
