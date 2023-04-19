@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PluginCommandService } from './services/plugin-command.service';
+import { StateService } from './services/state.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,7 @@ import { PluginCommandService } from './services/plugin-command.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'VSCode Webview Angular';
-
-  constructor(private pluginCommandService: PluginCommandService) {
-
+  constructor(private pluginCommandService: PluginCommandService, public state: StateService) {
+    
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StateService } from './state.service';
-import { ExtensionCommand } from '../model/extension-command.interface';
+import { CommandType, ExtensionCommand } from '../model/extension-command.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,10 @@ export class PluginCommandService {
       if (cmd.sourceCode) {
         state.sourceCode = cmd.sourceCode;
       }
+
+      if (cmd.command === CommandType.LOAD_PLUGIN && cmd.lenseId) {
+        state.currentLense = cmd.lenseId;
+      }      
     });
   }
 }
