@@ -23,6 +23,12 @@
     "menus": {
       "explorer/context": [
         {
+          "submenu": "study.lenses",
+          "group": "navigation"
+        }
+      ],
+      "study.lenses": [
+        {
           "command": "code-microscope.start",
           "group": "navigation",
           "when": "resourceLangId == javascript"
@@ -33,7 +39,13 @@
           "when": "resourceLangId == javascript"
         }
       ]
-    }
+    },
+    "submenus": [
+      {
+        "id": "study.lenses",
+        "label": "Study Lenses"
+      }
+    ]
   },
   "scripts": {
     "ng": "ng",
