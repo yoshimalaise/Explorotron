@@ -1,5 +1,5 @@
 {
-  "name": "vscode-code-microscope",
+  "name": "vscode-study.lenses",
   "description": "Explore JavaScript using an interactive tour based on CER best practises",
   "version": "0.0.1",
   "engines": {
@@ -10,9 +10,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "code-microscope.annotate",
+        "command": "study.lenses.annotate",
         "title": "Annotate",
-        "category": "code-microscope"
+        "category": "study.lenses"
+      },
+      {
+        "command": "study.lenses.present",
+        "title": "Present",
+        "category": "study.lenses"
       }
     ],
     "menus": {
@@ -24,9 +29,14 @@
       ],
       "study.lenses": [
         {
-          "command": "code-microscope.annotate",
+          "command": "study.lenses.annotate",
           "group": "navigation",
           "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.present",
+          "group": "navigation",
+          "when": "resourceFilename =~ /.presentation.md/i || resourceFilename =~ /.slides.md/i"
         }
       ]
     },
@@ -59,6 +69,7 @@
     "@angular/platform-browser": "^15.2.4",
     "@angular/platform-browser-dynamic": "^15.2.4",
     "@angular/router": "^15.2.4",
+    "reveal.js": "^4.5.0",
     "rxjs": "~7.8.0",
     "snippet-highlight": "^1.0.2",
     "tslib": "^2.5.0",

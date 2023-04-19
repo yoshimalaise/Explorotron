@@ -126,12 +126,14 @@ class WebPanel {
 export function activate(context: vscode.ExtensionContext) {
   /*
   context.subscriptions.push(
-    vscode.commands.registerCommand('code-microscope.start', (resource: vscode.Uri) => {
+    vscode.commands.registerCommand('study.lenses.start', (resource: vscode.Uri) => {
       analyse(resource.fsPath);
       const p = WebPanel.createOrShow(context.extensionPath);
       p.panel.postMessage({ command: 'refactor' });
     })
   );
   */
-  WebPanel.registerLense(context, 'code-microscope.annotate', { command: 'LoadPlugin', lenseId: 'Annotate' });
+  WebPanel.registerLense(context, 'study.lenses.annotate', { command: 'LoadPlugin', lenseId: 'Annotate' });
+  WebPanel.registerLense(context, 'study.lenses.present', { command: 'LoadPlugin', lenseId: 'Presentation' });
+
 }
