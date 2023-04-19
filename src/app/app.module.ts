@@ -10,6 +10,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AnnotateModule } from './lenses/annotate/annotate.module';
 import { PresentationModule } from './lenses/presentation/presentation.module';
 import { FlowchartModule } from './lenses/flowchart/flowchart.module';
+import { PickFlowchartModule } from './lenses/pick-flowchart/pick-flowchart.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FlowchartModule } from './lenses/flowchart/flowchart.module';
     MatProgressSpinnerModule,
     AnnotateModule,
     PresentationModule,
-    FlowchartModule
+    FlowchartModule,
+    PickFlowchartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

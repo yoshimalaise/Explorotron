@@ -136,4 +136,5 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerLense(context, 'study.lenses.annotate', { command: 'LoadPlugin', lenseId: 'Annotate' });
   WebPanel.registerLense(context, 'study.lenses.present', { command: 'LoadPlugin', lenseId: 'Presentation' });
   WebPanel.registerLense(context, 'study.lenses.flowchart', { command: 'LoadPlugin', lenseId: 'Flowchart' });
+  WebPanel.registerLense(context, 'study.lenses.pick-flowchart', { command: 'LoadPlugin', lenseId: 'PickFlowchart' });
 }

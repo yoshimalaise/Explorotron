@@ -1,0 +1,45 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-column {
+    width: 50%;
+    overflow-y: auto;
+}
+.right-column {
+    width: 50%;
+    overflow-y: auto;
+}
+
+::ng-deep .toolbar {
+    display: none;
+}
+
+::ng-deep .language-javascript{
+    height:93vh;
+    width: 94%;
+    font-size: small;
+}
+
+.tabs {
+    height: 100%;
+    width: 100%;
+}
+
+.tab-content {
+    height: 100%;
+}
+
+.select-button-container {
+    height: 30px;
+    width: 96%;
+    margin-left: 2%;
+}
+
+.flowchart-container {
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+}

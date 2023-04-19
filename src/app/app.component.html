@@ -4,5 +4,6 @@
     <app-annotate class="lense" *ngIf="state.currentLense === 'Annotate'"></app-annotate>
     <app-presentation class="lense" *ngIf="state.currentLense === 'Presentation'"></app-presentation>
     <app-flow-chart-lens class="lense" *ngIf="state.currentLense === 'Flowchart'"></app-flow-chart-lens>
+    <app-pickflow-chart-lens [code]="state.sourceCode" class="lense" *ngIf="state.currentLense === 'PickFlowchart'"></app-pickflow-chart-lens>
 </div>
 

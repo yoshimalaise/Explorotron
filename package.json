@@ -23,6 +23,11 @@
         "command": "study.lenses.flowchart",
         "title": "Flowchart",
         "category": "study.lenses"
+      },
+      {
+        "command": "study.lenses.pick-flowchart",
+        "title": "Pick Flowchart",
+        "category": "study.lenses"
       }
     ],
     "menus": {
@@ -40,6 +45,11 @@
         },
         {
           "command": "study.lenses.flowchart",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.pick-flowchart",
           "group": "navigation",
           "when": "resourceLangId == javascript"
         },
@@ -79,6 +89,9 @@
     "@angular/platform-browser": "^15.2.4",
     "@angular/platform-browser-dynamic": "^15.2.4",
     "@angular/router": "^15.2.4",
+    "acorn": "^8.8.2",
+    "acorn-walk": "^8.2.0",
+    "escodegen": "^2.0.0",
     "js2flowchart": "^1.3.4",
     "reveal.js": "^4.5.0",
     "rxjs": "~7.8.0",
