@@ -9,6 +9,7 @@ import { AnnotateComponent } from './lenses/annotate/annotate.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AnnotateModule } from './lenses/annotate/annotate.module';
 import { PresentationModule } from './lenses/presentation/presentation.module';
+import { FlowchartModule } from './lenses/flowchart/flowchart.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PresentationModule } from './lenses/presentation/presentation.module';
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     AnnotateModule,
-    PresentationModule
+    PresentationModule,
+    FlowchartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
