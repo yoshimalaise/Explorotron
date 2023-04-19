@@ -6,7 +6,7 @@ import { LenseIds } from '../model/lense-ids.enum';
 })
 export class StateService {
   public sourceCode: string = debuggingFallbackJS;
-  public currentLense: LenseIds =  LenseIds.PICK_FLOWCHART; // LenseIds.LOADING;
+  public currentLense: LenseIds =  LenseIds.PARSONS; // LenseIds.LOADING;
 
   constructor() { }
 }
