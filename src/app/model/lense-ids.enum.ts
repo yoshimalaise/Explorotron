@@ -2,5 +2,6 @@ export enum LenseIds {
     LOADING = "Loading",
     ANNOTATE = "Annotate",
     FLOWCHART = "Flowchart",
-    PRESENTATION = 'Presentation'
+    PRESENTATION = 'Presentation',
+    PICK_FLOWCHART= "PickFlowchart"
 }
