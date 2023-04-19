@@ -8,6 +8,7 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
 import { AnnotateComponent } from './lenses/annotate/annotate.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AnnotateModule } from './lenses/annotate/annotate.module';
+import { PresentationModule } from './lenses/presentation/presentation.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AnnotateModule } from './lenses/annotate/annotate.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    AnnotateModule
+    AnnotateModule,
+    PresentationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

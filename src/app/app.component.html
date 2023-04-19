@@ -2,5 +2,6 @@
     <!-- this is very ugly, would love to put all lenses in seperate moduels with chicld routes but apparantly vscode doesn't support routing-->
     <app-loading-screen class="lense" *ngIf="state.currentLense === 'Loading'"></app-loading-screen>
     <app-annotate class="lense" *ngIf="state.currentLense === 'Annotate'"></app-annotate>
+    <app-presentation class="lense" *ngIf="state.currentLense === 'Presentation'"></app-presentation>
 </div>
 
