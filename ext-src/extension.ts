@@ -133,6 +133,5 @@ export function activate(context: vscode.ExtensionContext) {
     })
   );
   */
-  WebPanel.registerLense(context, 'code-microscope.start', { command: 'LoadPlugin', lenseId: 'Loading' });
-  WebPanel.registerLense(context, 'code-microscope.annotate', { command: 'LoadPlugin', lenseId: 'Highlight' });
+  WebPanel.registerLense(context, 'code-microscope.annotate', { command: 'LoadPlugin', lenseId: 'Annotate' });
 }

@@ -10,11 +10,6 @@
   "contributes": {
     "commands": [
       {
-        "command": "code-microscope.start",
-        "title": "Start Exploration",
-        "category": "code-microscope"
-      },
-      {
         "command": "code-microscope.annotate",
         "title": "Annotate",
         "category": "code-microscope"
@@ -28,11 +23,6 @@
         }
       ],
       "study.lenses": [
-        {
-          "command": "code-microscope.start",
-          "group": "navigation",
-          "when": "resourceLangId == javascript"
-        },
         {
           "command": "code-microscope.annotate",
           "group": "navigation",

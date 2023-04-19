@@ -1,5 +1,5 @@
 export enum LenseIds {
     LOADING = "Loading",
-    HIGHLIGHT = "Highlight",
+    ANNOTATE = "Annotate",
     FLOWCHART = "Flowchart"
 }
