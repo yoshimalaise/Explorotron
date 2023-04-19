@@ -7,18 +7,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { HighlightComponent } from './lenses/highlight/highlight.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HighlightModule } from './lenses/highlight/highlight.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingScreenComponent,
-    HighlightComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HighlightModule
   ],
   providers: [],
   bootstrap: [AppComponent]
