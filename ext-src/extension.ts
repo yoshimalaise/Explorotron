@@ -37,7 +37,7 @@ class WebPanel {
     this.builtAppFolder = 'dist';
 
     // Create and show a new webview panel
-    this.panel = vscode.window.createWebviewPanel(WebPanel.viewType, 'My Angular Webview', column, {
+    this.panel = vscode.window.createWebviewPanel(WebPanel.viewType, 'Study Lenses', column, {
       // Enable javascript in the webview
       enableScripts: true,
 
@@ -134,5 +134,5 @@ export function activate(context: vscode.ExtensionContext) {
   );
   */
   WebPanel.registerLense(context, 'code-microscope.start', { command: 'LoadPlugin', lenseId: 'Loading' });
-  WebPanel.registerLense(context, 'code-microscope.highlight', { command: 'LoadPlugin', lenseId: 'Highlight' });
+  WebPanel.registerLense(context, 'code-microscope.annotate', { command: 'LoadPlugin', lenseId: 'Highlight' });
 }

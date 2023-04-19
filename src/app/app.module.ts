@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
-import { HighlightComponent } from './lenses/highlight/highlight.component';
+import { AnnotateComponent } from './lenses/annotate/annotate.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { HighlightModule } from './lenses/highlight/highlight.module';
+import { AnnotateModule } from './lenses/annotate/annotate.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { HighlightModule } from './lenses/highlight/highlight.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    HighlightModule
+    AnnotateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,11 +6,14 @@
             <mat-button-toggle value="blue"><div class="blue circle"></div></mat-button-toggle>
             <mat-button-toggle value="orange"><div class="orange circle"></div></mat-button-toggle>
             <mat-button-toggle value="purple"><div class="purple circle"></div></mat-button-toggle>
+            <mat-button-toggle value="eraser">Erase</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
     <div class="right-controls">
-            <button class="action-button" mat-raised-button color="primary">Clear Canvas</button>
-            <button class="action-button" mat-raised-button color="primary">Export PDF</button>
+            <button (click)="clear()" class="action-button" mat-raised-button color="primary">Clear Canvas</button>
     </div>
-    
+</div>
+<div id="main-container">
+    <canvas id="canvas" class="canvas" #canvas></canvas>
+    <snippet-highlight class="code" theme="dark" language="javascript" [content]="state.sourceCode"/>
 </div>

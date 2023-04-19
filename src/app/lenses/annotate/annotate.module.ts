@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HighlightComponent } from './highlight.component';
+import { AnnotateComponent } from './annotate.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,10 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     FormsModule
   ],
-  declarations: [HighlightComponent],
-  exports: [HighlightComponent]
+  declarations: [AnnotateComponent],
+  exports: [AnnotateComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 })
-export class HighlightModule { }
+export class AnnotateModule { }
