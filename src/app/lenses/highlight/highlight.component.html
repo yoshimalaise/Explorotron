@@ -1,1 +1,16 @@
-<p>highlight works!</p>
+<div class="control-bar">
+    <div class="left-controls">
+        <mat-button-toggle-group [(ngModel)]="selectedColor" class="toggle-buttons" name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="white"><div class="white circle"></div></mat-button-toggle>
+            <mat-button-toggle value="red"><div class="red circle"></div></mat-button-toggle>
+            <mat-button-toggle value="blue"><div class="blue circle"></div></mat-button-toggle>
+            <mat-button-toggle value="orange"><div class="orange circle"></div></mat-button-toggle>
+            <mat-button-toggle value="purple"><div class="purple circle"></div></mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div class="right-controls">
+            <button class="action-button" mat-raised-button color="primary">Clear Canvas</button>
+            <button class="action-button" mat-raised-button color="primary">Export PDF</button>
+    </div>
+    
+</div>

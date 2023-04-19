@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./highlight.component.scss']
 })
 export class HighlightComponent {
+  selectedColor: 'white' | 'red' | 'blue' | 'orange' | 'purple' = 'white';
 
+  clear() {
+
+  }
+
+  print() {
+    
+  }
 }
