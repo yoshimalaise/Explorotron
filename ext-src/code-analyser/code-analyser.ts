@@ -7,3 +7,12 @@ export function analyse(filepath: string) {
     const questions = generateQuestions(code);
     console.log(questions);
 }
+
+export function readSourceCode(filepath: string) {
+    try {
+        const code = fs.readFileSync(filepath, {encoding:'utf8', flag:'r'});
+        return code;
+    } catch (e){
+        return "";
+    }
+}

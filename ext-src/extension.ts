@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { analyse } from './code-analyser/code-analyser';
+import { analyse, readSourceCode } from './code-analyser/code-analyser';
 
 /**
  * Manages webview panels
@@ -102,6 +102,21 @@ class WebPanel {
 
     return indexHtml;
   }
+
+  public static registerLense(context: vscode.ExtensionContext, command: string, messageBody: any) {
+    context.subscriptions.push(
+      vscode.commands.registerCommand(command, (resource: vscode.Uri) => {
+        // analyse(resource.fsPath);
+        const code = readSourceCode(resource.fsPath);
+        WebPanel.createOrShow(context.extensionPath);
+        setTimeout(() => {
+          if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview) {
+            WebPanel.currentPanel.panel.webview.postMessage({...messageBody, sourceCode: code});
+          }
+        }, 1000);
+      })
+    );
+  }
 }
 
 /**
@@ -109,12 +124,15 @@ class WebPanel {
  * @param context vscode extension context
  */
 export function activate(context: vscode.ExtensionContext) {
-
+  /*
   context.subscriptions.push(
     vscode.commands.registerCommand('code-microscope.start', (resource: vscode.Uri) => {
       analyse(resource.fsPath);
-      WebPanel.createOrShow(context.extensionPath);
+      const p = WebPanel.createOrShow(context.extensionPath);
+      p.panel.postMessage({ command: 'refactor' });
     })
   );
+  */
+  WebPanel.registerLense(context, 'code-microscope.start', { command: 'LoadPlugin' });
 
 }
