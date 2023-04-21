@@ -4,5 +4,6 @@ export enum LenseIds {
     FLOWCHART = "Flowchart",
     PRESENTATION = 'Presentation',
     PICK_FLOWCHART= "PickFlowchart",
-    PARSONS = "Parsons"
+    PARSONS = "Parsons",
+    PSEUDIFY = "Pseudify"
 }
