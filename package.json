@@ -15,6 +15,11 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.pseudify",
+        "title": "Pseudify",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.parsons",
         "title": "Parsons",
         "category": "study.lenses"
@@ -50,6 +55,11 @@
         },
         {
           "command": "study.lenses.parsons",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.pseudify",
           "group": "navigation",
           "when": "resourceLangId == javascript"
         },
