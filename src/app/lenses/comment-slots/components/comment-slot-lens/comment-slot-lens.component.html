@@ -1,0 +1,16 @@
+<div class="outer-container">
+    <div class="inner-container">
+        <div class="code-line" *ngFor="let el of elements; let i = index">
+            <snippet-highlight *ngIf="el.type === 'code'" class="snippet" theme="dark" language="javascript" [content]="el.body"></snippet-highlight>
+        
+            <div *ngIf="el.type === 'comment'">
+              <mat-form-field class="form-field" *ngIf="el.type === 'comment'" appearance="fill">
+                <mat-label>Select comment</mat-label>
+                <mat-select (valueChange)="handleSelect($event, i)">
+                  <mat-option *ngFor="let c of comments" [value]="c.id">{{ c.body }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>

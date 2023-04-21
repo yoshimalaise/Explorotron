@@ -13,6 +13,7 @@ import { FlowchartModule } from './lenses/flowchart/flowchart.module';
 import { PickFlowchartModule } from './lenses/pick-flowchart/pick-flowchart.module';
 import { ParsonsModule } from './lenses/parsons/parsons.module';
 import { PseudoModule } from './lenses/pseudo/pseudo.module';
+import { CommentSlotsModule } from './lenses/comment-slots/comment-slots.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PseudoModule } from './lenses/pseudo/pseudo.module';
     FlowchartModule,
     PickFlowchartModule,
     ParsonsModule,
-    PseudoModule
+    PseudoModule,
+    CommentSlotsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
