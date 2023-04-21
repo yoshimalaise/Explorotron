@@ -139,4 +139,5 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerLense(context, 'study.lenses.pick-flowchart', { command: 'LoadPlugin', lenseId: 'PickFlowchart' });
   WebPanel.registerLense(context, 'study.lenses.parsons', { command: 'LoadPlugin', lenseId: 'Parsons' });
   WebPanel.registerLense(context, 'study.lenses.pseudify', { command: 'LoadPlugin', lenseId: 'Pseudify' });
+  WebPanel.registerLense(context, 'study.lenses.comment-slots', { command: 'LoadPlugin', lenseId: 'CommentSlots' });
 }
