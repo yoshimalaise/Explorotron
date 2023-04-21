@@ -6,5 +6,6 @@
     <app-flow-chart-lens class="lense" *ngIf="state.currentLense === 'Flowchart'"></app-flow-chart-lens>
     <app-pickflow-chart-lens [code]="state.sourceCode" class="lense" *ngIf="state.currentLense === 'PickFlowchart'"></app-pickflow-chart-lens>
     <app-parsons-lens [code]="state.sourceCode" class="lense" *ngIf="state.currentLense === 'Parsons'"></app-parsons-lens>
+    <app-pseudo-lense [code]="state.sourceCode" class="lense" *ngIf="state.currentLense === 'Pseudify'"></app-pseudo-lense>
 </div>
 
