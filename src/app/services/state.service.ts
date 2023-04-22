@@ -6,7 +6,7 @@ import { LenseIds } from '../model/lense-ids.enum';
 })
 export class StateService {
   public sourceCode: string = debuggingFallbackJS;
-  public currentLense: LenseIds =  LenseIds.COMMENT_SLOTS;
+  public currentLense: LenseIds =  LenseIds.ARGUMENT_PICKER;
 
   constructor() { }
 }
@@ -36,4 +36,12 @@ function selectionSort(arr) {
   return arr;
 }
 console.log(selectionSort([29, 72, 98, 13, 87, 66, 52, 51, 36]));
+
+function second(x, y){
+  return x + y;
+}
+
+function third(x, y, z) {
+  return x * y * z;
+}
 `;
