@@ -28,4 +28,14 @@ export class ArgumentPickerLensComponent {
     this.functions = this.svc.generateAPQuestions(code);
     console.log("the code to fill in:", this.functions);
   }
+
+  functionDone(){
+    for (let f of this.functions) {
+      if (!f.isComplete) {
+        return
+      }
+    }
+
+    this._snackBar.open("Congratulations!");
+  }
 }

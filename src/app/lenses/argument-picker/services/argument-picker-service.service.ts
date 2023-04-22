@@ -32,8 +32,10 @@ export class ArgumentPickerServiceService {
     const params = ast?.body[0].params.map(p => p.name);
     let name = "";
 
+    const innerBodyAst = ast.body[0].body;
+
     // perform a treewalk and remove all param names from the body
-    walk.full(ast, (node: any) => {
+    walk.full(innerBodyAst, (node: any) => {
       if (node.type === 'Identifier' && params.includes(node.name)) {
         node.name = '_______';
       }
@@ -46,6 +48,7 @@ export class ArgumentPickerServiceService {
       functionBody: sanitisedBody,
       originalFunctionBody: functionCode,
       arguments: params,
+      isComplete: false,
       name
     };
   }

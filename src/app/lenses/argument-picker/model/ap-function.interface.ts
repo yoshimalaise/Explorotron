@@ -3,4 +3,5 @@ export interface APFunction {
     originalFunctionBody: string;
     arguments: string[];
     name: string;
+    isComplete: boolean;
 }
