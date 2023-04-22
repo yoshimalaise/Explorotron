@@ -15,6 +15,11 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.argument-picker",
+        "title": "Argument Picker",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.comment-slots",
         "title": "Comment Slots",
         "category": "study.lenses"
@@ -55,6 +60,11 @@
       "study.lenses": [
         {
           "command": "study.lenses.annotate",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.argument-picker",
           "group": "navigation",
           "when": "resourceLangId == javascript"
         },
