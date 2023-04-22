@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlanksLensComponent } from './components/blanks-lens/blanks-lens.component';
-
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -9,7 +10,9 @@ import { BlanksLensComponent } from './components/blanks-lens/blanks-lens.compon
     BlanksLensComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    MonacoEditorModule
   ],
   exports: [
     BlanksLensComponent

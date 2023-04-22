@@ -9,6 +9,9 @@ export class BlanksLensComponent {
   @Input() code: string;
   blankCode: string;
 
+  editorOptions = {theme: 'vs-dark', language: 'javascript'};
+  
+
   constructor() {}
 
   ngAfterViewInit(): void {
