@@ -14,6 +14,7 @@ import { PickFlowchartModule } from './lenses/pick-flowchart/pick-flowchart.modu
 import { ParsonsModule } from './lenses/parsons/parsons.module';
 import { PseudoModule } from './lenses/pseudo/pseudo.module';
 import { CommentSlotsModule } from './lenses/comment-slots/comment-slots.module';
+import { ArgumentPickerModule } from './lenses/argument-picker/argument-picker.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CommentSlotsModule } from './lenses/comment-slots/comment-slots.module'
     PickFlowchartModule,
     ParsonsModule,
     PseudoModule,
-    CommentSlotsModule
+    CommentSlotsModule,
+    ArgumentPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
