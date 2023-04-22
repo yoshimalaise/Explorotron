@@ -9,5 +9,6 @@
     <app-pseudo-lense [code]="state.sourceCode" class="lense" *ngIf="state.currentLense === 'Pseudify'"></app-pseudo-lense>
     <app-comment-slot-lens [code]="state.sourceCode" class="lense" *ngIf="state.currentLense === 'CommentSlots'"></app-comment-slot-lens>
     <app-argument-picker-lens [code]="state.sourceCode" class="lense" *ngIf="state.currentLense === 'ArgumentPicker'"></app-argument-picker-lens>
+    <app-blanks-lens [code]="state.sourceCode" class="lense" *ngIf="state.currentLense === 'Blanks'"></app-blanks-lens>
 </div>
 

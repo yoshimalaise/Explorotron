@@ -15,6 +15,11 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.blanks",
+        "title": "Blanks",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.argument-picker",
         "title": "Argument Picker",
         "category": "study.lenses"
@@ -60,6 +65,11 @@
       "study.lenses": [
         {
           "command": "study.lenses.annotate",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.blanks",
           "group": "navigation",
           "when": "resourceLangId == javascript"
         },

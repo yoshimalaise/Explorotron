@@ -15,6 +15,7 @@ import { ParsonsModule } from './lenses/parsons/parsons.module';
 import { PseudoModule } from './lenses/pseudo/pseudo.module';
 import { CommentSlotsModule } from './lenses/comment-slots/comment-slots.module';
 import { ArgumentPickerModule } from './lenses/argument-picker/argument-picker.module';
+import { BlanksModule } from './lenses/blanks/blanks.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ArgumentPickerModule } from './lenses/argument-picker/argument-picker.m
     ParsonsModule,
     PseudoModule,
     CommentSlotsModule,
-    ArgumentPickerModule
+    ArgumentPickerModule,
+    BlanksModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,5 +7,6 @@ export enum LenseIds {
     PARSONS = "Parsons",
     PSEUDIFY = "Pseudify",
     COMMENT_SLOTS = "CommentSlots",
-    ARGUMENT_PICKER = "ArgumentPicker"
+    ARGUMENT_PICKER = "ArgumentPicker",
+    BLANKS = "Blanks"
 }
