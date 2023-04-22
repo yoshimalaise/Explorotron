@@ -1,0 +1,53 @@
+<mat-card *ngIf="conf" class="card">
+<mat-card-title>
+    Config
+</mat-card-title>   
+
+<mat-card-content>
+
+    <div class="menu-item">
+        <div class="">
+            Identifiers:
+        </div>
+        <mat-slide-toggle ngDefaultControl [(ngModel)]="conf.identifiers"></mat-slide-toggle>
+    </div>
+
+    <div class="menu-item">
+        <div class="">
+            Keywords:
+        </div>
+        <mat-slide-toggle ngDefaultControl [(ngModel)]="conf.keywords"></mat-slide-toggle>
+    </div>
+
+    <div class="menu-item">
+        <div class="">
+            Operators:
+        </div>
+        <mat-slide-toggle ngDefaultControl [(ngModel)]="conf.operators"></mat-slide-toggle>
+    </div>
+
+    <div class="menu-item">
+        <div class="">
+            Primitives:
+        </div>
+        <mat-slide-toggle ngDefaultControl [(ngModel)]="conf.primitives"></mat-slide-toggle>
+    </div>
+
+
+    <div class="menu-item">
+        <div class="label">
+            Difficulty:
+        </div>
+
+        <mat-slider ngDefaultControl min="0.05" max="0.95" step="0.05">
+            <input [(ngModel)]="conf.difficulty" matSliderThumb>
+        </mat-slider>
+    </div>
+
+    <button (click)="finish()" class="btn" mat-raised-button color="primary">Start</button>
+
+
+   
+
+</mat-card-content>
+</mat-card>

@@ -1,4 +1,6 @@
-<p>blanks-lens works!</p>
-{{ code }}
+<div class="container">
+    <app-blanks-config *ngIf="!blanksConfig.finishedConfig" class="conf" [conf]="blanksConfig" (done)="generateBlankCode()"></app-blanks-config>
+    <ngx-monaco-editor *ngIf="blanksConfig.finishedConfig" class="editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+</div>
 
-<ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+

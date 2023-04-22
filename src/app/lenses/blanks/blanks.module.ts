@@ -3,16 +3,27 @@ import { CommonModule } from '@angular/common';
 import { BlanksLensComponent } from './components/blanks-lens/blanks-lens.component';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
-
+import { BlanksConfigComponent } from './components/blanks-config/blanks-config.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    BlanksLensComponent
+    BlanksLensComponent,
+    BlanksConfigComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    MonacoEditorModule
+    MonacoEditorModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatButtonModule
   ],
   exports: [
     BlanksLensComponent

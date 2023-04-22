@@ -1,4 +1,5 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
+import { BlanksConfig } from '../../model/blanks-config.interface';
 
 @Component({
   selector: 'app-blanks-lens',
@@ -9,20 +10,30 @@ export class BlanksLensComponent {
   @Input() code: string;
   blankCode: string;
 
+  blanksConfig: BlanksConfig = {
+    difficulty: 0.5,
+    identifiers: true,
+    keywords: true,
+    primitives: false,
+    operators: false,
+    finishedConfig: false
+  }
+
+  // see: https://www.npmjs.com/package/ngx-monaco-editor
   editorOptions = {theme: 'vs-dark', language: 'javascript'};
-  
+
 
   constructor() {}
 
   ngAfterViewInit(): void {
-    this.generateBlankCode(this.code);
+    this.blanksConfig.finishedConfig = false;
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.generateBlankCode(changes.code.currentValue);
+    this.blanksConfig.finishedConfig = false;
   }
 
-  generateBlankCode(code: string){
-    
+  generateBlankCode(){
+    this.blanksConfig.finishedConfig = true;
   }
 }
