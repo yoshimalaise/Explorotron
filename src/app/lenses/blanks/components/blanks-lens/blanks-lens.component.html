@@ -1,0 +1,11 @@
+<div class="top-bar" *ngIf="blanksConfig.finishedConfig">
+    <button (click)="showSolution()" class="help-button" mat-raised-button color="accent">Show Original Code</button>
+</div>
+
+<div class="container">
+    <app-blanks-config *ngIf="!blanksConfig.finishedConfig" class="conf" [conf]="blanksConfig" (done)="generateBlankCode()"></app-blanks-config>
+    
+    <ngx-monaco-editor *ngIf="blanksConfig.finishedConfig" class="editor" [options]="editorOptions" [(ngModel)]="blankCode" (ngModelChange)="handleCodeUpdate($event)"></ngx-monaco-editor>
+</div>
+
+
