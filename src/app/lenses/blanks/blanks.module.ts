@@ -10,12 +10,14 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { BlanksSolutionDialogComponent } from './components/blanks-solution-dialog/blanks-solution-dialog.component';
 
 @NgModule({
   declarations: [
     BlanksLensComponent,
-    BlanksConfigComponent
+    BlanksConfigComponent,
+    BlanksSolutionDialogComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSliderModule,
     MatSlideToggleModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   exports: [
     BlanksLensComponent

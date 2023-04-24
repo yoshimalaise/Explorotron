@@ -17,3 +17,17 @@
     margin: 8px;
     padding: 8px;
 }
+
+.top-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    background-color: #800080;
+}
+
+.help-button {
+    height: 20px;
+    margin: 5px;
+    margin-right: 10px;
+}

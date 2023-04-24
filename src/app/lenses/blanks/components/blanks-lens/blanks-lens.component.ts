@@ -2,6 +2,8 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 import { BlanksConfig } from '../../model/blanks-config.interface';
 import { BlanksGeneratorService } from '../../services/blanks-generator.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { BlanksSolutionDialogComponent } from '../blanks-solution-dialog/blanks-solution-dialog.component';
 
 @Component({
   selector: 'app-blanks-lens',
@@ -24,7 +26,7 @@ export class BlanksLensComponent {
   editorOptions = {theme: 'vs-dark', language: 'javascript'};
 
 
-  constructor(private svc: BlanksGeneratorService,  private _snackBar: MatSnackBar) {}
+  constructor(private svc: BlanksGeneratorService,  private _snackBar: MatSnackBar, public dialog: MatDialog) {}
 
   ngAfterViewInit(): void {
     this.blanksConfig.finishedConfig = false;
@@ -43,5 +45,12 @@ export class BlanksLensComponent {
     if (this.svc.compareSnippets(code, this.code)) {
       this._snackBar.open("Congratulations! Code completed successfully!");
     }
+  }
+
+  showSolution() {
+    this.dialog.open(BlanksSolutionDialogComponent, {
+      width: "80%",
+      height: "80%"
+    });
   }
 }
