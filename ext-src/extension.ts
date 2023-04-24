@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { analyse, readSourceCode } from './code-analyser/code-analyser';
+import { createTour } from './study-tour/study-tour';
 
 /**
  * Manages webview panels
@@ -142,4 +143,16 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerLense(context, 'study.lenses.comment-slots', { command: 'LoadPlugin', lenseId: 'CommentSlots' });
   WebPanel.registerLense(context, 'study.lenses.argument-picker', { command: 'LoadPlugin', lenseId: 'ArgumentPicker' });
   WebPanel.registerLense(context, 'study.lenses.blanks', { command: 'LoadPlugin', lenseId: 'Blanks' });
+
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand('study.lenses.create-study-tour', async () => {
+      try {
+        await createTour();
+        WebPanel.createOrShow(context.extensionPath);
+      } catch {
+        vscode.window.showErrorMessage("Please provide a valid name");
+      }
+    })
+  );
 }

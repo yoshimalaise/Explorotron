@@ -17,6 +17,7 @@ import { CommentSlotsModule } from './lenses/comment-slots/comment-slots.module'
 import { ArgumentPickerModule } from './lenses/argument-picker/argument-picker.module';
 import { BlanksModule } from './lenses/blanks/blanks.module';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { StudyTourModule } from './lenses/study-tour/study-tour.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
     CommentSlotsModule,
     ArgumentPickerModule,
     BlanksModule,
-    MonacoEditorModule.forRoot()
+    MonacoEditorModule.forRoot(),
+    StudyTourModule
   ],
   providers: [],
   bootstrap: [AppComponent]

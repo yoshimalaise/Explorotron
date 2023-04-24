@@ -10,6 +10,11 @@
   "contributes": {
     "commands": [
       {
+        "command": "study.lenses.create-study-tour",
+        "title": "Create study tour",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.annotate",
         "title": "Annotate",
         "category": "study.lenses"

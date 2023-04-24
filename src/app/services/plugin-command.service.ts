@@ -17,6 +17,7 @@ export class PluginCommandService {
       }
 
       if (cmd.command === CommandType.LOAD_PLUGIN && cmd.lenseId) {
+        state.isTour = false;
         state.currentLense = cmd.lenseId;
       }      
     });
