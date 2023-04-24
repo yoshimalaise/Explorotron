@@ -157,6 +157,7 @@
     "@ngstack/code-editor": "^5.0.0",
     "acorn": "^8.8.2",
     "acorn-walk": "^8.2.0",
+    "directory-tree": "^3.5.1",
     "escodegen": "^2.0.0",
     "js2flowchart": "^1.3.4",
     "monaco-editor": "^0.37.1",

@@ -10,6 +10,7 @@ export class StateService {
   public currentLense: LenseIds =  LenseIds.LOADING;
   public isTour: boolean = false;
   public studyTour?: StudyTour = undefined;
+  public workspace?: any = undefined;
 
   constructor() { }
 }

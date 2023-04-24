@@ -5,7 +5,8 @@ export interface ExtensionCommand {
     command: CommandType;
     sourceCode?: string;
     lenseId?: LenseIds;
-    tour?: StudyTour
+    tour?: StudyTour;
+    workspace?: any;
 }
 
 export enum CommandType {

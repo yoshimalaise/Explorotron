@@ -23,10 +23,11 @@ export class PluginCommandService {
         state.currentLense = cmd.lenseId;
       }      
 
-      if (cmd.command === CommandType.EDIT_STUDY_TOUR && cmd.tour) {
+      if (cmd.command === CommandType.EDIT_STUDY_TOUR && cmd.tour && cmd.workspace) {
         state.isTour = false;
         state.studyTour = cmd.tour;
         state.currentLense = LenseIds.EDIT_STUDY_TOUR;
+        state.workspace = cmd.workspace;
       }
     });
   }

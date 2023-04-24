@@ -17,6 +17,10 @@ export class EditStudyTourComponent {
     vscode.postMessage({
       command: 'saveTour',
       tour: this.state.studyTour
-  })
+    })
+  }
+
+  ngAfterViewInit() {
+    console.log(this.state.workspace);
   }
 }
