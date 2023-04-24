@@ -18,20 +18,22 @@
             <div class="exercises-container">
                 <mat-card class="card" *ngFor="let ex of state.studyTour.exercises">
                     <div class="card-content">
-                        <div>
+                        <div class="line">
                             {{ex.file}}
                         </div>
 
-                        <mat-form-field appearance="fill">
-                            <mat-label>Lens</mat-label><br/>
-                            <mat-select [(ngModel)]="ex.lens">
-                              <mat-option *ngFor="let option of lenseOptions" [value]="option">
-                                {{ option }}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-
-                          <mat-icon (click)="removeExercise(ex)" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon> 
+                        <div class="line">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Lens</mat-label><br/>
+                                <mat-select [(ngModel)]="ex.lens">
+                                  <mat-option *ngFor="let option of lenseOptions" [value]="option">
+                                    {{ option }}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+    
+                              <mat-icon (click)="removeExercise(ex)" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon> 
+                        </div>
                     </div>
                 </mat-card>
             </div>
