@@ -1,6 +1,7 @@
 <div class="container">
     <app-blanks-config *ngIf="!blanksConfig.finishedConfig" class="conf" [conf]="blanksConfig" (done)="generateBlankCode()"></app-blanks-config>
-    <ngx-monaco-editor *ngIf="blanksConfig.finishedConfig" class="editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+    
+    <ngx-monaco-editor *ngIf="blanksConfig.finishedConfig" class="editor" [options]="editorOptions" [(ngModel)]="blankCode" (ngModelChange)="handleCodeUpdate($event)"></ngx-monaco-editor>
 </div>
 
 
