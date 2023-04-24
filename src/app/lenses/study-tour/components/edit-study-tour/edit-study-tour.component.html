@@ -1,0 +1,18 @@
+<div class="container" *ngIf="state.studyTour">
+    <div class="inner-container">
+        <mat-card class="card">
+
+            <mat-form-field class="example-form-field">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" [(ngModel)]="state.studyTour.tourName">
+            </mat-form-field>
+
+            <mat-form-field class="description">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="" [(ngModel)]="state.studyTour.description"></textarea>
+            </mat-form-field>
+
+            <button (click)="save()"  class="btn-save" mat-raised-button color="accent">Save tour</button>
+        </mat-card>
+    </div>
+</div>

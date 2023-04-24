@@ -9,14 +9,15 @@ export async function createTour() {
     try {
         if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
             let path = vscode.workspace.workspaceFolders[0].uri.fsPath;
-            const fileName = tourName.replace(/ /g, "_");
+            const fileName = `${tourName.replace(/ /g, "_")}.study-tour`;
             const dummyTour = {
                 tourName,
                 fileName,
                 description: "",
                 exercises: []
             }
-            fs.writeFileSync(`${path}/${fileName}.study-tour`, JSON.stringify(dummyTour));
+            fs.writeFileSync(`${path}/${fileName}`, JSON.stringify(dummyTour));
+            return dummyTour;
         } else {
             throw new Error("Command needs to be ran in a workspace");
         }
@@ -25,5 +26,4 @@ export async function createTour() {
         console.log(err);
         throw new Error("Could not create tour file");
     }
-    vscode.window.showInformationMessage(tourName);
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LenseIds } from '../model/lense-ids.enum';
+import { StudyTour } from '../model/study-tour.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class StateService {
   public sourceCode: string = debuggingFallbackJS;
   public currentLense: LenseIds =  LenseIds.LOADING;
   public isTour: boolean = false;
+  public studyTour?: StudyTour = undefined;
 
   constructor() { }
 }

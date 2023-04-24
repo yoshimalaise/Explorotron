@@ -8,5 +8,6 @@ export enum LenseIds {
     PSEUDIFY = "Pseudify",
     COMMENT_SLOTS = "CommentSlots",
     ARGUMENT_PICKER = "ArgumentPicker",
-    BLANKS = "Blanks"
+    BLANKS = "Blanks",
+    EDIT_STUDY_TOUR = "EditStudyTour"
 }

@@ -15,6 +15,11 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.edit-study-tour",
+        "title": "Edit study tour",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.annotate",
         "title": "Annotate",
         "category": "study.lenses"
@@ -112,6 +117,11 @@
           "command": "study.lenses.present",
           "group": "navigation",
           "when": "resourceFilename =~ /.presentation.md/i || resourceFilename =~ /.slides.md/i"
+        },
+        {
+          "command": "study.lenses.edit-study-tour",
+          "group": "navigation",
+          "when": "resourceFilename =~ /.study-tour/i"
         }
       ]
     },
