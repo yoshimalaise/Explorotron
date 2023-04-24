@@ -12,7 +12,34 @@
                 <textarea matInput placeholder="" [(ngModel)]="state.studyTour.description"></textarea>
             </mat-form-field>
 
-            <button (click)="save()"  class="btn-save" mat-raised-button color="accent">Save tour</button>
+            <button (click)="save()"  class="btn-save" mat-raised-button color="primary">Save tour</button>
+
+            <h1>Exercises</h1>
+            <div class="exercises-container">
+                <mat-card class="card" *ngFor="let ex of state.studyTour.exercises">
+                    <div class="card-content">
+                        <div>
+                            {{ex.file}}
+                        </div>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Lens</mat-label><br/>
+                            <mat-select [(ngModel)]="ex.lens">
+                              <mat-option *ngFor="let option of lenseOptions" [value]="option">
+                                {{ option }}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                          <mat-icon (click)="removeExercise(ex)" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon> 
+                    </div>
+                </mat-card>
+            </div>
+            <div class="btn-line">
+                <button (click)="addExercise()" mat-raised-button color="primary">Add exercise</button>
+            </div>
         </mat-card>
+
+        
     </div>
 </div>

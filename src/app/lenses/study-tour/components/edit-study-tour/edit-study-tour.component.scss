@@ -26,3 +26,25 @@
 .btn-save {
     width: 100%;
 }
+
+.btn-line {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.exercises-container {
+    width: 100%;
+}
+
+.card {
+    width: 100%;
+}
+
+.card-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

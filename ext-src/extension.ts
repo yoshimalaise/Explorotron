@@ -146,7 +146,8 @@ class WebPanel {
               setTimeout(() => {
                 if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
                   && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace:  dirTree(vscode.workspace.workspaceFolders[0].uri.fsPath)});
+                    const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
+                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace:  dirTree(root), root});
                 }
               }, 1000);
             } catch {
@@ -162,7 +163,8 @@ class WebPanel {
             setTimeout(() => {
               if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
                 && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-                WebPanel.currentPanel.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace:  dirTree(vscode.workspace.workspaceFolders[0].uri.fsPath)});
+                  const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
+                WebPanel.currentPanel.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace:  dirTree(root), root});
               }
             }, 1000);
           

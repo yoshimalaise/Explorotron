@@ -11,3 +11,9 @@ export enum LenseIds {
     BLANKS = "Blanks",
     EDIT_STUDY_TOUR = "EditStudyTour"
 }
+
+export const AVAILABLE_LENSES = [
+    LenseIds.ANNOTATE, LenseIds.FLOWCHART, LenseIds.PRESENTATION, LenseIds.PICK_FLOWCHART,
+    LenseIds.PARSONS, LenseIds.PSEUDIFY, LenseIds.COMMENT_SLOTS, LenseIds.ARGUMENT_PICKER,
+    LenseIds.BLANKS
+];

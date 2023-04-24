@@ -1,0 +1,12 @@
+<div class="container" >
+    <mat-icon (click)="toggle()" *ngIf="entry.children && entry.children.length > 0 && !showChildren"  aria-hidden="false" aria-label="Example home icon" fontIcon="keyboard_arrow_right"></mat-icon> 
+    <mat-icon (click)="toggle()" *ngIf="entry.children && entry.children.length > 0 && showChildren" aria-hidden="false" aria-label="Example home icon" fontIcon="keyboard_arrow_down"></mat-icon> 
+    <div (click)="handleClick()">
+        {{ entry.name }}
+    </div>
+    <ul *ngIf="entry.children && entry.children.length > 0 && showChildren">
+        <li *ngFor="let c of entry.children" >
+            <app-file-browser (selected)="bubbleUp($event)" [entry]="c"></app-file-browser>
+        </li>
+    </ul>    
+</div>

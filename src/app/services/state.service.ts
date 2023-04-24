@@ -11,6 +11,7 @@ export class StateService {
   public isTour: boolean = false;
   public studyTour?: StudyTour = undefined;
   public workspace?: any = undefined;
+  public root: string = "";
 
   constructor() { }
 }

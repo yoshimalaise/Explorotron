@@ -28,6 +28,7 @@ export class PluginCommandService {
         state.studyTour = cmd.tour;
         state.currentLense = LenseIds.EDIT_STUDY_TOUR;
         state.workspace = cmd.workspace;
+        state.root = cmd.root;
       }
     });
   }
