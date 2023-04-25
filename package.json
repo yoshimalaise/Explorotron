@@ -130,6 +130,18 @@
         "id": "study.lenses",
         "label": "Study Lenses"
       }
+    ],
+    "customEditors": [
+      {
+        "viewType": "study.lenses.viewTour",
+        "displayName": "View study tour",
+        "selector": [
+          {
+            "filenamePattern": "*.study-tour"
+          }
+        ],
+        "priority": "default"
+      }
     ]
   },
   "scripts": {

@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { analyse, readSourceCode } from './code-analyser/code-analyser';
-import { createTour } from './study-tour/study-tour';
+import { StudyTourViewer, createTour } from './study-tour/study-tour';
 import * as dirTree from 'directory-tree';
 
 /**
@@ -40,6 +40,7 @@ class WebPanel {
             const tour = msg.tour;
             const path = `${vscode.workspace.workspaceFolders[0].uri.fsPath}/${tour.fileName}`;
             fs.writeFileSync(path, JSON.stringify(tour)); 
+            vscode.window.showInformationMessage("File saved successfully");
           } catch (err: any) {
             vscode.window.showErrorMessage(err.toString());
           } 
@@ -170,6 +171,9 @@ class WebPanel {
           
         })
       );
+
+      // register the custom editor
+
     }
 }
 
@@ -197,6 +201,6 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerLense(context, 'study.lenses.argument-picker', { command: 'LoadPlugin', lenseId: 'ArgumentPicker' });
   WebPanel.registerLense(context, 'study.lenses.blanks', { command: 'LoadPlugin', lenseId: 'Blanks' });
 
-
+  vscode.window.registerCustomEditorProvider(StudyTourViewer.viewType, new StudyTourViewer(context.extensionPath));
   WebPanel.registerStudyTours(context);
 }
