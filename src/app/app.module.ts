@@ -18,11 +18,13 @@ import { ArgumentPickerModule } from './lenses/argument-picker/argument-picker.m
 import { BlanksModule } from './lenses/blanks/blanks.module';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { StudyTourModule } from './lenses/study-tour/study-tour.module';
+import { SessionProgressBarComponent } from './components/session-progress-bar/session-progress-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingScreenComponent,
+    SessionProgressBarComponent,
   ],
   imports: [
     BrowserModule,
