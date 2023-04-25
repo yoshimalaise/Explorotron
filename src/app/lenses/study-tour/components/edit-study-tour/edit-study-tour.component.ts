@@ -33,7 +33,8 @@ export class EditStudyTourComponent {
 
   addExercise() {
     const dialogRef = this.dialog.open(FileSelectionDialogComponent, {
-      width: "60%"
+      width: "60%",
+      height: "80%"
     });
 
     dialogRef.afterClosed().subscribe(file => {

@@ -19,12 +19,13 @@
     margin: 4px;
 }
 
-.description {
+::ng-deep textarea {
     height: 200px;
 }
 
 .btn-save {
     width: 100%;
+    margin-top: 12px;
 }
 
 .btn-line {

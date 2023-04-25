@@ -34,7 +34,7 @@
     line-height: 40px;
 }
 .connector-container {
-    width: 100%;
+    flex-grow: 1;
     height: 40px;
     display: flex;
     flex-direction: column;

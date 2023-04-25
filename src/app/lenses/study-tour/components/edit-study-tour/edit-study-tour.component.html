@@ -9,10 +9,8 @@
 
             <mat-form-field class="description">
                 <mat-label>Description</mat-label>
-                <textarea class="description" matInput placeholder="" [(ngModel)]="state.studyTour.description"></textarea>
+                <textarea cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" class="description" matInput placeholder="" [(ngModel)]="state.studyTour.description"></textarea>
             </mat-form-field>
-
-            <button (click)="save()"  class="btn-save" mat-raised-button color="primary">Save tour</button>
 
             <h1>Exercises</h1>
             <div cdkDropList (cdkDropListDropped)="drop($event)" class="exercises-container">
@@ -40,6 +38,8 @@
             <div class="btn-line">
                 <button (click)="addExercise()" mat-raised-button color="primary">Add exercise</button>
             </div>
+
+            <button (click)="save()"  class="btn-save" mat-raised-button color="primary">Save tour</button>
         </mat-card>
 
         
