@@ -1,11 +1,19 @@
-<div *ngIf="state.session" class="top-bar">
 
-    <div class="progress-dots">
-        <div class="progress-dots" *ngFor="let ex of state.session.exercises">
-            <div class="dot"></div>
-            <div class="connector"></div>
-        </div>
+<div *ngIf="state.session" class="top-bar">
+    <div class="top-line">
+        <h1>{{ state.session.name }}</h1>
+        <button class="btn" (click)="markCompleted()" mat-raised-button color="primary">Mark Complete</button>
     </div>
-    
-    <button (click)="markCompleted()" class="btn-mark-complete" mat-raised-button color="primary">Mark Complete</button>
-</div>
+
+    <div class="progress-dots-container">
+        <ng-container *ngFor="let ex of state.session.exercises; let i = index">
+            <div *ngIf="!ex.isCompleted" (click)="loadExercise(i)" class="dot" [ngClass]="i === state.currentExerciseIndex ? 'active-dot' : ''"> {{ i + 1 }}</div>
+            <div *ngIf="ex.isCompleted" (click)="loadExercise(i)" class="dot" [ngClass]="i === state.currentExerciseIndex ? 'active-dot' : ''"> 
+                <mat-icon class="done-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="done"></mat-icon>
+            </div>
+            <div *ngIf="state.session.exercises.length !== i + 1" class="connector-container">
+                <div class="connector"></div>
+            </div>
+        </ng-container>
+    </div>
+</div>    

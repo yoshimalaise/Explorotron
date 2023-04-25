@@ -89,11 +89,12 @@ export class StudyTourViewer implements vscode.CustomTextEditorProvider {
                     if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
                         return {
                             ...e,
-                            sourceCode: fs.readFileSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}${e.file}`, {encoding:'utf8', flag:'r'})
+                            sourceCode: fs.readFileSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}${e.file}`, {encoding:'utf8', flag:'r'}),
+                            isCompleted: false
                         }
                     }
                 });
-                const session = { exercises: sessionExercises }
+                const session = { exercises: sessionExercises, name: msg.tour.tourName }
                 panel.webview.postMessage({ command: 'startTour', session});
               } catch (err: any) {
                 vscode.window.showErrorMessage(err.toString());

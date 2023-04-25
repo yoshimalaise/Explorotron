@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { AnnotateComponent } from './lenses/annotate/annotate.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 import { AnnotateModule } from './lenses/annotate/annotate.module';
 import { PresentationModule } from './lenses/presentation/presentation.module';
 import { FlowchartModule } from './lenses/flowchart/flowchart.module';
@@ -20,6 +21,9 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { StudyTourModule } from './lenses/study-tour/study-tour.module';
 import { SessionProgressBarComponent } from './components/session-progress-bar/session-progress-bar.component';
 import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +34,10 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatIconModule,
     MatProgressSpinnerModule,
+    MatCardModule,
+    MatSnackBarModule,
     MatButtonModule,
     AnnotateModule,
     PresentationModule,
