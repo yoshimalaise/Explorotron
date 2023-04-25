@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import * as fs from 'fs';
 import * as path from 'path';
 import { CustomReadonlyEditorProvider } from "vscode";
+import * as dirTree from 'directory-tree';
 
 export async function createTour() {
     const tourName = await vscode.window.showInputBox();
@@ -47,6 +48,13 @@ export class StudyTourViewer implements vscode.CustomTextEditorProvider {
             localResourceRoots: [vscode.Uri.file(path.join(this.extensionPath, this.builtAppFolder))]
 		};
         webviewPanel.webview.html = this._getHtmlForWebview(webviewPanel);
+        setTimeout(() => {
+            if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0]) {
+                const t = JSON.parse(document.getText());
+                const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
+                webviewPanel.webview.postMessage({ command: 'loadTourOverview', tour: t, workspace:  dirTree(root), root});
+            }
+          }, 1000);
     }
     
     private _getHtmlForWebview(panel: vscode.WebviewPanel): string {

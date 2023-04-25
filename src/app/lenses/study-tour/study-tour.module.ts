@@ -10,12 +10,14 @@ import {MatIconModule} from '@angular/material/icon';
 import { FileSelectionDialogComponent } from './components/file-selection-dialog/file-selection-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import { TourOverviewComponent } from './components/tour-overview/tour-overview.component';
 
 @NgModule({
   declarations: [
     EditStudyTourComponent,
     FileBrowserComponent,
-    FileSelectionDialogComponent
+    FileSelectionDialogComponent,
+    TourOverviewComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule
   ],
   exports: [
-    EditStudyTourComponent
+    EditStudyTourComponent,
+    TourOverviewComponent
   ]
 })
 export class StudyTourModule { }

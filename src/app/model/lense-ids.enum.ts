@@ -9,7 +9,8 @@ export enum LenseIds {
     COMMENT_SLOTS = "CommentSlots",
     ARGUMENT_PICKER = "ArgumentPicker",
     BLANKS = "Blanks",
-    EDIT_STUDY_TOUR = "EditStudyTour"
+    EDIT_STUDY_TOUR = "EditStudyTour",
+    TOUR_OVERVIEW = "TourOverview"
 }
 
 export const AVAILABLE_LENSES = [

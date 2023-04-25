@@ -30,6 +30,14 @@ export class PluginCommandService {
         state.workspace = cmd.workspace;
         state.root = cmd.root;
       }
+
+      if (cmd.command === CommandType.LOAD_TOUR_OVERVIEW && cmd.tour && cmd.workspace) {
+        state.isTour = false;
+        state.studyTour = cmd.tour;
+        state.currentLense = LenseIds.TOUR_OVERVIEW;
+        state.workspace = cmd.workspace;
+        state.root = cmd.root;
+      }
     });
   }
 }

@@ -12,5 +12,6 @@ export interface ExtensionCommand {
 
 export enum CommandType {
     LOAD_PLUGIN = "LoadPlugin",
-    EDIT_STUDY_TOUR  = "editStudyTour"
+    EDIT_STUDY_TOUR  = "editStudyTour",
+    LOAD_TOUR_OVERVIEW = "loadTourOverview"
 }
