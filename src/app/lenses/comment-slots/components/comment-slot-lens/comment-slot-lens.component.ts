@@ -4,6 +4,7 @@ import * as generator from 'escodegen';
 import * as walk from 'acorn-walk';
 import { CommentSlot } from '../../model/comment-slot.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-comment-slot-lens',
@@ -19,7 +20,7 @@ export class CommentSlotLensComponent {
   answers = {};
   
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(private sessionService: SessionService) {}
 
   ngAfterViewInit(): void {
     this.generateSlots(this.code);
@@ -79,7 +80,7 @@ export class CommentSlotLensComponent {
       }
     }
     
-    this._snackBar.open("congratulations you solved the exercise!");
+    this.sessionService.markExercixeComplete();
   }
   
 }
