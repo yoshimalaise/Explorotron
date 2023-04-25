@@ -13,6 +13,10 @@ export class TourOverviewComponent {
   }
 
   startTour() {
-    
+    const vscode = (window as any).acquireVsCodeApi();
+    vscode.postMessage({
+      command: 'startSession',
+      tour: this.state.studyTour
+    })
   }
 }

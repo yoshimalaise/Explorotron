@@ -38,6 +38,16 @@ export class PluginCommandService {
         state.workspace = cmd.workspace;
         state.root = cmd.root;
       }
+
+      if (cmd.command === CommandType.START_TOUR && cmd.session) {
+        console.log(cmd.session);
+        state.isTour = true;
+        state.session = cmd.session;
+        if (state.session.exercises.length > 0) {
+          state.sourceCode = state.session.exercises[0].sourceCode;
+          state.currentLense = state.session.exercises[0].lens;
+        }
+      }
     });
   }
 }
