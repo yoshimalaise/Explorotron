@@ -44,6 +44,7 @@ export class PluginCommandService {
         state.isTour = true;
         state.session = cmd.session;
         if (state.session.exercises.length > 0) {
+          state.currentExerciseIndex = 0;
           state.sourceCode = state.session.exercises[0].sourceCode;
           state.currentLense = state.session.exercises[0].lens;
         }

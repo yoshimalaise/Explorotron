@@ -14,7 +14,7 @@ export class StateService {
   public workspace?: any = undefined;
   public root: string = "";
   public session: Session = undefined;
-
+  public currentExerciseIndex: number = 0;
   constructor() { }
 }
 
