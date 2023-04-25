@@ -19,7 +19,7 @@ import { BlanksModule } from './lenses/blanks/blanks.module';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { StudyTourModule } from './lenses/study-tour/study-tour.module';
 import { SessionProgressBarComponent } from './components/session-progress-bar/session-progress-bar.component';
-
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +31,7 @@ import { SessionProgressBarComponent } from './components/session-progress-bar/s
     AppRoutingModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    MatButtonModule,
     AnnotateModule,
     PresentationModule,
     FlowchartModule,

@@ -1,3 +1,11 @@
-<div class="top-bar">
-    hello
+<div *ngIf="state.session" class="top-bar">
+
+    <div class="progress-dots">
+        <div class="progress-dots" *ngFor="let ex of state.session.exercises">
+            <div class="dot"></div>
+            <div class="connector"></div>
+        </div>
+    </div>
+    
+    <button (click)="markCompleted()" class="btn-mark-complete" mat-raised-button color="primary">Mark Complete</button>
 </div>
