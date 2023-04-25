@@ -1,0 +1,36 @@
+<div class="container" *ngIf="state.studyTour">
+    <div class="inner-container">
+        <mat-card class="card">
+            <mat-card-title>
+                {{ state.studyTour.tourName }}
+            </mat-card-title>
+
+            <mat-card-content>
+                <p> {{ state.studyTour.description }} </p>
+
+                <h1>Exercises</h1>
+                <div class="exercises-container">
+                    <mat-card class="card" *ngFor="let ex of state.studyTour.exercises">
+                        <div class="card-content">
+                            <div>
+                                {{ ex.lens }}
+                            </div>
+                            <div>
+                                {{ex.file}}
+                            </div>
+                            
+                        </div>
+                    </mat-card>
+                </div>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <div class="btn-line">
+                    <button (click)="startTour()" mat-raised-button color="primary">Start</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+
+        
+    </div>
+</div>

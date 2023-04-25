@@ -1,5 +1,6 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SessionService } from 'src/app/services/session.service';
 import { PickFlowChartEntry } from '../../model/pick-flowchart-entry.interface';
 import { AlternativeGeneratorService } from '../../services/alternative-generator.service';
 
@@ -12,7 +13,7 @@ export class PickflowChartLensComponent {
   @Input() code: string;
   entries: PickFlowChartEntry[] = [];
 
-  constructor(private service:  AlternativeGeneratorService, private _snackBar: MatSnackBar) {
+  constructor(private service:  AlternativeGeneratorService, private _snackBar: MatSnackBar, private sessionService: SessionService) {
 
   }
 
@@ -32,7 +33,7 @@ export class PickflowChartLensComponent {
 
   select(entry: PickFlowChartEntry) {
     if (entry.isCorrect) {
-      this._snackBar.open('Correct, good job!');
+      this.sessionService.markExercixeComplete();
     } else {
       this._snackBar.open('Unfortunately that answer was incorrect, try again!');
     }

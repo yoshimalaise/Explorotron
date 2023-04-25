@@ -2,6 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { analyse, readSourceCode } from './code-analyser/code-analyser';
+import { StudyTourViewer, createTour } from './study-tour/study-tour';
+import * as dirTree from 'directory-tree';
 
 /**
  * Manages webview panels
@@ -29,6 +31,24 @@ class WebPanel {
     } else {
       WebPanel.currentPanel = new WebPanel(extensionPath, column || vscode.ViewColumn.One);
     }
+
+    // register handlers
+    if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview) {
+      WebPanel.currentPanel.panel.webview.onDidReceiveMessage((msg) => {
+        if (msg.command === "saveTour" && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+          try {
+            const tour = msg.tour;
+            const path = `${vscode.workspace.workspaceFolders[0].uri.fsPath}/${tour.fileName}`;
+            fs.writeFileSync(path, JSON.stringify(tour)); 
+            vscode.window.showInformationMessage("File saved successfully");
+          } catch (err: any) {
+            vscode.window.showErrorMessage(err.toString());
+          } 
+        }
+      });
+    }
+
+
     return WebPanel.currentPanel;
   }
 
@@ -117,6 +137,44 @@ class WebPanel {
       })
     );
   }
+
+  public static registerStudyTours(context: vscode.ExtensionContext) {
+      context.subscriptions.push(
+        vscode.commands.registerCommand('study.lenses.create-study-tour', async () => {
+            try {
+              const t = await createTour();
+              WebPanel.createOrShow(context.extensionPath);
+              setTimeout(() => {
+                if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
+                  && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+                    const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
+                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace:  dirTree(root), root});
+                }
+              }, 1000);
+            } catch {
+              vscode.window.showErrorMessage("Please provide a valid name");
+            }
+        })
+      );
+      
+      context.subscriptions.push(
+        vscode.commands.registerCommand('study.lenses.edit-study-tour', (resource: vscode.Uri) => {
+            const t = JSON.parse(readSourceCode(resource.fsPath));
+            WebPanel.createOrShow(context.extensionPath);
+            setTimeout(() => {
+              if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
+                && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+                  const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
+                WebPanel.currentPanel.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace:  dirTree(root), root});
+              }
+            }, 1000);
+          
+        })
+      );
+
+      // register the custom editor
+
+    }
 }
 
 /**
@@ -142,4 +200,7 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerLense(context, 'study.lenses.comment-slots', { command: 'LoadPlugin', lenseId: 'CommentSlots' });
   WebPanel.registerLense(context, 'study.lenses.argument-picker', { command: 'LoadPlugin', lenseId: 'ArgumentPicker' });
   WebPanel.registerLense(context, 'study.lenses.blanks', { command: 'LoadPlugin', lenseId: 'Blanks' });
+
+  vscode.window.registerCustomEditorProvider(StudyTourViewer.viewType, new StudyTourViewer(context.extensionPath));
+  WebPanel.registerStudyTours(context);
 }

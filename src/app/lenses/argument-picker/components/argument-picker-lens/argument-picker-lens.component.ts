@@ -2,6 +2,7 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ArgumentPickerServiceService } from '../../services/argument-picker-service.service';
 import { APFunction } from '../../model/ap-function.interface';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-argument-picker-lens',
@@ -12,7 +13,7 @@ export class ArgumentPickerLensComponent {
   @Input() code: string;
   functions: APFunction[] = [];
 
-  constructor(private _snackBar: MatSnackBar, private svc: ArgumentPickerServiceService) {
+  constructor(private _snackBar: MatSnackBar, private svc: ArgumentPickerServiceService, private sessionService: SessionService) {
 
   }
 
@@ -36,6 +37,6 @@ export class ArgumentPickerLensComponent {
       }
     }
 
-    this._snackBar.open("Congratulations!");
+    this.sessionService.markExercixeComplete();
   }
 }
