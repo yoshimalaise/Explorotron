@@ -27,7 +27,7 @@ export class EditStudyTourComponent {
   }
 
   ngAfterViewInit() {
-    console.log(this.state.workspace);
+   
   }
 
   addExercise() {

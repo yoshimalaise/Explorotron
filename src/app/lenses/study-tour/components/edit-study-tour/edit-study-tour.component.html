@@ -9,7 +9,7 @@
 
             <mat-form-field class="description">
                 <mat-label>Description</mat-label>
-                <textarea matInput placeholder="" [(ngModel)]="state.studyTour.description"></textarea>
+                <textarea class="description" matInput placeholder="" [(ngModel)]="state.studyTour.description"></textarea>
             </mat-form-field>
 
             <button (click)="save()"  class="btn-save" mat-raised-button color="primary">Save tour</button>
