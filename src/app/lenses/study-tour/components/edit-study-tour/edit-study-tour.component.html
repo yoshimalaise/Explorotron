@@ -15,8 +15,8 @@
             <button (click)="save()"  class="btn-save" mat-raised-button color="primary">Save tour</button>
 
             <h1>Exercises</h1>
-            <div class="exercises-container">
-                <mat-card class="card" *ngFor="let ex of state.studyTour.exercises">
+            <div cdkDropList (cdkDropListDropped)="drop($event)" class="exercises-container">
+                <mat-card cdkDrag class="card" *ngFor="let ex of state.studyTour.exercises">
                     <div class="card-content">
                         <div class="line">
                             {{ex.file}}

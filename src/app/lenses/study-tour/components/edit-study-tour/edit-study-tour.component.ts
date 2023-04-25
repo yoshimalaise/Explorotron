@@ -4,6 +4,7 @@ import { AVAILABLE_LENSES, LenseIds } from 'src/app/model/lense-ids.enum';
 import { TourExercise } from 'src/app/model/study-tour.interface';
 import { StateService } from 'src/app/services/state.service';
 import { FileSelectionDialogComponent } from '../file-selection-dialog/file-selection-dialog.component';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-edit-study-tour',
@@ -45,5 +46,9 @@ export class EditStudyTourComponent {
 
   removeExercise(ex: TourExercise) {
     this.state.studyTour.exercises = this.state.studyTour.exercises.filter(e => e !== ex);
+  }
+
+  drop(event: any) {
+    moveItemInArray(this.state.studyTour.exercises, event.previousIndex, event.currentIndex);
   }
 }

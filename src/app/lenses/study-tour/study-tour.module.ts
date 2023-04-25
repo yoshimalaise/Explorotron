@@ -11,6 +11,8 @@ import { FileSelectionDialogComponent } from './components/file-selection-dialog
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import { TourOverviewComponent } from './components/tour-overview/tour-overview.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { TourOverviewComponent } from './components/tour-overview/tour-overview.
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    DragDropModule
   ],
   exports: [
     EditStudyTourComponent,
