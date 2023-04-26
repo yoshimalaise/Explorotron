@@ -1,0 +1,62 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.btn {
+    height: 28px;
+    margin: 6px;
+}
+
+.editor {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.card {
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.title-line {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 4px;
+}
+
+.icon {
+    margin: 4px;
+}
+
+.card-content {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 2px;
+}
+
+.small-cell {
+    width: 50px;
+}
+.event-cell {
+    width: 80px;
+}

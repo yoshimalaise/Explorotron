@@ -9,6 +9,10 @@ export const VARIABLE_ADVICE = {
         if (!isNaN(variable)) {
             return value;
         }
+
+        if (`${value}`.includes('function callee() {')) {
+            return value;
+        }
         const node = state.aran.nodes[serial];
         const line = node.loc.start.line;
         const col = node.loc.start.column;
@@ -25,6 +29,9 @@ export const VARIABLE_ADVICE = {
     write: (value, variable, serial) => {
         // because aran encodes generated variables as number strings
         if (!isNaN(variable)) {
+            return value;
+        }
+        if (`${value}`.includes('function callee() {')) {
             return value;
         }
         const node = state.aran.nodes[serial];

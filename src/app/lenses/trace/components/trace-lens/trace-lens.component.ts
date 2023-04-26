@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
 import * as acorn from 'acorn';
-import * as generator from 'escodegen';
-import * as walk from 'acorn-walk';
 import { pointcut } from '../../pointcuts/pointcut';
 import { ADVICE } from '../../advice/advice';
 import { state } from '../../state/state';
@@ -17,42 +15,33 @@ declare var Astring;
 export class TraceLensComponent {
   private aran = Aran({ namespace: 'ADVICE' });
   @Input() code: string;
+  editorOptions = {theme: 'vs-dark', language: 'javascript'};
+  traceState = state;
 
   constructor() {
-    //console.log(this.aran);
-    // (window as any).ADVICE = ADVICE;
   }
 
   ngAfterViewInit() {
-    this.trace();
+    (window as any).ADVICE = ADVICE;
+    (window as any).eval(Astring.generate(this.aran.setup()));
   }
 
   trace() {
-    /* 
-    const scopeDepth = 1;
-    const blockLabels = [];
-    const loggedSteps = 0;
-    const callExpressions = [];
-
-    const ast = acorn.parse(this.code, { locations: true, ecmaVersion: 9 });
-    const wovenAst = this.aran.weave(ast, pointcut);
-    const instrumented = Astring.generate(wovenAst);
-    console.log(instrumented);
-    eval(Astring.generate(this.aran.setup()));
-    const res = eval(instrumented);
-    */
-
-    
-    let depth = "";
-    (window as any).ADVICE = ADVICE;
-    (window as any).eval(Astring.generate(this.aran.setup()));
     const estree1 = acorn.parse(this.code, { ecmaVersion: 9, locations: true });
     const estree2 = this.aran.weave(estree1, pointcut);
+    this.resetState();
+    (window as any).eval(Astring.generate(estree2));
+    console.log(state);
+  }
+
+  resetState() {
     state.depth = "";
     state.variableEvents = [];
     state.aran = this.aran;
-    (window as any).eval(Astring.generate(estree2));
-    console.log(state);
+  }
+
+  closeTraceTable() {
+    this.resetState();
   }
 
 }
