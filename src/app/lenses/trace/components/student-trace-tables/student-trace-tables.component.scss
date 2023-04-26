@@ -1,0 +1,13 @@
+.card {
+    width: 98%;
+    height: 98%;
+    margin: 1%;
+}
+
+.tab-group {
+    height: 100%;
+}
+
+::ng-deep .mat-mdc-tab-body-wrapper {
+    height: 100%;
+}

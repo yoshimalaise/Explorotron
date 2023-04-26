@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Variable steps
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <div (click)="export()" class="export-button" slot="end">
+      <ion-icon name="open"></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-grid class="grid">
+      <ion-row>
+        <ion-col>
+          <div></div>
+        </ion-col>
+        <ion-col>
+          <div>line</div>
+        </ion-col>
+        <ion-col>
+          <div>name</div>
+        </ion-col>
+        <ion-col>
+          <div>action</div>
+        </ion-col>
+        <ion-col>
+          <div>value</div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let step of state.variableSteps">
+        <ion-col (click)="select(step)">
+          <div>
+            <ion-checkbox  [(ngModel)]="step.selected"></ion-checkbox>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input [(ngModel)]="step.line" type="number" inputMode="numeric" placeholder="...."></ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input [(ngModel)]="step.name" placeholder="...."></ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-select [(ngModel)]="step.action" placeholder="....">
+              <ion-select-option [value]="a"  *ngFor="let a of actions"> {{ a }} </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input [(ngModel)]="step.value" placeholder="...."></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="btn-container">
+      <ion-button (click)="addStep()" color="success" class="action-button add-button" expand="block">Add Step</ion-button>
+    </div>
+  </div>
+</ion-content>

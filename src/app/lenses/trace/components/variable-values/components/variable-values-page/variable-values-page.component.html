@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Variable values
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <div (click)="export()" class="export-button" slot="end">
+      <ion-icon name="open"></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+
+    <div *ngIf="state.variableValues.length === 0">
+      No variables added. <br/>
+      Please add a variable using the button.
+    </div>
+
+    <ion-accordion-group [value]="expandAll" [multiple]="true" *ngIf="state.variableValues.length !== 0">
+      <ion-accordion [value]="v.name" *ngFor="let v of state.variableValues">
+        <ion-item slot="header" color="light">
+          <ion-label> {{ v.name }} </ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <div *ngIf="v.values.length === 0">
+            No lines yet for {{ v.name }}. <br/> You can add lines by using the green button berlow 
+          </div>
+
+          <ion-grid class="grid" *ngIf="v.values.length !== 0">
+            <ion-row>
+              <ion-col>
+                <div>Line number</div>
+              </ion-col>
+              <ion-col>
+                <div>Value</div>
+              </ion-col>
+            </ion-row>
+
+            <ion-row *ngFor="let entry of v.values">
+              <ion-col>
+                <div>
+                  {{ entry.lineNumber }}
+                </div>
+              </ion-col>
+              <ion-col>
+                {{ entry.value }}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div class="add-line-container">
+            <ion-button class="add-line-button" (click)="removeLine(v)" color="danger" expand="block">Remove Line</ion-button>
+            <ion-button class="add-line-button" (click)="addLine(v)" color="success" expand="block">Add Line</ion-button>
+          </div>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+
+    <div class="btn-container">
+      <ion-button (click)="addVariable()" color="success" class="action-button add-button" expand="block">Add Variable</ion-button>
+    </div>
+  </div>
+</ion-content>
