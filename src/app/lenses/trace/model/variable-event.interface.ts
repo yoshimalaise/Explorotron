@@ -14,5 +14,6 @@ export interface VariableEvent {
 
 export enum VARIABLE_EVENT_TYPE {
     READ = "Read",
-    UPDATE = "Update"
+    ASSIGN = "Assign",
+    DECLARE_INIT = "Declare, Init"
 }
