@@ -46,11 +46,13 @@ export class TraceLensComponent {
     let depth = "";
     (window as any).ADVICE = ADVICE;
     (window as any).eval(Astring.generate(this.aran.setup()));
-    const estree1 = acorn.parse(this.code, { ecmaVersion: 9 });
+    const estree1 = acorn.parse(this.code, { ecmaVersion: 9, locations: true });
     const estree2 = this.aran.weave(estree1, pointcut);
     state.depth = "";
     state.variableEvents = [];
+    state.aran = this.aran;
     (window as any).eval(Astring.generate(estree2));
+    console.log(state);
   }
 
 }
