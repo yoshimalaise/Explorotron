@@ -2804,6 +2804,13 @@ anymatch@~3.1.2:
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-2.0.0.tgz#52520b8ae5b569215b354efc0caa3fe1e45a8adc"
   integrity sha512-lYe4Gx7QT+MKGbDsA+Z+he/Wtef0BiwDOlK/XkBrdfsh9J/jPPXbX0tE9x9cl27Tmu5gg3QUbUrQYa/y+KOHPQ==
 
+aran@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/aran/-/aran-3.0.9.tgz#96d7ed38a73fa4d13fd1d2b2839f1327e7e17114"
+  integrity sha512-Fy90iYECUMvRMlaePVuv7++W5LolMhXskAPjs3ulHWKNT6SLd3aAL9vK8qqAxWDZW4DfxQARJddAaswx2wxGkw==
+  dependencies:
+    array-lite "0.1.1"
+
 are-we-there-yet@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/are-we-there-yet/-/are-we-there-yet-3.0.1.tgz#679df222b278c64f2cdba1175cdc00b0d96164bd"
@@ -2848,6 +2855,11 @@ array-flatten@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-2.1.2.tgz#24ef80a28c1a893617e2149b0c6d0d788293b099"
   integrity sha512-hNfzcOV8W4NdualtqBFPyVO+54DSJuZGY9qT4pRroB6S9e3iiido2ISIC5h9R2sPJ8H3FHCIiEnsv1lPXO3KtQ==
+
+array-lite@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/array-lite/-/array-lite-0.1.1.tgz#95ffc64db58440f76f9d27e0835b572685d91d96"
+  integrity sha512-ePi7PGyi0d/JINna/GEf7whb20bm0xkxE0xLcSsuI9lyBlKMZyvRZ2HdT7nN7Nd5XrH0/ImhNbYJxXPp7JERRA==
 
 autoprefixer@10.4.13:
   version "10.4.13"
