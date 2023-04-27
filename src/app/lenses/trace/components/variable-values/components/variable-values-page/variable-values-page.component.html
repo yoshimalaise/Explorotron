@@ -1,67 +1,54 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Variable values
-    </ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <div (click)="export()" class="export-button" slot="end">
-      <ion-icon name="open"></ion-icon>
-    </div>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
+
+<div class="card">
   <div class="container">
 
-    <div *ngIf="state.variableValues.length === 0">
+    <div *ngIf="variableValues.length === 0">
       No variables added. <br/>
       Please add a variable using the button.
     </div>
 
-    <ion-accordion-group [value]="expandAll" [multiple]="true" *ngIf="state.variableValues.length !== 0">
-      <ion-accordion [value]="v.name" *ngFor="let v of state.variableValues">
-        <ion-item slot="header" color="light">
-          <ion-label> {{ v.name }} </ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">
+    <mat-accordion multi="true" *ngIf="variableValues.length !== 0">
+
+      <mat-expansion-panel expanded="true" *ngFor="let v of variableValues">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ v.name }} <mat-icon class="var-delete-btn" (click)="deleteVariable(v, $event)" aria-hidden="false" aria-label="delete icon" fontIcon="delete"></mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div>
           <div *ngIf="v.values.length === 0">
-            No lines yet for {{ v.name }}. <br/> You can add lines by using the green button berlow 
+            No lines yet for {{ v.name }}. <br/> You can add lines by using the button bellow 
           </div>
 
-          <ion-grid class="grid" *ngIf="v.values.length !== 0">
-            <ion-row>
-              <ion-col>
-                <div>Line number</div>
-              </ion-col>
-              <ion-col>
-                <div>Value</div>
-              </ion-col>
-            </ion-row>
+          <table class="grid" *ngIf="v.values.length !== 0">
+            <tr>
+              <th class="line-number">Line number</th>
+              <th class="line-value">Value</th>
+              <th class="line-delete"></th>
+            </tr>
+            <tr *ngFor="let entry of v.values">
+              <td class="line-number"> {{ entry.lineNumber }} </td>
+              <td class="line-value"> {{ entry.value }} </td>
+              <td class="line-delete"><mat-icon (click)="removeLine(v, entry)" aria-hidden="false" aria-label="delete icon" fontIcon="delete"></mat-icon></td>
+            </tr>
 
-            <ion-row *ngFor="let entry of v.values">
-              <ion-col>
-                <div>
-                  {{ entry.lineNumber }}
-                </div>
-              </ion-col>
-              <ion-col>
-                {{ entry.value }}
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+          </table>
 
           <div class="add-line-container">
-            <ion-button class="add-line-button" (click)="removeLine(v)" color="danger" expand="block">Remove Line</ion-button>
-            <ion-button class="add-line-button" (click)="addLine(v)" color="success" expand="block">Add Line</ion-button>
+            <input class="txt-add-line-number" type="number" placeholder="line number" [(ngModel)]="v.newLineNumber" matInput>
+            <input class="txt-add-line-value" placeholder="value" [(ngModel)]="v.newLineValue" matInput>
+            <button [disabled]="v.newLineNumber === undefined || v.newLineValue === ''" mat-raised-button class="line-button" (click)="addLine(v)" color="primary" expand="block">Add Line</button>
           </div>
         </div>
-      </ion-accordion>
-    </ion-accordion-group>
+      </mat-expansion-panel>
 
-    <div class="btn-container">
-      <ion-button (click)="addVariable()" color="success" class="action-button add-button" expand="block">Add Variable</ion-button>
-    </div>
+
+    </mat-accordion>    
   </div>
-</ion-content>
+  <div class="btn-container">
+    <input class="txt-new-var" placeholder="variable name" [(ngModel)]="newVarName" matInput>
+    <button mat-raised-button (click)="addVariable()" [disabled]="newVarName === ''" color="primary" class="action-button add-button" expand="block">Add Variable</button>
+  </div>
+</div>

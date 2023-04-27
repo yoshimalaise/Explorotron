@@ -11,15 +11,16 @@ import { StudentTraceTablesComponent } from './components/student-trace-tables/s
 import {MatTabsModule} from '@angular/material/tabs';
 import { TableTracerComponent } from './components/table-tracer/components/table-tracer/table-tracer.component';
 import { VariableStepsTableComponent } from './components/variable-steps/components/variable-steps-table/variable-steps-table.component';
-// import { VariableValuesPageComponent } from './components/variable-values/components/variable-values-page/variable-values-page.component';
+import { VariableValuesPageComponent } from './components/variable-values/components/variable-values-page/variable-values-page.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     TraceLensComponent,
     StudentTraceTablesComponent,
     TableTracerComponent,
     VariableStepsTableComponent,
-    // VariableValuesPageComponent
+    VariableValuesPageComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +31,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule
   ],
   exports: [
     TraceLensComponent

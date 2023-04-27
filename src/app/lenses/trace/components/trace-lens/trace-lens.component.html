@@ -5,14 +5,13 @@
     </div>
 
 
-    <mat-card class="card">
-        <mat-card-title>
-            <div class="title-line">
-                <div>Trace Table</div>
-                <button class="btn" (click)="trace()" mat-raised-button color="primary">Trace</button>
-            </div>
-        </mat-card-title>
-        <mat-card-content class="card-content">
+    <div class="card">
+       
+        <div class="title-line">
+            <div>Trace Table</div>
+            <button class="btn" (click)="trace()" mat-raised-button color="primary">Trace</button>
+        </div>
+        <div class="card-content">
             <table *ngIf="traceState.variableEvents.length > 0; else runMsg">
                 <tr>
                     <th class="small-cell">Line</th>
@@ -35,6 +34,6 @@
                     Please click the trace button to collect the trace
                 </div>
             </ng-template>
-        </mat-card-content>
-    </mat-card>
+        </div>
+    </div>
 </div>
