@@ -1,6 +1,24 @@
 <div class="container">
     <div class="editor-container">
         <ngx-monaco-editor class="editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
-        <div class="side-container"></div>
+        
+        <div class="side-container">
+            <div class="stack-controls">
+                <mat-icon (click)="moveBack()">arrow_back_ios</mat-icon>
+                <div> Step {{ commandIndex + 1 }} of {{ commands.length }}</div>
+                <mat-icon (click)="moveForward()">arrow_forward_ios</mat-icon>
+            </div>
+            <div class="stack">
+                <div class="frame" *ngFor="let f of stackState.frames">
+                    <div class="f-name"> {{ f.functionName }}</div>
+                    <table class="args-table">
+                        <tr *ngFor="let arg of f.args">
+                            <td class="td-name"> {{ arg.argName }}</td>
+                            <td class="td-value"> {{ arg.argValue }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

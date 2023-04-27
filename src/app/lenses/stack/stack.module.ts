@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StackLensComponent } from './components/stack-lens/stack-lens.component';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
-
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MonacoEditorModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
   exports: [
     StackLensComponent
