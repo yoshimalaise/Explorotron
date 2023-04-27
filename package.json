@@ -20,6 +20,11 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.stack",
+        "title": "Stack",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.trace",
         "title": "Trace",
         "category": "study.lenses"
@@ -90,6 +95,11 @@
         },
         {
           "command": "study.lenses.trace",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.stack",
           "group": "navigation",
           "when": "resourceLangId == javascript"
         },

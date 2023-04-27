@@ -201,6 +201,7 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerLense(context, 'study.lenses.argument-picker', { command: 'LoadPlugin', lenseId: 'ArgumentPicker' });
   WebPanel.registerLense(context, 'study.lenses.blanks', { command: 'LoadPlugin', lenseId: 'Blanks' });
   WebPanel.registerLense(context, 'study.lenses.trace', { command: 'LoadPlugin', lenseId: 'Trace' });
+  WebPanel.registerLense(context, 'study.lenses.stack', { command: 'LoadPlugin', lenseId: 'Stack' });
 
   vscode.window.registerCustomEditorProvider(StudyTourViewer.viewType, new StudyTourViewer(context.extensionPath));
   WebPanel.registerStudyTours(context);
