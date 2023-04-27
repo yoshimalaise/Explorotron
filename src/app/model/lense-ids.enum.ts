@@ -10,11 +10,12 @@ export enum LenseIds {
     ARGUMENT_PICKER = "ArgumentPicker",
     BLANKS = "Blanks",
     EDIT_STUDY_TOUR = "EditStudyTour",
-    TOUR_OVERVIEW = "TourOverview"
+    TOUR_OVERVIEW = "TourOverview",
+    TRACE = "Trace"
 }
 
 export const AVAILABLE_LENSES = [
     LenseIds.ANNOTATE, LenseIds.FLOWCHART, LenseIds.PRESENTATION, LenseIds.PICK_FLOWCHART,
     LenseIds.PARSONS, LenseIds.PSEUDIFY, LenseIds.COMMENT_SLOTS, LenseIds.ARGUMENT_PICKER,
-    LenseIds.BLANKS
+    LenseIds.BLANKS, LenseIds.TRACE
 ];

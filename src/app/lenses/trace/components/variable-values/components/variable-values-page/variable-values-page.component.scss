@@ -1,0 +1,60 @@
+.card {
+    height: 100%;
+}
+.container {
+    height: calc(100% - 40px);
+    max-height: calc(100% - 40px);
+    overflow-y: auto;
+}
+.var-delete-btn {
+    margin-left: 40px;
+}
+.txt-new-var {
+    height: 24px;
+    width: 48%;
+}
+.action-button {
+    width: 48%;
+    font-size: x-small;
+    height: 24px;
+}
+.line-button {
+    font-size: x-small;
+    height: 24px;
+}
+.btn-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.add-line-button {
+    padding: 4px;
+}
+
+.add-line-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.grid {
+    width: 100%;
+}
+tr {
+    width: 100%;
+    margin: 0px;
+}
+th, td {
+    text-align: left;
+    padding: 0px;
+}
+.line-number, .line-value {
+    width: 45%;
+    min-width: 45%;
+    max-width: 45%;
+}
+.line-delete {
+    width: 10%;
+    min-width: 10%;
+    max-width: 10%;
+}

@@ -23,6 +23,7 @@ import { SessionProgressBarComponent } from './components/session-progress-bar/s
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TraceModule } from './lenses/trace/trace.module';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ArgumentPickerModule,
     BlanksModule,
     MonacoEditorModule.forRoot(),
-    StudyTourModule
+    StudyTourModule,
+    TraceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

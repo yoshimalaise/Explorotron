@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="container">
+    <table class="grid">
+      <tr>
+        <th class="radio"> . </th>
+        <th class="txt-line">line</th>
+        <th class="txt-name">name</th>
+        <th class="select-field">action</th>
+        <th class="txt-value">value</th>
+      </tr>
+
+      <tr *ngFor="let step of variableSteps">
+        <td>
+          <mat-radio-group (ngModelChange)="select(step)" [(ngModel)]="step.selected" class="radio">
+            <mat-radio-button [value]="true"></mat-radio-button>
+          </mat-radio-group>
+        </td>
+
+        <td>
+          <input class="txt-line" (focus)="select(step)" placeholder="..." type="number" [(ngModel)]="step.line" matInput>
+        </td>
+
+        <td>
+          <input placeholder="..." (focus)="select(step)" [(ngModel)]="step.name" class="txt-name" matInput>
+        </td>
+
+        <td>
+          <mat-select (focus)="select(step)" class="select-field" matInput [(ngModel)]="step.action">
+            <mat-option [value]="a" *ngFor="let a of actions">
+              {{ a }}
+            </mat-option>
+          </mat-select>
+        </td>
+
+        <td>
+          <input (focus)="select(step)" placeholder="..." [(ngModel)]="step.value" class="txt-value" matInput>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="btn-container">
+    <button mat-raised-button (click)="addStep()" color="primary" class="action-button" expand="block">Add Step</button>
+  </div>
+</div>

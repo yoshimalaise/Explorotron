@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="editor-container">
+        <ngx-monaco-editor class="editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+        <app-student-trace-tables class="side-container"></app-student-trace-tables>
+    </div>
+
+
+    <div class="card">
+       
+        <div class="title-line">
+            <div>Trace Table</div>
+            <button class="btn" (click)="trace()" mat-raised-button color="primary">Trace</button>
+        </div>
+        <div class="card-content">
+            <table *ngIf="traceState.variableEvents.length > 0; else runMsg">
+                <tr>
+                    <th class="small-cell">Line</th>
+                    <th class="small-cell">Col</th>
+                    <th class="event-cell">Event</th>
+                    <th>Variable</th>
+                    <th>Value</th>
+                </tr>
+                <tr *ngFor="let e of traceState.variableEvents">
+                    <td>{{ e.line }}</td>
+                    <td>{{ e.col }}</td>
+                    <td>{{ e.eventType }}</td>
+                    <td>{{ e.varName }}</td>
+                    <td>{{ e.value }}</td>
+                </tr>
+            </table>
+
+            <ng-template #runMsg>
+                <div class="alternate-text">
+                    Please click the trace button to collect the trace
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

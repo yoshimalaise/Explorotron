@@ -1,0 +1,54 @@
+
+
+<div class="card">
+  <div class="container">
+
+    <div *ngIf="variableValues.length === 0">
+      No variables added. <br/>
+      Please add a variable using the button.
+    </div>
+
+    <mat-accordion multi="true" *ngIf="variableValues.length !== 0">
+
+      <mat-expansion-panel expanded="true" *ngFor="let v of variableValues">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ v.name }} <mat-icon class="var-delete-btn" (click)="deleteVariable(v, $event)" aria-hidden="false" aria-label="delete icon" fontIcon="delete"></mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div>
+          <div *ngIf="v.values.length === 0">
+            No lines yet for {{ v.name }}. <br/> You can add lines by using the button bellow 
+          </div>
+
+          <table class="grid" *ngIf="v.values.length !== 0">
+            <tr>
+              <th class="line-number">Line number</th>
+              <th class="line-value">Value</th>
+              <th class="line-delete"></th>
+            </tr>
+            <tr *ngFor="let entry of v.values">
+              <td class="line-number"> {{ entry.lineNumber }} </td>
+              <td class="line-value"> {{ entry.value }} </td>
+              <td class="line-delete"><mat-icon (click)="removeLine(v, entry)" aria-hidden="false" aria-label="delete icon" fontIcon="delete"></mat-icon></td>
+            </tr>
+
+          </table>
+
+          <div class="add-line-container">
+            <input class="txt-add-line-number" type="number" placeholder="line number" [(ngModel)]="v.newLineNumber" matInput>
+            <input class="txt-add-line-value" placeholder="value" [(ngModel)]="v.newLineValue" matInput>
+            <button [disabled]="v.newLineNumber === undefined || v.newLineValue === ''" mat-raised-button class="line-button" (click)="addLine(v)" color="primary" expand="block">Add Line</button>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+
+    </mat-accordion>    
+  </div>
+  <div class="btn-container">
+    <input class="txt-new-var" placeholder="variable name" [(ngModel)]="newVarName" matInput>
+    <button mat-raised-button (click)="addVariable()" [disabled]="newVarName === ''" color="primary" class="action-button add-button" expand="block">Add Variable</button>
+  </div>
+</div>

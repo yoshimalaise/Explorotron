@@ -1,0 +1,110 @@
+<div class="card">
+  <div class="container">
+    <div class="title-line">
+      <div>
+        Expression
+      </div>
+      <div>
+        Evaluates to
+      </div>
+    </div>
+    <div class="lines">
+      
+
+      <ng-container *ngFor="let step of operatorsTableSteps">
+        <div class="line-item" *ngIf="step.type === 'Unary-Prefix'">
+          <div class="item-container">
+            <div class="expression-slot">
+              <mat-select class="select-field" matInput [(ngModel)]="step.operator">
+                <mat-option [value]="o" *ngFor="let o of unaryOperators">
+                  {{ o }}
+                </mat-option>
+              </mat-select>
+              <input placeholder="variable" [(ngModel)]="step.variable1Name" matInput>
+            </div>
+
+
+            <input  class="result-slot" placeholder="result" [(ngModel)]="step.result" matInput>
+          </div>
+        </div>
+
+        <div class="line-item" *ngIf="step.type === 'Unary-Postfix'">
+          <div class="item-container">
+            <div class="expression-slot">
+
+              <input placeholder="variable" [(ngModel)]="step.variable1Name" class="" matInput>
+
+
+              <mat-select class="select-field" matInput [(ngModel)]="step.operator">
+                <mat-option [value]="o" *ngFor="let o of unaryPostfixOperators">
+                  {{ o }}
+                </mat-option>
+              </mat-select>
+            </div>
+
+
+            <input class="result-slot" placeholder="result" [(ngModel)]="step.result" matInput>
+          </div>
+        </div>
+
+
+        <div class="line-item" *ngIf="step.type === 'Binary'">
+          <div class="item-container">
+            <div class="expression-slot">
+                <input placeholder="variable" [(ngModel)]="step.variable1Name" matInput>
+      
+
+   
+                <mat-select class="select-field" matInput [(ngModel)]="step.operator">
+                  <mat-option [value]="o" *ngFor="let o of binaryOperators">
+                    {{ o }}
+                  </mat-option>
+                </mat-select>
+
+
+                <input placeholder="variable" [(ngModel)]="step.variable2Name" matInput>
+           
+            </div>
+
+
+              <input class="result-slot" placeholder="result" [(ngModel)]="step.result" matInput>
+          </div>
+        </div>
+
+
+        <div class="line-item" *ngIf="step.type === 'Ternary'">
+          <div class="item-container">
+            <div class="expression-slot">
+
+              <input [(ngModel)]="step.value1" placeholder="value 1" matInput>
+
+              <div class="label"> ? </div>
+
+                <input placeholder="value 2" [(ngModel)]="step.value2" matInput>
+              <div class="label">:</div>
+
+                <input class="result-slot" placeholder="value 3" [(ngModel)]="step.value3" matInput>
+            </div>
+
+      
+            <input class="result-slot" placeholder="result" [(ngModel)]="step.result" matInput>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+
+    <div class="btn-container">
+      <button mat-raised-button (click)="addUnaryPrefix()" color="primary" class="action-button add-button"
+        expand="block">Unary prefix</button>
+      <button mat-raised-button (click)="addUnaryPostfix()" color="primary" class="action-button add-button"
+        expand="block">Unary Postfix</button>
+      <button mat-raised-button (click)="addBinary()" color="primary" class="action-button add-button"
+        expand="block">Binary</button>
+      <button mat-raised-button (click)="addTernary()" color="primary" class="action-button add-button"
+        expand="block">Ternary</button>
+      <button mat-raised-button (click)="removeLast()" color="warn" class="action-button remove-button">Remove
+        last</button>
+    </div>
+  </div>
+</div>

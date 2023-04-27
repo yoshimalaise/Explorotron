@@ -8,7 +8,7 @@ import { Session } from '../model/session.interface';
 })
 export class StateService {
   public sourceCode: string = debuggingFallbackJS;
-  public currentLense: LenseIds =  LenseIds.LOADING;
+  public currentLense: LenseIds = LenseIds.TRACE;// LenseIds.LOADING;
   public isTour: boolean = false;
   public studyTour?: StudyTour = undefined;
   public workspace?: any = undefined;
@@ -42,13 +42,6 @@ function selectionSort(arr) {
   }
   return arr;
 }
-console.log(selectionSort([29, 72, 98, 13, 87, 66, 52, 51, 36]));
-
-function second(x, y){
-  return x + y;
-}
-
-function third(x, y, z) {
-  return x * y * z;
-}
+const fac = (n) => n ? n * fac(n - 1) : 1;
+  fac(6);
 `;

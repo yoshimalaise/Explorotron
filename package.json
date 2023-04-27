@@ -20,6 +20,11 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.trace",
+        "title": "Trace",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.annotate",
         "title": "Annotate",
         "category": "study.lenses"
@@ -80,6 +85,11 @@
         },
         {
           "command": "study.lenses.blanks",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.trace",
           "group": "navigation",
           "when": "resourceLangId == javascript"
         },
@@ -169,6 +179,7 @@
     "@ngstack/code-editor": "^5.0.0",
     "acorn": "^8.8.2",
     "acorn-walk": "^8.2.0",
+    "aran": "^3.0.9",
     "directory-tree": "^3.5.1",
     "escodegen": "^2.0.0",
     "js2flowchart": "^1.3.4",

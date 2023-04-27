@@ -1,0 +1,76 @@
+.card {
+    height: 100%;
+}
+
+.container {
+    height: calc(100% - 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.action-button {
+    font-size: x-small;
+    width:20%;
+    height: 24px;
+    margin-bottom: 2px;
+}
+.remove-button {
+    width: 100%;
+}
+
+
+.expression-slot {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 3px
+}
+.title-line {
+    margin: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.lines {
+    flex-grow: 1;
+    height: calc(100% - 58px);
+    margin: 8px;
+    overflow-y: auto;
+}
+
+.line-item {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 6px;
+}
+
+input {
+    width: 80px;
+    height: 15px;
+}
+
+.select-field {
+    width: 50px;
+}
+
+.label {
+    width: 15px;
+    text-align: center;
+}

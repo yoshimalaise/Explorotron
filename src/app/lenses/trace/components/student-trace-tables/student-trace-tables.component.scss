@@ -1,0 +1,15 @@
+.card {
+    width: 98%;
+    height: 98%;
+    margin: 1%;
+    background-color: rgba(31, 30, 30, 0.3);;
+    border-radius: 8px;
+}
+
+.tab-group {
+    height: 100%;
+}
+
+::ng-deep .mat-mdc-tab-body-wrapper {
+    height: 100%;
+}

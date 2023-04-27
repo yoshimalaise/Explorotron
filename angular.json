@@ -31,7 +31,10 @@
               "node_modules/reveal.js/dist/theme/black.css",
               "node_modules/reveal.js/plugin/highlight/monokai.css"
             ],
-            "scripts": [],
+            "scripts": [
+              { "input": "libs/aran-build.js" },
+              { "input": "libs/astring.js" }
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
