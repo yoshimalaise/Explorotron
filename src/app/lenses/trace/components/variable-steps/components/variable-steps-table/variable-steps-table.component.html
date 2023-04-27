@@ -1,71 +1,44 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Variable steps
-    </ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <div (click)="export()" class="export-button" slot="end">
-      <ion-icon name="open"></ion-icon>
-    </div>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
+<mat-card class="card">
   <div class="container">
-    <ion-grid class="grid">
-      <ion-row>
-        <ion-col>
-          <div></div>
-        </ion-col>
-        <ion-col>
-          <div>line</div>
-        </ion-col>
-        <ion-col>
-          <div>name</div>
-        </ion-col>
-        <ion-col>
-          <div>action</div>
-        </ion-col>
-        <ion-col>
-          <div>value</div>
-        </ion-col>
-      </ion-row>
+    <table class="grid">
+      <tr>
+        <th class="radio"> . </th>
+        <th class="txt-line">line</th>
+        <th class="txt-name">name</th>
+        <th class="select-field">action</th>
+        <th class="txt-value">value</th>
+      </tr>
 
-      <ion-row *ngFor="let step of state.variableSteps">
-        <ion-col (click)="select(step)">
-          <div>
-            <ion-checkbox  [(ngModel)]="step.selected"></ion-checkbox>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-input [(ngModel)]="step.line" type="number" inputMode="numeric" placeholder="...."></ion-input>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-input [(ngModel)]="step.name" placeholder="...."></ion-input>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-select [(ngModel)]="step.action" placeholder="....">
-              <ion-select-option [value]="a"  *ngFor="let a of actions"> {{ a }} </ion-select-option>
-            </ion-select>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-input [(ngModel)]="step.value" placeholder="...."></ion-input>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+      <tr *ngFor="let step of variableSteps">
+        <td>
+          <mat-radio-group (ngModelChange)="select(step)" [(ngModel)]="step.selected" class="radio">
+            <mat-radio-button [value]="true"></mat-radio-button>
+          </mat-radio-group>
+        </td>
 
-    <div class="btn-container">
-      <ion-button (click)="addStep()" color="success" class="action-button add-button" expand="block">Add Step</ion-button>
-    </div>
+        <td>
+          <input class="txt-line" (focus)="select(step)" placeholder="..." type="number" [(ngModel)]="step.line" matInput>
+        </td>
+
+        <td>
+          <input placeholder="..." (focus)="select(step)" [(ngModel)]="step.name" class="txt-name" matInput>
+        </td>
+
+        <td>
+          <mat-select (focus)="select(step)" class="select-field" matInput [(ngModel)]="step.action">
+            <mat-option [value]="a" *ngFor="let a of actions">
+              {{ a }}
+            </mat-option>
+          </mat-select>
+        </td>
+
+        <td>
+          <input (focus)="select(step)" placeholder="..." [(ngModel)]="step.value" class="txt-value" matInput>
+        </td>
+      </tr>
+    </table>
   </div>
-</ion-content>
+  <div class="btn-container">
+    <button mat-raised-button (click)="addStep()" color="primary" class="action-button" expand="block">Add Step</button>
+  </div>
+</mat-card>
