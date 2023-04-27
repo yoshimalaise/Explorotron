@@ -7,7 +7,7 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 })
 export class StackLensComponent {
   @Input() code: string;
-  psuedoCode: string;
+  editorOptions = {theme: 'vs-dark', language: 'javascript'};
 
   constructor() {}
 
