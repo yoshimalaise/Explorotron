@@ -33,7 +33,7 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column-reverse;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .frame {
@@ -64,4 +64,8 @@ tr:nth-child(odd) {background: #FFF}
     width: 60%;
     min-width: 60%;
     max-width: 60%;
+}
+
+::ng-deep .code-highlight {
+    background: #ffff0088;
 }

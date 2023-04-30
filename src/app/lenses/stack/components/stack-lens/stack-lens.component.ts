@@ -5,6 +5,7 @@ import * as acorn from 'acorn';
 import { pointcut } from '../../pointcuts/pointcuts';
 import { StackState } from '../../model/stack-state.interface';
 import { StackCommand, StackCommandType } from '../../model/stack-command.interface';
+import { editor } from 'monaco-editor';
 
 declare var Aran;
 declare var Astring;
@@ -22,6 +23,9 @@ export class StackLensComponent {
   stackState: StackState = { frames: [] };
   commandIndex = 0;
   commands: StackCommand[] = [];
+
+  editor: editor.ICodeEditor = undefined;
+  oldDecorations = [];
   constructor() {}
 
   ngAfterViewInit(): void {
@@ -60,7 +64,7 @@ export class StackLensComponent {
     if (c.command === StackCommandType.POP_FRAME) {
       this.stackState.frames.pop();
     }
-
+    this.updateHighlights(c);
     this.commandIndex++;
   }
 
@@ -76,7 +80,30 @@ export class StackLensComponent {
     if (c.command === StackCommandType.ADD_FRAME) {
       this.stackState.frames.pop();
     }
-    
+    this.updateHighlights(c);
+  }
+
+  onInit(monacoEditor: editor.ICodeEditor): void {
+    this.editor = monacoEditor;
+  }
+
+  updateHighlights(c: StackCommand) {
+    const editorModel: editor.ITextModel = this.editor.getModel();
+      const range = {startLineNumber: c.line, startColumn: c.col + 1, endLineNumber: c.endLine, endColumn: c.endCol + 1}
+   
+      // scroll to the result
+      this.editor.revealRangeInCenter(range);
+      // highlight the results
+      const newDecorations = [
+        {
+          range: range,
+          options: {
+            isWholeLine: false,
+            inlineClassName: 'code-highlight'
+          }
+        }
+      ];
+      this.oldDecorations = editorModel.deltaDecorations(this.oldDecorations, newDecorations);
   }
 
 }

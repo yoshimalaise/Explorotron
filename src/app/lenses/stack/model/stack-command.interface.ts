@@ -9,6 +9,8 @@ export interface StackCommand {
     args?: StackArg[];
     line: number;
     col: number;
+    endLine: number;
+    endCol: number;
 }
 
 export interface StackArg {

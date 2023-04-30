@@ -6,6 +6,8 @@ export const StackAdvice = {
         const node = state.aran.nodes[serial];
         const line = node.loc.start.line;
         const col = node.loc.start.column;
+        const endLine = node.loc.end.line;;
+        const endCol = node.loc.end.column;
         const nodeArgs = node.arguments;
         const stackArgs: StackArg[] = []; 
         for (let i = 0; i < nodeArgs.length; i++) {
@@ -13,9 +15,9 @@ export const StackAdvice = {
                 stackArgs.push({ argName: nodeArgs[i].left.name, argValue: `${xs[i]}`} );
             }
         }
-        state.commands.push( { command: StackCommandType.ADD_FRAME, line, col, functionName: f.name, args: stackArgs });
+        state.commands.push( { command: StackCommandType.ADD_FRAME, line, col, endLine, endCol, functionName: f.name, args: stackArgs });
         const x = Reflect.apply(f, t, xs);
-        state.commands.push({ command: StackCommandType.POP_FRAME, line, col, functionName: f.name, args: stackArgs});
+        state.commands.push({ command: StackCommandType.POP_FRAME, line, col, endLine, endCol, functionName: f.name, args: stackArgs});
         return x;
       }
 }

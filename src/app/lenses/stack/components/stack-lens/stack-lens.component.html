@@ -1,6 +1,11 @@
 <div class="container">
     <div class="editor-container">
-        <ngx-monaco-editor class="editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+        <ngx-monaco-editor 
+        class="editor" 
+        [options]="editorOptions" 
+        [(ngModel)]="code"
+
+        (onInit)="onInit($event)"></ngx-monaco-editor>
         
         <div class="side-container">
             <div class="stack-controls">

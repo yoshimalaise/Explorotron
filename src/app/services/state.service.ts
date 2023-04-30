@@ -22,26 +22,19 @@ export class StateService {
  * This string is used as the default program code for when interactively developing using ng serve instead of the vscode plugin build cycle
  */
 const debuggingFallbackJS = `
-function selectionSort(arr) {
-  let min;
-  //start passes.
-  for (let i = 0; i < arr.length; i++) {
-    //index of the smallest element to be the ith element.
-    min = i;
-    //Check through the rest of the array for a lesser element
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[min]) {
-        min = j;
-      }
-    }
-    //compare the indexes
-    if (min !== i) {
-      //swap
-      [arr[i], arr[min]] = [arr[min], arr[i]];
-    }
-  }
-  return arr;
+function fizz(x, y) {
+  return x * y;
 }
-const fac = (n) => n ? n * fac(n - 1) : 1;
-  fac(6);
+function bar(x) {
+  if (x <= 1) {
+    return 1;
+  }
+  return x * bar(x - 1);
+}
+
+function foo(n) {
+  return bar(n) + fizz(n * 2, n * 3) + bar(n - 1);
+}
+
+foo(3);
 `;
