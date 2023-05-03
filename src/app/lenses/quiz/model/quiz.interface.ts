@@ -10,8 +10,26 @@ export interface QuizQuestion {
     type: QuizQuestionType
 }
 
+export interface SingleAnswerQuestion extends QuizQuestion {
+    answers: SingleAnswer[];
+}
+
+export interface MultipleAnswerQuestion extends QuizQuestion {
+    answers: MultipleAnswer[];
+}
+
+export interface SingleAnswer {
+    isCorrect: boolean;
+    answer: string;
+}
+
+export interface MultipleAnswer {
+    isCorrect: boolean;
+    answer: string;
+}
+
 export enum QuizQuestionType {
     SINGLE_ANSWER = "SingleAnswer",
     MULTIPLE_ANSWER = "MultipleAnswer"
 }
-export const quizTypes = [QuizQuestionType.MULTIPLE_ANSWER, QuizQuestionType.SINGLE_ANSWER]
+export const quizQuestionTypes = [QuizQuestionType.MULTIPLE_ANSWER, QuizQuestionType.SINGLE_ANSWER]

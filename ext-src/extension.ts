@@ -185,7 +185,7 @@ class WebPanel {
               setTimeout(() => {
                 if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
                   && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', quiz: q});
+                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', lenseSpecificData: q});
                 }
               }, 1000);
             } catch {
@@ -201,7 +201,7 @@ class WebPanel {
             setTimeout(() => {
               if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
                 && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', quiz: q});
+                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', lenseSpecificData: q});
               }
             }, 1000);
         })
@@ -214,7 +214,7 @@ class WebPanel {
             setTimeout(() => {
               if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
                 && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'Quiz', quiz: q});
+                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'Quiz', lenseSpecificData: q});
               }
             }, 1000);
         })

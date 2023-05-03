@@ -1,1 +1,24 @@
-<p>quiz-editor-lens works!</p>
+<div class="container">
+    <div cdkDropList (cdkDropListDropped)="drop($event)" class="questions">
+        <ng-container *ngFor="let q of quiz.questions">
+            <app-single-answer cdkDrag *ngIf="q.type === 'SingleAnswer'" [question]="q"></app-single-answer>
+            <app-multiple-answer cdkDrag *ngIf="q.type === 'MultipleAnswer'" [question]="q"></app-multiple-answer>
+        </ng-container>
+    </div>
+    <div class="btn-container">
+        <div class="add-question-container">
+            <mat-select [(ngModel)]="selectedType" class="select-question-type">
+                <mat-option *ngFor="let type of types" [value]="type">
+                    {{type}}
+                </mat-option>
+            </mat-select>
+
+            <button (click)="addQuestion()" class="btn-add-question" mat-raised-button color="primary">
+                Add Question
+            </button>
+        </div>
+        <button (click)="save()" class="btn-save" mat-raised-button color="primary">
+            Save
+        </button>
+    </div>
+</div>

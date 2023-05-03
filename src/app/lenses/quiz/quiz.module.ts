@@ -3,17 +3,27 @@ import { CommonModule } from '@angular/common';
 import { QuizLensComponent } from './components/quiz-lens/quiz-lens.component';
 import { QuizEditorLensComponent } from './components/quiz-editor-lens/quiz-editor-lens.component';
 import { FormsModule } from '@angular/forms';
-
-
+import { SingleAnswerComponent } from './components/editor-components/single-answer/single-answer.component';
+import { MatButtonModule } from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import { MultipleAnswerComponent } from './components/editor-components/multiple-answer/multiple-answer.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
     QuizLensComponent,
-    QuizEditorLensComponent
+    QuizEditorLensComponent,
+    SingleAnswerComponent,
+    MultipleAnswerComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatSelectModule,
+    DragDropModule,
+    MatInputModule
   ],
   exports: [
     QuizLensComponent,

@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 99%;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    max-height: calc(100% - 96px);
+    overflow-y: auto;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+}
+
+.add-question-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 4px;
+}
+
+.select-question-type, .btn-add-question {
+    width: 48%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.btn-save {
+    width: 100%;
+}

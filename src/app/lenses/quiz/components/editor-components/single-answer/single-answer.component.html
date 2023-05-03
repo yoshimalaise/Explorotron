@@ -1,0 +1,22 @@
+<div class="container" *ngIf="question">
+    <input class="txt-question" matInput placeholder="question" [(ngModel)]="question.question">
+
+    <div class="answers-container">
+        <div class="answer-item" *ngFor="let a of question.answers">
+            Answers
+        </div>
+        <div class="answer-item" *ngFor="let a of question.answers">
+            <div class="answer-text">Text</div>
+            <div class="correct-text">Correct?</div>
+            <div class="correct-text">Actions</div>
+        </div>
+        <div class="answer-item" *ngFor="let a of question.answers">
+            <input class="txt-answer" matInput placeholder="answer" [(ngModel)]="a.answer">
+        </div>
+    </div>
+
+    <div class="add-answer-container">
+        <input class="txt-new-answer" matInput placeholder="answer" [(ngModel)]="newAnswer">
+        <button mat-raised-button color="primary" (click)="addAnswer()" class="btn-add-answer">Add</button>
+    </div>
+</div>
