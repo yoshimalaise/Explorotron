@@ -1,7 +1,33 @@
 import * as vscode from "vscode";
 import * as fs from 'fs';
 import * as path from 'path';
+import { registerControllers } from "../controllers";
 
+export async function createQuiz() {
+    const quizName = await vscode.window.showInputBox();
+    if (!quizName) {
+        throw new Error("Please provide a valid name");
+    }
+    try {
+        if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+            let path = vscode.workspace.workspaceFolders[0].uri.fsPath;
+            const fileName = `${quizName.replace(/ /g, "_")}.study-quiz`;
+            const dummyQuiz = {
+                name: quizName,
+                fileName,
+                questions: []
+            }
+            fs.writeFileSync(`${path}/${fileName}`, JSON.stringify(dummyQuiz));
+            return dummyQuiz;
+        } else {
+            throw new Error("Command needs to be ran in a workspace");
+        }
+
+    } catch (err) {
+        console.log(err);
+        throw new Error("Could not create tour file");
+    }
+}
 
 export class QuizViewer implements vscode.CustomTextEditorProvider {
     private readonly extensionPath: string;
@@ -25,7 +51,7 @@ export class QuizViewer implements vscode.CustomTextEditorProvider {
                 webviewPanel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'Quiz', lenseSpecificData: q });
         }, 1000);
 
-        this._registerEvents(webviewPanel);
+        registerControllers(webviewPanel.webview);
     }
 
     private _getHtmlForWebview(panel: vscode.WebviewPanel): string {
@@ -46,11 +72,5 @@ export class QuizViewer implements vscode.CustomTextEditorProvider {
         indexHtml = indexHtml.replace('<base href="/">', `<base href="${String(baseUri)}/">`);
 
         return indexHtml;
-    }
-
-    private _registerEvents(panel: vscode.WebviewPanel) {
-        panel.webview.onDidReceiveMessage((msg) => {
-
-        });
     }
 }

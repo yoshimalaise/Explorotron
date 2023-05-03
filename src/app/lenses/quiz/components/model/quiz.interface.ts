@@ -1,5 +1,6 @@
 export interface Quiz {
     name: string;
+    fileName: string;
     questions: QuizQuestion[];
 }
 

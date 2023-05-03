@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { CustomReadonlyEditorProvider } from "vscode";
 import * as dirTree from 'directory-tree';
+import { registerControllers } from "../controllers";
 
 export async function createTour() {
     const tourName = await vscode.window.showInputBox();
@@ -56,7 +57,7 @@ export class StudyTourViewer implements vscode.CustomTextEditorProvider {
             }
           }, 1000);
 
-        this._registerEvents(webviewPanel);
+        registerControllers(webviewPanel.webview);
     }
     
     private _getHtmlForWebview(panel: vscode.WebviewPanel): string {
@@ -77,29 +78,5 @@ export class StudyTourViewer implements vscode.CustomTextEditorProvider {
         indexHtml = indexHtml.replace('<base href="/">', `<base href="${String(baseUri)}/">`);
     
         return indexHtml;
-      }
-
-      private _registerEvents(panel: vscode.WebviewPanel) {
-        panel.webview.onDidReceiveMessage((msg) => {
-            if (msg.command === "startSession") {
-              try {
-                const tour = msg.tour;
-
-                const sessionExercises = tour.exercises.map((e: any) => {
-                    if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-                        return {
-                            ...e,
-                            sourceCode: fs.readFileSync(`${vscode.workspace.workspaceFolders[0].uri.fsPath}${e.file}`, {encoding:'utf8', flag:'r'}),
-                            isCompleted: false
-                        }
-                    }
-                });
-                const session = { exercises: sessionExercises, name: msg.tour.tourName }
-                panel.webview.postMessage({ command: 'startTour', session});
-              } catch (err: any) {
-                vscode.window.showErrorMessage(err.toString());
-              } 
-            }
-          });
       }
 }

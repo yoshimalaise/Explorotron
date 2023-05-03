@@ -4,7 +4,8 @@ import * as vscode from 'vscode';
 import { analyse, readSourceCode } from './code-analyser/code-analyser';
 import { StudyTourViewer, createTour } from './study-tour/study-tour';
 import * as dirTree from 'directory-tree';
-import { QuizViewer } from './quizzes/quiz';
+import { createQuiz, QuizViewer } from './quizzes/quiz';
+import { registerControllers } from './controllers';
 /**
  * Manages webview panels
  */
@@ -30,9 +31,11 @@ class WebPanel {
       WebPanel.currentPanel.panel.reveal(column);
     } else {
       WebPanel.currentPanel = new WebPanel(extensionPath, column || vscode.ViewColumn.One);
+      registerControllers(WebPanel.currentPanel.panel.webview);
     }
 
     // register handlers
+    /*
     if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview) {
       WebPanel.currentPanel.panel.webview.onDidReceiveMessage((msg) => {
         if (msg.command === "saveTour" && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
@@ -46,7 +49,7 @@ class WebPanel {
           } 
         }
       });
-    }
+    }*/
 
 
     return WebPanel.currentPanel;
@@ -174,7 +177,48 @@ class WebPanel {
     }
 
     public static registerQuizzes(context: vscode.ExtensionContext) {
-      
+      context.subscriptions.push(
+        vscode.commands.registerCommand('study.lenses.create-quiz', async () => {
+            try {
+              const q = await createQuiz();
+              WebPanel.createOrShow(context.extensionPath);
+              setTimeout(() => {
+                if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
+                  && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', quiz: q});
+                }
+              }, 1000);
+            } catch {
+              vscode.window.showErrorMessage("Please provide a valid name");
+            }
+        })
+      );
+
+      context.subscriptions.push(
+        vscode.commands.registerCommand('study.lenses.edit-quiz', (resource: vscode.Uri) => {
+            const q = JSON.parse(readSourceCode(resource.fsPath));
+            WebPanel.createOrShow(context.extensionPath);
+            setTimeout(() => {
+              if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
+                && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', quiz: q});
+              }
+            }, 1000);
+        })
+      );
+
+      context.subscriptions.push(
+        vscode.commands.registerCommand('study.lenses.start-quiz', (resource: vscode.Uri) => {
+            const q = JSON.parse(readSourceCode(resource.fsPath));
+            WebPanel.createOrShow(context.extensionPath);
+            setTimeout(() => {
+              if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
+                && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'Quiz', quiz: q});
+              }
+            }, 1000);
+        })
+      );
     }
 }
 

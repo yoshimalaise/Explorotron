@@ -16,17 +16,17 @@
       },
       {
         "command": "study.lenses.create-quiz",
-        "title": "Create study tour",
+        "title": "Create Quiz",
         "category": "study.lenses"
       },
       {
         "command": "study.lenses.edit-quiz",
-        "title": "Create study tour",
+        "title": "Edit Quiz",
         "category": "study.lenses"
       },
       {
         "command": "study.lenses.start-quiz",
-        "title": "Create study tour",
+        "title": "Start Quiz",
         "category": "study.lenses"
       },
       {
