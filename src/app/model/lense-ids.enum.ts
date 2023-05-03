@@ -11,7 +11,8 @@ export enum LenseIds {
     BLANKS = "Blanks",
     EDIT_STUDY_TOUR = "EditStudyTour",
     TOUR_OVERVIEW = "TourOverview",
-    TRACE = "Trace"
+    TRACE = "Trace",
+    CODE_QUESTIONS = "CodeQuestions"
 }
 
 export const AVAILABLE_LENSES = [

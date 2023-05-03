@@ -1,0 +1,9 @@
+<div class="question-card">
+    <div class="question"> {{ question.question }} </div>
+    <div class="options">
+        <mat-checkbox *ngFor="let option of question.options" [(ngModel)]="option.currentlySelected">
+            {{ option.answer }}
+        </mat-checkbox>
+    </div>
+</div>
+

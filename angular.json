@@ -33,7 +33,8 @@
             ],
             "scripts": [
               { "input": "libs/aran-build.js" },
-              { "input": "libs/astring.js" }
+              { "input": "libs/astring.js" },
+              { "input": "libs/qlcjs.min.js" }
             ],
             "vendorChunk": true,
             "extractLicenses": false,

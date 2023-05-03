@@ -24,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TraceModule } from './lenses/trace/trace.module';
+import { CodeQuestionsModule } from './lenses/code-questions/code-questions.module';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { TraceModule } from './lenses/trace/trace.module';
     BlanksModule,
     MonacoEditorModule.forRoot(),
     StudyTourModule,
-    TraceModule
+    TraceModule,
+    CodeQuestionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
