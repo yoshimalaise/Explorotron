@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Quiz } from '../model/quiz.interface';
+import { Quiz } from '../../model/quiz.interface';
 
 @Component({
   selector: 'app-quiz-editor-lens',
