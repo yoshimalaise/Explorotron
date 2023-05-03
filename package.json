@@ -15,6 +15,21 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.create-quiz",
+        "title": "Create study tour",
+        "category": "study.lenses"
+      },
+      {
+        "command": "study.lenses.edit-quiz",
+        "title": "Create study tour",
+        "category": "study.lenses"
+      },
+      {
+        "command": "study.lenses.start-quiz",
+        "title": "Create study tour",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.code-questions",
         "title": "Code Questions",
         "category": "study.lenses"
@@ -139,6 +154,16 @@
           "when": "resourceFilename =~ /.presentation.md/i || resourceFilename =~ /.slides.md/i"
         },
         {
+          "command": "study.lenses.start-quiz",
+          "group": "navigation",
+          "when": "resourceFilename =~ /.study-quiz/i"
+        },
+        {
+          "command": "study.lenses.edit-quiz",
+          "group": "navigation",
+          "when": "resourceFilename =~ /.study-quiz/i"
+        },
+        {
           "command": "study.lenses.edit-study-tour",
           "group": "navigation",
           "when": "resourceFilename =~ /.study-tour/i"
@@ -158,6 +183,16 @@
         "selector": [
           {
             "filenamePattern": "*.study-tour"
+          }
+        ],
+        "priority": "default"
+      }, 
+      {
+        "viewType": "study.lenses.viewQuiz",
+        "displayName": "View Quiz",
+        "selector": [
+          {
+            "filenamePattern": "*.study-quiz"
           }
         ],
         "priority": "default"

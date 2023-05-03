@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 import { analyse, readSourceCode } from './code-analyser/code-analyser';
 import { StudyTourViewer, createTour } from './study-tour/study-tour';
 import * as dirTree from 'directory-tree';
-
+import { QuizViewer } from './quizzes/quiz';
 /**
  * Manages webview panels
  */
@@ -171,9 +171,10 @@ class WebPanel {
           
         })
       );
+    }
 
-      // register the custom editor
-
+    public static registerQuizzes(context: vscode.ExtensionContext) {
+      
     }
 }
 
@@ -204,5 +205,8 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerLense(context, 'study.lenses.code-questions', { command: 'LoadPlugin', lenseId: 'CodeQuestions' });
 
   vscode.window.registerCustomEditorProvider(StudyTourViewer.viewType, new StudyTourViewer(context.extensionPath));
+  vscode.window.registerCustomEditorProvider(QuizViewer.viewType, new QuizViewer(context.extensionPath));
+
   WebPanel.registerStudyTours(context);
+  WebPanel.registerQuizzes(context);
 }
