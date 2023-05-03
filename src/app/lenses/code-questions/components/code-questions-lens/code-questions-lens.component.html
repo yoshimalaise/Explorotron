@@ -1,0 +1,12 @@
+<div class="editor-container">
+    <ngx-monaco-editor class="editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+    <div class="side-container">
+        <div class="questions-container">
+            <ng-container *ngFor="let q of questions">
+                <app-question-card [showCorrection]="showCorrection" *ngIf="!q.multipleAnswers"  [question]="q"></app-question-card>
+                <app-question-card-multiple-answers [showCorrection]="showCorrection" *ngIf="q.multipleAnswers"  [question]="q"></app-question-card-multiple-answers>
+            </ng-container>
+        </div>
+        <button mat-raised-button class="btn-submit" (click)="submit()" [disabled]="showCorrection" color="primary">Submit</button>
+    </div>
+</div>
