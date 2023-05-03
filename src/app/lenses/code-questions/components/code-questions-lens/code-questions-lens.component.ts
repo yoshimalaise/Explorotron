@@ -30,7 +30,10 @@ export class CodeQuestionsLensComponent {
     // single: LoopEnd, VariableDeclaration, FunctionName
     // multiple: ParameterName, 
     const multipleAnswerTypes = ['ParameterName'];
-    qs.forEach(q => q.multipleAnswers = multipleAnswerTypes.includes(q.type));
+    qs.forEach(q => { 
+      q.multipleAnswers = multipleAnswerTypes.includes(q.type);
+      q.question = q.question.replace(/<em>/g, "").replace(/<\/em>/g, "")
+    });
     this.questions = qs;
     console.log(this.questions);
   }

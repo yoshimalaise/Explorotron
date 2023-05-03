@@ -18,5 +18,5 @@ export enum LenseIds {
 export const AVAILABLE_LENSES = [
     LenseIds.ANNOTATE, LenseIds.FLOWCHART, LenseIds.PRESENTATION, LenseIds.PICK_FLOWCHART,
     LenseIds.PARSONS, LenseIds.PSEUDIFY, LenseIds.COMMENT_SLOTS, LenseIds.ARGUMENT_PICKER,
-    LenseIds.BLANKS, LenseIds.TRACE
+    LenseIds.BLANKS, LenseIds.TRACE, LenseIds.CODE_QUESTIONS
 ];
