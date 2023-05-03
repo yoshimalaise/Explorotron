@@ -19,6 +19,12 @@ export class QuestionCardMultipleAnswersComponent {
   }
 
   renderCorrections() {
-    
+    let isCorrect = true;
+    this.question.options.forEach( o => {
+      if ((o.correct && !o.currentlySelected) || (!o.correct && o.currentlySelected)) {
+        isCorrect = false
+      }
+    });
+    this.correctionResultClass = isCorrect ? "correct" : "wrong";
   }
 }
