@@ -22,6 +22,8 @@
 }
 .answer-item {
     width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 .txt-new-answer, .btn-add-answer {
     width: 48%;
