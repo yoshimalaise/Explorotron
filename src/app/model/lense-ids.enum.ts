@@ -12,7 +12,9 @@ export enum LenseIds {
     EDIT_STUDY_TOUR = "EditStudyTour",
     TOUR_OVERVIEW = "TourOverview",
     TRACE = "Trace",
-    CODE_QUESTIONS = "CodeQuestions"
+    CODE_QUESTIONS = "CodeQuestions",
+    QUIZ = "Quiz",
+    QUIZ_EDITOR = "QuizEditor"
 }
 
 export const AVAILABLE_LENSES = [

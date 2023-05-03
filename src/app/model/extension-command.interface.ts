@@ -9,7 +9,8 @@ export interface ExtensionCommand {
     tour?: StudyTour;
     workspace?: any;
     root?: string;
-    session?: Session
+    session?: Session;
+    lenseSpecificData?: any;
 }
 
 export enum CommandType {
