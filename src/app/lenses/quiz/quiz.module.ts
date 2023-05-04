@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MonacoEditorModule,
     MatRadioModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
   exports: [
     QuizLensComponent,
