@@ -1,17 +1,25 @@
 <div class="container" *ngIf="question">
     <input class="txt-question" matInput placeholder="question" [(ngModel)]="question.question">
 
+    <ngx-monaco-editor class="editor" [options]="editorOptions" [(ngModel)]="question.codeSnippet"></ngx-monaco-editor>
+
     <div class="answers-container">
-        <div class="answer-item" *ngFor="let a of question.answers">
+        <div class="answer-item title">
             Answers
         </div>
-        <div class="answer-item" *ngFor="let a of question.answers">
+        <div class="answer-item">
             <div class="answer-text">Text</div>
             <div class="correct-text">Correct?</div>
-            <div class="correct-text">Actions</div>
+            <div class="action-text">Actions</div>
         </div>
         <div class="answer-item" *ngFor="let a of question.answers">
             <input class="txt-answer" matInput placeholder="answer" [(ngModel)]="a.answer">
+            <div class="correct-text">
+                <mat-radio-button (click)="markAnswerAsCorrect(a, $event)" [(ngModel)]="a.isCorrect"></mat-radio-button>
+            </div>
+            <div class="action-text">
+                <mat-icon (click)="removeAnswer(a)" fontIcon="delete_forever"></mat-icon>
+            </div>
         </div>
     </div>
 

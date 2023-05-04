@@ -1,6 +1,7 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input } from '@angular/core';
 import { Quiz, quizQuestionTypes, QuizQuestionType } from '../../model/quiz.interface';
+import { VSCodeCommunicationService } from 'src/app/services/vscode-communication.service';
 
 @Component({
   selector: 'app-quiz-editor-lens',
@@ -12,13 +13,15 @@ export class QuizEditorLensComponent {
   types = quizQuestionTypes;
   selectedType: QuizQuestionType = QuizQuestionType.SINGLE_ANSWER;
 
+  constructor(private vsService: VSCodeCommunicationService) {
+
+  }
+
   save() {
-    const vscode = (window as any).acquireVsCodeApi();
-    console.log(vscode);
-    vscode.postMessage({
+     this.vsService.sendMessage('saveQuiz', {
       command: 'saveQuiz',
       quiz: this.quiz
-    })
+    });
   }
 
   addQuestion() {

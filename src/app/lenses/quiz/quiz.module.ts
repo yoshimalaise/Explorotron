@@ -9,6 +9,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { MultipleAnswerComponent } from './components/editor-components/multiple-answer/multiple-answer.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatInputModule} from '@angular/material/input';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     MatSelectModule,
     DragDropModule,
-    MatInputModule
+    MatInputModule,
+    MonacoEditorModule,
+    MatRadioModule,
+    MatIconModule
   ],
   exports: [
     QuizLensComponent,

@@ -1,8 +1,11 @@
 .container {
-    width: 100%;
+    width: calc(100% - 32px);
     display: flex;
     flex-direction: column;
-    margin: 16px;
+    padding: 16px;
+    margin-top: 4px;
+    background-color: #CCCCCC88;
+    border-radius: 8px;
 }
 
 .txt-question {
@@ -29,4 +32,32 @@
     width: 48%;
     margin-left: auto;
     margin-right: auto;
+}
+.title {
+    font-size: large;
+}
+.editor {
+    height: 200px;
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.answer-text, .txt-answer {
+    width: 60%;
+}
+.correct-text {
+    width: 20%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.action-text {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
