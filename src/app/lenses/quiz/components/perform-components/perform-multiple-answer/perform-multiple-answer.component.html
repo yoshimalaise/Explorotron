@@ -1,0 +1,17 @@
+<div [className]="'question-card ' + correctionResultClass">
+    <div class="question"> {{ question.question }} </div>
+    <ngx-monaco-editor class="editor" [options]="editorOptions" [(ngModel)]="question.codeSnippet"></ngx-monaco-editor>
+    <div class="options">
+        <ng-container *ngFor="let option of question.answers">
+            <mat-checkbox [disabled]="showCorrection"  [(ngModel)]="option.currentlySelected">
+                {{ option.answer }}
+            </mat-checkbox>
+            <div [className]="'answer-info ' + (((option.currentlySelected && option.correct) || (!option.currentlySelected && !option.correct)) ? 'correct-answer' : 'wrong-answer')" 
+                *ngIf="showCorrection && (option.currentlySelected || option.correct)">
+                {{ option.info }}
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+

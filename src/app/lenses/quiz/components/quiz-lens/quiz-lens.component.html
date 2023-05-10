@@ -1,1 +1,10 @@
-<p>quiz-lens works!</p>
+<mat-stepper class="vertical-stepper" orientation="vertical" #stepper>
+    <mat-step *ngFor="let q of quiz.questions">
+        <ng-template matStepLabel></ng-template>
+
+        <ng-container>
+            <app-perform-single-answer *ngIf="q.type === 'SingleAnswer'" [question]="q"></app-perform-single-answer>
+            <app-perform-multiple-answer *ngIf="q.type === 'MultipleAnswer'" [question]="q"></app-perform-multiple-answer>
+        </ng-container>
+    </mat-step>
+</mat-stepper>

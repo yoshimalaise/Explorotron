@@ -13,13 +13,18 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatStepperModule} from '@angular/material/stepper';
+import { PerformSingleAnswerComponent } from './components/perform-components/perform-single-answer/perform-single-answer.component';
+import { PerformMultipleAnswerComponent } from './components/perform-components/perform-multiple-answer/perform-multiple-answer.component';
 
 @NgModule({
   declarations: [
     QuizLensComponent,
     QuizEditorLensComponent,
     SingleAnswerComponent,
-    MultipleAnswerComponent
+    MultipleAnswerComponent,
+    PerformSingleAnswerComponent,
+    PerformMultipleAnswerComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +36,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MonacoEditorModule,
     MatRadioModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatStepperModule
   ],
   exports: [
     QuizLensComponent,

@@ -26,6 +26,7 @@ export interface SingleAnswer {
 export interface MultipleAnswer {
     isCorrect: boolean;
     answer: string;
+    isSelected?: boolean;
 }
 
 export enum QuizQuestionType {
