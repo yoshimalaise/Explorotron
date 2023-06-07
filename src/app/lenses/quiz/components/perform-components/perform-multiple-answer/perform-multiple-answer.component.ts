@@ -28,5 +28,6 @@ export class PerformMultipleAnswerComponent {
       }
     });
     this.correctionResultClass = isCorrect ? "correct" : "wrong";
+    this.question.answeredCorrectly = isCorrect;
   }
 }

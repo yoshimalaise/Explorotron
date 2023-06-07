@@ -7,7 +7,8 @@ export interface Quiz {
 export interface QuizQuestion {
     question: string;
     codeSnippet: string;
-    type: QuizQuestionType
+    type: QuizQuestionType;
+    answeredCorrectly?: boolean;
 }
 
 export interface SingleAnswerQuestion extends QuizQuestion {

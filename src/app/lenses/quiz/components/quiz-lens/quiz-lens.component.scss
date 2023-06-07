@@ -31,3 +31,16 @@
 .btn-submit {
     height: 24px;
 }
+.stepper-title {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: space-between;
+}
+.correct {
+    color: darkgreen;
+}
+
+.incorrect {
+    color: red;
+}

@@ -23,5 +23,6 @@ export class PerformSingleAnswerComponent {
   renderCorrections() {
     const isCorrect = this.selectedOption && this.selectedOption.isCorrect;
     this.correctionResultClass = isCorrect ? "correct" : "wrong";
+    this.question.answeredCorrectly = isCorrect;
   }
 }
