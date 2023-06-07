@@ -1,10 +1,11 @@
 {
-  "name": "vscode-study.lenses",
+  "name": "vscode-study-lenses",
   "description": "Explore JavaScript using an interactive tour based on CER best practises",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.76.0"
   },
+  "activationEvents": [],
   "main": "./dist/ext-src/extension.js",
   "publisher": "yoshi",
   "contributes": {

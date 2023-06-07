@@ -1,7 +1,33 @@
-.vertical-stepper {
+.container {
     height: 100%;
     width: 100%;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.stepper-container {
+    height: calc(100% - 32px);
+    width: 100%;
+    background-color: #424242;
+    overflow-y: auto;
+}
+.vertical-stepper {
+    height: 100%;
+    width: 100%;
+}
+
+.btn-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    height: 24px;
+    padding: 4px;
+}
+
+.btn-submit {
+    height: 24px;
 }

@@ -1,10 +1,21 @@
-<mat-stepper class="vertical-stepper" orientation="vertical" #stepper>
-    <mat-step *ngFor="let q of quiz.questions">
-        <ng-template matStepLabel></ng-template>
+<div class="container">
+    <div class="stepper-container">
+        <mat-stepper class="vertical-stepper" orientation="vertical" #stepper>
+            <mat-step *ngFor="let q of quiz.questions; let i = index">
+                <ng-template matStepLabel>
+                    Question {{ i + 1 }}
+                </ng-template>
+        
+                <ng-container>
+                    <app-perform-single-answer *ngIf="q.type === 'SingleAnswer'" [question]="q"></app-perform-single-answer>
+                    <app-perform-multiple-answer *ngIf="q.type === 'MultipleAnswer'" [question]="q"></app-perform-multiple-answer>
+                </ng-container>
+            </mat-step>
+        </mat-stepper>
+    </div>
+    
 
-        <ng-container>
-            <app-perform-single-answer *ngIf="q.type === 'SingleAnswer'" [question]="q"></app-perform-single-answer>
-            <app-perform-multiple-answer *ngIf="q.type === 'MultipleAnswer'" [question]="q"></app-perform-multiple-answer>
-        </ng-container>
-    </mat-step>
-</mat-stepper>
+    <div class="btn-section">
+        <button class="btn-submit" mat-raised-button color="primary">Submit</button>
+    </div>
+</div>
