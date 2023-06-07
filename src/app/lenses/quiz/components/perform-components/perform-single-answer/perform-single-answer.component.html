@@ -1,0 +1,18 @@
+<div [className]="'question-card ' + correctionResultClass">
+    <div class="question"> {{ question.question }} </div>
+    <ngx-monaco-editor class="editor" [options]="editorOptions" [(ngModel)]="question.codeSnippet"></ngx-monaco-editor>
+    <mat-radio-group [disabled]="showCorrection"
+  aria-labelledby="options"
+  class="options"
+  [(ngModel)]="selectedOption">
+  <ng-container *ngFor="let option of question.answers">
+    <mat-radio-button class="radio-button"  [value]="option">
+        {{option.answer}}
+    </mat-radio-button>
+    <div class="answer-info" 
+        *ngIf="showCorrection && (selectedOption === option)">
+        {{ option.info }}
+    </div>
+  </ng-container>
+</mat-radio-group>
+</div>

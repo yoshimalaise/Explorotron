@@ -17,6 +17,9 @@ export class PluginCommandService {
       if (cmd.sourceCode) {
         state.sourceCode = cmd.sourceCode;
       }
+      if (cmd.lenseSpecificData) {
+        state.lenseSpecificData = cmd.lenseSpecificData;
+      }
 
       if (cmd.command === CommandType.LOAD_PLUGIN && cmd.lenseId) {
         state.isTour = false;

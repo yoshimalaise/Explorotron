@@ -1,10 +1,11 @@
 {
-  "name": "vscode-study.lenses",
+  "name": "vscode-study-lenses",
   "description": "Explore JavaScript using an interactive tour based on CER best practises",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.76.0"
   },
+  "activationEvents": [],
   "main": "./dist/ext-src/extension.js",
   "publisher": "yoshi",
   "contributes": {
@@ -12,6 +13,21 @@
       {
         "command": "study.lenses.create-study-tour",
         "title": "Create study tour",
+        "category": "study.lenses"
+      },
+      {
+        "command": "study.lenses.create-quiz",
+        "title": "Create Quiz",
+        "category": "study.lenses"
+      },
+      {
+        "command": "study.lenses.edit-quiz",
+        "title": "Edit Quiz",
+        "category": "study.lenses"
+      },
+      {
+        "command": "study.lenses.start-quiz",
+        "title": "Start Quiz",
         "category": "study.lenses"
       },
       {
@@ -139,6 +155,16 @@
           "when": "resourceFilename =~ /.presentation.md/i || resourceFilename =~ /.slides.md/i"
         },
         {
+          "command": "study.lenses.start-quiz",
+          "group": "navigation",
+          "when": "resourceFilename =~ /.study-quiz/i"
+        },
+        {
+          "command": "study.lenses.edit-quiz",
+          "group": "navigation",
+          "when": "resourceFilename =~ /.study-quiz/i"
+        },
+        {
           "command": "study.lenses.edit-study-tour",
           "group": "navigation",
           "when": "resourceFilename =~ /.study-tour/i"
@@ -158,6 +184,16 @@
         "selector": [
           {
             "filenamePattern": "*.study-tour"
+          }
+        ],
+        "priority": "default"
+      }, 
+      {
+        "viewType": "study.lenses.viewQuiz",
+        "displayName": "View Quiz",
+        "selector": [
+          {
+            "filenamePattern": "*.study-quiz"
           }
         ],
         "priority": "default"

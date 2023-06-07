@@ -1,0 +1,34 @@
+.question-card {
+    width: 100%;
+    width: 96%;
+    margin-left: auto;
+    padding-left: 4px;
+    margin-right: auto;
+    padding-right: 4px;
+    margin-top: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #12121233;
+    border-radius: 8px;
+}
+.options {
+    display: flex;
+    flex-direction: column;
+}
+.correct {
+    border: 1px solid green;
+    color: green;
+}
+.wrong {
+    border: 1px solid red;
+    color: red;
+}
+.answer-info {
+    padding-left: 42px;
+}
+.correct-answer {
+    color: green;
+}
+.wrong-answer {
+    color: red;
+}

@@ -5,6 +5,7 @@ import { TourExercise } from 'src/app/model/study-tour.interface';
 import { StateService } from 'src/app/services/state.service';
 import { FileSelectionDialogComponent } from '../file-selection-dialog/file-selection-dialog.component';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { VSCodeCommunicationService } from 'src/app/services/vscode-communication.service';
 
 @Component({
   selector: 'app-edit-study-tour',
@@ -14,17 +15,15 @@ import { moveItemInArray } from '@angular/cdk/drag-drop';
 export class EditStudyTourComponent {
   lenseOptions = AVAILABLE_LENSES;
 
-  constructor(public state: StateService, public dialog: MatDialog) {
+  constructor(public state: StateService, public dialog: MatDialog, private vsService: VSCodeCommunicationService) {
 
   }
 
   save() {
-    const vscode = (window as any).acquireVsCodeApi();
-    console.log(vscode);
-    vscode.postMessage({
+    this.vsService.sendMessage('saveTour' , {
       command: 'saveTour',
       tour: this.state.studyTour
-    })
+    });
   }
 
   ngAfterViewInit() {

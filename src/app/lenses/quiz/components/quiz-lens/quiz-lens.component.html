@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="stepper-container">
+        <mat-stepper class="vertical-stepper" orientation="vertical" #stepper>
+            <mat-step *ngFor="let q of quiz.questions; let i = index">
+                <ng-template matStepLabel>
+                    <div class="stepper-title">
+                        Question {{ i + 1 }}
+                        <div class="correct" *ngIf="showCorrection && q.answeredCorrectly">
+                            <mat-icon class="correct" fontIcon="done"></mat-icon>
+                        </div>
+                        <div class="incorrect" *ngIf="showCorrection && !q.answeredCorrectly">
+                            <mat-icon class="incorrect" fontIcon="close"></mat-icon>
+                        </div>
+                    </div>
+                    
+                </ng-template>
+        
+                <ng-container>
+                    <app-perform-single-answer [showCorrection]="showCorrection" *ngIf="q.type === 'SingleAnswer'" [question]="q"></app-perform-single-answer>
+                    <app-perform-multiple-answer [showCorrection]="showCorrection" *ngIf="q.type === 'MultipleAnswer'" [question]="q"></app-perform-multiple-answer>
+                </ng-container>
+            </mat-step>
+        </mat-stepper>
+    </div>
+    
+
+    <div class="btn-section">
+        <button (click)="showCorrections()" class="btn-submit" mat-raised-button color="primary">Submit</button>
+    </div>
+</div>

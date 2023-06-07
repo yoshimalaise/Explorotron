@@ -8,7 +8,8 @@ import { Session } from '../model/session.interface';
 })
 export class StateService {
   public sourceCode: string = debuggingFallbackJS;
-  public currentLense: LenseIds = LenseIds.CODE_QUESTIONS;// LenseIds.LOADING;
+  public lenseSpecificData: any = undefined;
+  public currentLense: LenseIds = LenseIds.LOADING;
   public isTour: boolean = false;
   public studyTour?: StudyTour = undefined;
   public workspace?: any = undefined;

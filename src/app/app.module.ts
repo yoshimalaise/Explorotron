@@ -25,6 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TraceModule } from './lenses/trace/trace.module';
 import { CodeQuestionsModule } from './lenses/code-questions/code-questions.module';
+import { QuizModule } from './lenses/quiz/quiz.module';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CodeQuestionsModule } from './lenses/code-questions/code-questions.modu
     MonacoEditorModule.forRoot(),
     StudyTourModule,
     TraceModule,
-    CodeQuestionsModule
+    CodeQuestionsModule,
+    QuizModule
   ],
   providers: [],
   bootstrap: [AppComponent]
