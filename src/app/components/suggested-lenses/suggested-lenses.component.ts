@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { StateService } from 'src/app/services/state.service';
+import { LensSuggestionService } from './services/lens-suggestion.service';
 
 @Component({
   selector: 'app-suggested-lenses',
@@ -7,7 +8,12 @@ import { StateService } from 'src/app/services/state.service';
   styleUrls: ['./suggested-lenses.component.scss']
 })
 export class SuggestedLensesComponent {
-  constructor(public state: StateService){
+  test = "";
 
+  constructor(public state: StateService, private svc: LensSuggestionService){
+  }
+
+  ngOnInit() {
+   this.test = JSON.stringify(this.svc.generateSuggestions(this.state.sourceCode));
   }
 }

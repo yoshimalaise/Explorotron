@@ -11,26 +11,33 @@ import { ParsonsRGS } from './parsons-rg.service';
 import { PickFlowchartRGS } from './pick-flowchart-rg.service';
 import { PseudoRGS } from './pseudo-rg.service';
 import { TraceRGS } from './trace-rg.service';
+import { ArgumentPickerServiceService } from 'src/app/lenses/argument-picker/services/argument-picker-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LensSuggestionService {
-  profileGenerators: BaseRecommendationGeneratorService[] = [
-    new AnnotateRGS(),
-    new ArgumentPickerRGS(),
-    new BlanksRGS(),
-    new CodeQuestionsRGS(),
-    new CommentSlotsRGS(),
-    new FlowchartRGS(),
-    new ParsonsRGS(),
-    new PickFlowchartRGS(),
-    new PseudoRGS(),
-    new TraceRGS()
-  ];
+  profileGenerators: BaseRecommendationGeneratorService[] = [];
   
 
-  constructor() { }
+  constructor(argumentPicker: ArgumentPickerRGS, annotate: AnnotateRGS, 
+    blanks: BlanksRGS, codeQuestions: CodeQuestionsRGS,
+    commentSlots: CommentSlotsRGS, flowchart: FlowchartRGS, 
+    parsons: ParsonsRGS, pickFlowchart: PickFlowchartRGS, 
+    pseudo: PseudoRGS, trace: TraceRGS) { 
+    this.profileGenerators = [
+      annotate,
+      argumentPicker,
+      blanks,
+      codeQuestions,
+      commentSlots,
+      flowchart,
+      parsons,
+      pickFlowchart,
+      pseudo,
+      trace
+    ];
+  }
 
   generateSuggestions(code: string): RecommendationProfile[] {
     return this.profileGenerators
