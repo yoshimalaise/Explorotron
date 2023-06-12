@@ -1,2 +1,25 @@
-<p>suggested-lenses works!</p>
-{{ test }}
+<div class="outer-container">
+    <div class="card" *ngFor="let suggestion of suggestions">
+        <div class="inner-card">
+            <div class="card-left-side">
+                <div class="title">
+                    {{ suggestion.lensId }}
+                </div>
+                <div class="stage-label">
+                    {{ ['Predict', 'Run', 'Investigate', 'Modify', 'Make'][suggestion.primmStage] }}
+                </div>
+            </div>
+
+            <div>
+                <mat-progress-spinner
+                    class="example-margin"
+                    [mode]="'determinate'"
+                    [value]="suggestion.score">
+                </mat-progress-spinner>
+                <div style="position:relative; top: -60px; left: 30px;"> {{ suggestion.score }}% </div>
+            </div>
+            
+        </div>
+        <button class="btn-select" mat-raised-button color="primary">Select lens</button>
+    </div>
+</div>
