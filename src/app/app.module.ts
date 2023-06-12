@@ -26,12 +26,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TraceModule } from './lenses/trace/trace.module';
 import { CodeQuestionsModule } from './lenses/code-questions/code-questions.module';
 import { QuizModule } from './lenses/quiz/quiz.module';
+import { SuggestedLensesComponent } from './components/suggested-lenses/suggested-lenses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingScreenComponent,
     SessionProgressBarComponent,
+    SuggestedLensesComponent,
   ],
   imports: [
     BrowserModule,
