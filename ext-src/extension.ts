@@ -6,7 +6,7 @@ import { StudyTourViewer, createTour } from './study-tour/study-tour';
 import * as dirTree from 'directory-tree';
 import { createQuiz, QuizViewer } from './quizzes/quiz';
 import { registerControllers } from './controllers';
-import { getLensSuggestions } from './lens-recommender';
+
 /**
  * Manages webview panels
  */
@@ -221,25 +221,6 @@ class WebPanel {
         })
       );
     }
-
-    static registerRecommendedLenses(context: vscode.ExtensionContext) {
-      context.subscriptions.push(
-        vscode.commands.registerCommand('study.lenses.show-recommended-lenses', async (resource: vscode.Uri) => {
-            try {
-              const suggestions = await getLensSuggestions(resource);
-              WebPanel.createOrShow(context.extensionPath);
-              setTimeout(() => {
-                if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
-                  && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-                  WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'SuggestedLenses', lenseSpecificData: suggestions});
-                }
-              }, 1000);
-            } catch {
-              vscode.window.showErrorMessage("Please provide a valid name");
-            }
-        })
-      );
-    }
 }
 
 /**
@@ -273,5 +254,6 @@ export function activate(context: vscode.ExtensionContext) {
 
   WebPanel.registerStudyTours(context);
   WebPanel.registerQuizzes(context);
-  WebPanel.registerRecommendedLenses(context);
+
+  WebPanel.registerLense(context, 'study.lenses.show-recommended-lenses', { command: 'LoadPlugin', lenseId: 'SuggestedLenses' });
 }
