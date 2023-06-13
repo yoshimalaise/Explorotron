@@ -21,6 +21,21 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.open-suggested-tour",
+        "title": "Open Suggested Studytour",
+        "category": "study.lenses"
+      },
+      {
+        "command": "study.lenses.show-recommended-lenses",
+        "title": "Show Recommended Lenses",
+        "category": "study.lenses"
+      },
+      {
+        "command": "study.lenses.open-in-suggested-lens",
+        "title": "Open in Suggested Lens",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.edit-quiz",
         "title": "Edit Quiz",
         "category": "study.lenses"
@@ -101,6 +116,21 @@
       "study.lenses": [
         {
           "command": "study.lenses.annotate",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.show-recommended-lenses",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.open-suggested-tour",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.open-in-suggested-lens",
           "group": "navigation",
           "when": "resourceLangId == javascript"
         },

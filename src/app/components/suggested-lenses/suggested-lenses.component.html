@@ -1,0 +1,25 @@
+<div class="outer-container">
+    <div class="card" *ngFor="let suggestion of suggestions">
+        <div class="inner-card">
+            <div class="card-left-side">
+                <div class="title">
+                    {{ suggestion.lensId }}
+                </div>
+                <div [class]="'stage-label ' + (['predict', 'run', 'investigate', 'modify', 'make'][suggestion.primmStage])">
+                    {{ ['Predict', 'Run', 'Investigate', 'Modify', 'Make'][suggestion.primmStage] }}
+                </div>
+            </div>
+
+            <div>
+                <mat-progress-spinner
+                    class="score-spinner"
+                    [mode]="'determinate'"
+                    [value]="suggestion.score">
+                </mat-progress-spinner>
+                <div style="position:relative; top: -60px; left: 40px;"> {{ suggestion.score }}% </div>
+            </div>
+            
+        </div>
+        <button class="btn-select" (click)="select(suggestion)" mat-raised-button color="primary">Select lens</button>
+    </div>
+</div>
