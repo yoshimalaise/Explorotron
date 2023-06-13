@@ -9,7 +9,7 @@ import { PRIMMStage, RecommendationProfile } from '../model/recommendation-profi
 export class AnnotateRGS extends BaseRecommendationGeneratorService {
 
   constructor() { 
-    super(LenseIds.BLANKS, PRIMMStage.MODIFY);
+    super(LenseIds.ANNOTATE, PRIMMStage.MODIFY);
   }
 
   generateRecommendationProfile(code: string): RecommendationProfile {

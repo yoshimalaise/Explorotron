@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     background-color: #424242;
-    padding: 4px;
+    margin-top: 8px;
     margin-bottom: 8px;
 }
 
@@ -23,15 +23,57 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 4px;
 }
 
 .card-left-side {
     display: flex;
     height: 100%;
-    justify-content: space-between;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .btn-select {
+    margin: 4px;
     height: 24px;
+}
+
+.score-spinner {
+    width: 60px;
+    height: 60px;
+    margin-right: 8px;
+}
+
+.stage-label {
+    width: 80px;
+    text-align: center;
+    margin-bottom: 6px;
+    padding: 4px 2px 4px 2px;
+    border-radius: 4px;
+    border: 1px solid white;
+}
+
+.predict {
+    color: lightgreen;
+    border: 1px solid lightgreen;
+}
+
+.run {
+    color: orange;
+    border: 1px solid orange;
+}
+
+.investigate {
+    color: rgb(217, 255, 0);
+    border: 1px solid rgb(217, 255, 0);
+}
+
+.modify {
+    color: palevioletred;
+    border: 1px solid palevioletred;
+}
+
+.make {
+    color: lightblue;
+    border: 1px solid lightblue;
 }
