@@ -26,6 +26,11 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.open-in-suggested-lens",
+        "title": "Open in Suggested Lens",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.edit-quiz",
         "title": "Edit Quiz",
         "category": "study.lenses"
@@ -111,6 +116,11 @@
         },
         {
           "command": "study.lenses.show-recommended-lenses",
+          "group": "navigation",
+          "when": "resourceLangId == javascript"
+        },
+        {
+          "command": "study.lenses.open-in-suggested-lens",
           "group": "navigation",
           "when": "resourceLangId == javascript"
         },

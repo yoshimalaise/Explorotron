@@ -27,6 +27,7 @@ import { TraceModule } from './lenses/trace/trace.module';
 import { CodeQuestionsModule } from './lenses/code-questions/code-questions.module';
 import { QuizModule } from './lenses/quiz/quiz.module';
 import { SuggestedLensesComponent } from './components/suggested-lenses/suggested-lenses.component';
+import { OpenInSuggestedComponent } from './components/open-in-suggested/open-in-suggested.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SuggestedLensesComponent } from './components/suggested-lenses/suggeste
     LoadingScreenComponent,
     SessionProgressBarComponent,
     SuggestedLensesComponent,
+    OpenInSuggestedComponent,
   ],
   imports: [
     BrowserModule,
