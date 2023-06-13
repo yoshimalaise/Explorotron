@@ -28,6 +28,7 @@ import { CodeQuestionsModule } from './lenses/code-questions/code-questions.modu
 import { QuizModule } from './lenses/quiz/quiz.module';
 import { SuggestedLensesComponent } from './components/suggested-lenses/suggested-lenses.component';
 import { OpenInSuggestedComponent } from './components/open-in-suggested/open-in-suggested.component';
+import { SuggestedTourLoaderComponent } from './components/suggested-tour-loader/suggested-tour-loader.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { OpenInSuggestedComponent } from './components/open-in-suggested/open-in
     SessionProgressBarComponent,
     SuggestedLensesComponent,
     OpenInSuggestedComponent,
+    SuggestedTourLoaderComponent,
   ],
   imports: [
     BrowserModule,

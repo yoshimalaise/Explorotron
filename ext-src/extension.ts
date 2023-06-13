@@ -257,4 +257,6 @@ export function activate(context: vscode.ExtensionContext) {
 
   WebPanel.registerLense(context, 'study.lenses.show-recommended-lenses', { command: 'LoadPlugin', lenseId: 'SuggestedLenses' });
   WebPanel.registerLense(context, 'study.lenses.open-in-suggested-lens', { command: 'LoadPlugin', lenseId: 'OpenInSuggestedLens' });
+  WebPanel.registerLense(context, 'study.lenses.open-suggested-tour', { command: 'LoadPlugin', lenseId: 'OpenSuggestedTour' });
+
 }

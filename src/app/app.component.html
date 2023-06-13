@@ -7,6 +7,7 @@
     <!-- suggested lenses pages-->
     <app-suggested-lenses class="lense" *ngIf="state.currentLense === 'SuggestedLenses'"></app-suggested-lenses>
     <app-open-in-suggested class="lense" *ngIf="state.currentLense === 'OpenInSuggestedLens'"></app-open-in-suggested>
+    <app-suggested-tour-loader class="lense" *ngIf="state.currentLense === 'OpenSuggestedTour'"></app-suggested-tour-loader>
 
     <!-- quizzes -->
     <app-quiz-lens [quiz]="state.lenseSpecificData" class="lense" *ngIf="state.currentLense === 'Quiz'"></app-quiz-lens>
