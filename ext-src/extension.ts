@@ -34,12 +34,16 @@ export class WebPanel {
 
     // If we already have a panel, show it.
     // Otherwise, create angular panel.
+    /*
     if (WebPanel.currentPanel) {
       WebPanel.currentPanel.panel.reveal(column);
     } else {
       WebPanel.currentPanel = new WebPanel(extensionPath, column || vscode.ViewColumn.One);
       registerControllers(WebPanel.currentPanel.panel.webview, extensionPath);
-    }
+    }*/
+    // for now temporarily always return a new panel
+    WebPanel.currentPanel = new WebPanel(extensionPath, column || vscode.ViewColumn.Beside);
+    registerControllers(WebPanel.currentPanel.panel.webview, extensionPath);
 
     // register handlers
     /*
@@ -138,11 +142,9 @@ export class WebPanel {
       vscode.commands.registerCommand(command, (resource: vscode.Uri) => {
         // analyse(resource.fsPath);
         const code = readSourceCode(resource.fsPath);
-        WebPanel.createOrShow(context.extensionPath);
+        const p = WebPanel.createOrShow(context.extensionPath);
         setTimeout(() => {
-          if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview) {
-            WebPanel.currentPanel.panel.webview.postMessage({ ...messageBody, sourceCode: code });
-          }
+            p.panel.webview.postMessage({ ...messageBody, sourceCode: code });
         }, 1000);
       })
     );
@@ -153,12 +155,11 @@ export class WebPanel {
       vscode.commands.registerCommand('study.lenses.create-study-tour', async () => {
         try {
           const t = await createTour();
-          WebPanel.createOrShow(context.extensionPath);
+          const p = WebPanel.createOrShow(context.extensionPath);
           setTimeout(() => {
-            if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
-              && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+            if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
               const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
-              WebPanel.currentPanel.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace: dirTree(root), root });
+              p.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace: dirTree(root), root });
             }
           }, 1000);
         } catch {
@@ -170,12 +171,11 @@ export class WebPanel {
     context.subscriptions.push(
       vscode.commands.registerCommand('study.lenses.edit-study-tour', (resource: vscode.Uri) => {
         const t = JSON.parse(readSourceCode(resource.fsPath));
-        WebPanel.createOrShow(context.extensionPath);
+        const p = WebPanel.createOrShow(context.extensionPath);
         setTimeout(() => {
-          if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
-            && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+          if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
             const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
-            WebPanel.currentPanel.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace: dirTree(root), root });
+            p.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace: dirTree(root), root });
           }
         }, 1000);
 
@@ -188,11 +188,10 @@ export class WebPanel {
       vscode.commands.registerCommand('study.lenses.create-quiz', async () => {
         try {
           const q = await createQuiz();
-          WebPanel.createOrShow(context.extensionPath);
+          const p = WebPanel.createOrShow(context.extensionPath);
           setTimeout(() => {
-            if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
-              && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-              WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', lenseSpecificData: q });
+            if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+              p.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', lenseSpecificData: q });
             }
           }, 1000);
         } catch {
@@ -204,11 +203,11 @@ export class WebPanel {
     context.subscriptions.push(
       vscode.commands.registerCommand('study.lenses.edit-quiz', (resource: vscode.Uri) => {
         const q = JSON.parse(readSourceCode(resource.fsPath));
-        WebPanel.createOrShow(context.extensionPath);
+        const p = WebPanel.createOrShow(context.extensionPath);
         setTimeout(() => {
           if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
             && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-            WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', lenseSpecificData: q });
+            p.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', lenseSpecificData: q });
           }
         }, 1000);
       })
@@ -217,11 +216,11 @@ export class WebPanel {
     context.subscriptions.push(
       vscode.commands.registerCommand('study.lenses.start-quiz', (resource: vscode.Uri) => {
         const q = JSON.parse(readSourceCode(resource.fsPath));
-        WebPanel.createOrShow(context.extensionPath);
+        const p = WebPanel.createOrShow(context.extensionPath);
         setTimeout(() => {
           if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
             && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-            WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'Quiz', lenseSpecificData: q });
+            p.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'Quiz', lenseSpecificData: q });
           }
         }, 1000);
       })
