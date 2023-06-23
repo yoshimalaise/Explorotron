@@ -217,7 +217,7 @@
           }
         ],
         "priority": "default"
-      }, 
+      },
       {
         "viewType": "study.lenses.viewQuiz",
         "displayName": "View Quiz",

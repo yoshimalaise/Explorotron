@@ -18,15 +18,19 @@ export class JsFlowchartComponent implements AfterViewInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.updateChart(changes.snippet.currentValue);
+    if (changes.snippet.currentValue) {
+      this.updateChart(changes.snippet.currentValue);
+    }
   }
 
   updateChart(code: string) {
-    const flowTree = convertCodeToFlowTree(this.snippet);
+    const flowTree = convertCodeToFlowTree(code);
     const svgRender = createSVGRender();
     svgRender.applyTheme(defaultTheme);
     const svg = svgRender.buildShapesTree(flowTree).print();
-    this.chartContainer.nativeElement.innerHTML = svg;
+    if (this.chartContainer?.nativeElement) {
+      this.chartContainer.nativeElement.innerHTML = svg;
+    }
   }
 
 }

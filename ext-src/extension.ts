@@ -10,11 +10,13 @@ import { registerControllers } from './controllers';
 /**
  * Manages webview panels
  */
-class WebPanel {
+export class WebPanel {
   /**
    * Track the currently panel. Only allow a single panel to exist at a time.
    */
   public static currentPanel: WebPanel | undefined;
+
+  public static context: vscode.ExtensionContext | undefined;
 
   private static readonly viewType = 'angular';
 
@@ -22,6 +24,10 @@ class WebPanel {
   private readonly extensionPath: string;
   private readonly builtAppFolder: string;
   private disposables: vscode.Disposable[] = [];
+
+  public static loadContext(context: vscode.ExtensionContext) {
+    WebPanel.context = context;
+  }
 
   public static createOrShow(extensionPath: string) {
     const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
@@ -32,7 +38,7 @@ class WebPanel {
       WebPanel.currentPanel.panel.reveal(column);
     } else {
       WebPanel.currentPanel = new WebPanel(extensionPath, column || vscode.ViewColumn.One);
-      registerControllers(WebPanel.currentPanel.panel.webview);
+      registerControllers(WebPanel.currentPanel.panel.webview, extensionPath);
     }
 
     // register handlers
@@ -228,6 +234,7 @@ class WebPanel {
  * @param context vscode extension context
  */
 export function activate(context: vscode.ExtensionContext) {
+  WebPanel.loadContext(context);
   /*
   context.subscriptions.push(
     vscode.commands.registerCommand('study.lenses.start', (resource: vscode.Uri) => {
