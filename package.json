@@ -8,6 +8,10 @@
   "activationEvents": [],
   "main": "./dist/ext-src/extension.js",
   "publisher": "yoshi",
+  "extensionKind": [
+    "workspace"
+  ],
+  "pricing": "Free",
   "contributes": {
     "commands": [
       {
@@ -217,7 +221,7 @@
           }
         ],
         "priority": "default"
-      }, 
+      },
       {
         "viewType": "study.lenses.viewQuiz",
         "displayName": "View Quiz",
@@ -238,7 +242,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "package": "vsce package --yarn",
-    "vscode:prepublish": "npm run build && tsc -p tsconfig.extension.json"
+    "vscode:prepublish": "npm run build"
   },
   "private": false,
   "dependencies": {

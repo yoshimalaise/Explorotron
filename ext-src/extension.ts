@@ -10,11 +10,13 @@ import { registerControllers } from './controllers';
 /**
  * Manages webview panels
  */
-class WebPanel {
+export class WebPanel {
   /**
    * Track the currently panel. Only allow a single panel to exist at a time.
    */
   public static currentPanel: WebPanel | undefined;
+
+  public static context: vscode.ExtensionContext | undefined;
 
   private static readonly viewType = 'angular';
 
@@ -23,17 +25,25 @@ class WebPanel {
   private readonly builtAppFolder: string;
   private disposables: vscode.Disposable[] = [];
 
+  public static loadContext(context: vscode.ExtensionContext) {
+    WebPanel.context = context;
+  }
+
   public static createOrShow(extensionPath: string) {
     const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
 
     // If we already have a panel, show it.
     // Otherwise, create angular panel.
+    /*
     if (WebPanel.currentPanel) {
       WebPanel.currentPanel.panel.reveal(column);
     } else {
       WebPanel.currentPanel = new WebPanel(extensionPath, column || vscode.ViewColumn.One);
-      registerControllers(WebPanel.currentPanel.panel.webview);
-    }
+      registerControllers(WebPanel.currentPanel.panel.webview, extensionPath);
+    }*/
+    // for now temporarily always return a new panel
+    WebPanel.currentPanel = new WebPanel(extensionPath, column || vscode.ViewColumn.Beside);
+    registerControllers(WebPanel.currentPanel.panel.webview, extensionPath);
 
     // register handlers
     /*
@@ -132,11 +142,13 @@ class WebPanel {
       vscode.commands.registerCommand(command, (resource: vscode.Uri) => {
         // analyse(resource.fsPath);
         const code = readSourceCode(resource.fsPath);
-        WebPanel.createOrShow(context.extensionPath);
+        const p = WebPanel.createOrShow(context.extensionPath);
         setTimeout(() => {
-          if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview) {
-            WebPanel.currentPanel.panel.webview.postMessage({ ...messageBody, sourceCode: code });
-          }
+            if (messageBody.title) {
+              p.panel.title = messageBody.title;
+            }
+            
+            p.panel.webview.postMessage({ ...messageBody, sourceCode: code });
         }, 1000);
       })
     );
@@ -147,12 +159,12 @@ class WebPanel {
       vscode.commands.registerCommand('study.lenses.create-study-tour', async () => {
         try {
           const t = await createTour();
-          WebPanel.createOrShow(context.extensionPath);
+          const p = WebPanel.createOrShow(context.extensionPath);
           setTimeout(() => {
-            if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
-              && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+            if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
               const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
-              WebPanel.currentPanel.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace: dirTree(root), root });
+              p.panel.title = "Study tour";
+              p.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace: dirTree(root), root });
             }
           }, 1000);
         } catch {
@@ -164,12 +176,12 @@ class WebPanel {
     context.subscriptions.push(
       vscode.commands.registerCommand('study.lenses.edit-study-tour', (resource: vscode.Uri) => {
         const t = JSON.parse(readSourceCode(resource.fsPath));
-        WebPanel.createOrShow(context.extensionPath);
+        const p = WebPanel.createOrShow(context.extensionPath);
         setTimeout(() => {
-          if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
-            && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+          if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
             const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
-            WebPanel.currentPanel.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace: dirTree(root), root });
+            p.panel.title = "Study tour";
+            p.panel.webview.postMessage({ command: 'editStudyTour', tour: t, workspace: dirTree(root), root });
           }
         }, 1000);
 
@@ -182,11 +194,11 @@ class WebPanel {
       vscode.commands.registerCommand('study.lenses.create-quiz', async () => {
         try {
           const q = await createQuiz();
-          WebPanel.createOrShow(context.extensionPath);
+          const p = WebPanel.createOrShow(context.extensionPath);
           setTimeout(() => {
-            if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
-              && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-              WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', lenseSpecificData: q });
+            if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+              p.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', lenseSpecificData: q });
+              p.panel.title = "Quizzes";
             }
           }, 1000);
         } catch {
@@ -198,11 +210,11 @@ class WebPanel {
     context.subscriptions.push(
       vscode.commands.registerCommand('study.lenses.edit-quiz', (resource: vscode.Uri) => {
         const q = JSON.parse(readSourceCode(resource.fsPath));
-        WebPanel.createOrShow(context.extensionPath);
+        const p = WebPanel.createOrShow(context.extensionPath);
         setTimeout(() => {
           if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
             && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-            WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', lenseSpecificData: q });
+            p.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'QuizEditor', lenseSpecificData: q });
           }
         }, 1000);
       })
@@ -211,11 +223,12 @@ class WebPanel {
     context.subscriptions.push(
       vscode.commands.registerCommand('study.lenses.start-quiz', (resource: vscode.Uri) => {
         const q = JSON.parse(readSourceCode(resource.fsPath));
-        WebPanel.createOrShow(context.extensionPath);
+        const p = WebPanel.createOrShow(context.extensionPath);
         setTimeout(() => {
           if (WebPanel.currentPanel && WebPanel.currentPanel.panel && WebPanel.currentPanel.panel.webview
             && vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-            WebPanel.currentPanel.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'Quiz', lenseSpecificData: q });
+              p.panel.title = "Quizzes";
+              p.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'Quiz', lenseSpecificData: q });
           }
         }, 1000);
       })
@@ -228,6 +241,7 @@ class WebPanel {
  * @param context vscode extension context
  */
 export function activate(context: vscode.ExtensionContext) {
+  WebPanel.loadContext(context);
   /*
   context.subscriptions.push(
     vscode.commands.registerCommand('study.lenses.start', (resource: vscode.Uri) => {
@@ -237,17 +251,17 @@ export function activate(context: vscode.ExtensionContext) {
     })
   );
   */
-  WebPanel.registerLense(context, 'study.lenses.annotate', { command: 'LoadPlugin', lenseId: 'Annotate' });
-  WebPanel.registerLense(context, 'study.lenses.present', { command: 'LoadPlugin', lenseId: 'Presentation' });
-  WebPanel.registerLense(context, 'study.lenses.flowchart', { command: 'LoadPlugin', lenseId: 'Flowchart' });
-  WebPanel.registerLense(context, 'study.lenses.pick-flowchart', { command: 'LoadPlugin', lenseId: 'PickFlowchart' });
-  WebPanel.registerLense(context, 'study.lenses.parsons', { command: 'LoadPlugin', lenseId: 'Parsons' });
-  WebPanel.registerLense(context, 'study.lenses.pseudify', { command: 'LoadPlugin', lenseId: 'Pseudify' });
-  WebPanel.registerLense(context, 'study.lenses.comment-slots', { command: 'LoadPlugin', lenseId: 'CommentSlots' });
-  WebPanel.registerLense(context, 'study.lenses.argument-picker', { command: 'LoadPlugin', lenseId: 'ArgumentPicker' });
-  WebPanel.registerLense(context, 'study.lenses.blanks', { command: 'LoadPlugin', lenseId: 'Blanks' });
-  WebPanel.registerLense(context, 'study.lenses.trace', { command: 'LoadPlugin', lenseId: 'Trace' });
-  WebPanel.registerLense(context, 'study.lenses.code-questions', { command: 'LoadPlugin', lenseId: 'CodeQuestions' });
+  WebPanel.registerLense(context, 'study.lenses.annotate', { command: 'LoadPlugin', lenseId: 'Annotate', title: 'Annotate' });
+  WebPanel.registerLense(context, 'study.lenses.present', { command: 'LoadPlugin', lenseId: 'Presentation', title: 'Presentation' });
+  WebPanel.registerLense(context, 'study.lenses.flowchart', { command: 'LoadPlugin', lenseId: 'Flowchart', title: 'Flowchart' });
+  WebPanel.registerLense(context, 'study.lenses.pick-flowchart', { command: 'LoadPlugin', lenseId: 'PickFlowchart', title: 'Pick Flowchart' });
+  WebPanel.registerLense(context, 'study.lenses.parsons', { command: 'LoadPlugin', lenseId: 'Parsons', title: 'Parsons' });
+  WebPanel.registerLense(context, 'study.lenses.pseudify', { command: 'LoadPlugin', lenseId: 'Pseudify', title: 'Pseudify' });
+  WebPanel.registerLense(context, 'study.lenses.comment-slots', { command: 'LoadPlugin', lenseId: 'CommentSlots', title: 'Comment Slots' });
+  WebPanel.registerLense(context, 'study.lenses.argument-picker', { command: 'LoadPlugin', lenseId: 'ArgumentPicker', title: 'Argument Picker' });
+  WebPanel.registerLense(context, 'study.lenses.blanks', { command: 'LoadPlugin', lenseId: 'Blanks', title: 'Blanks' });
+  WebPanel.registerLense(context, 'study.lenses.trace', { command: 'LoadPlugin', lenseId: 'Trace', title: 'Trace' });
+  WebPanel.registerLense(context, 'study.lenses.code-questions', { command: 'LoadPlugin', lenseId: 'CodeQuestions', title: 'Code Questions' });
 
   vscode.window.registerCustomEditorProvider(StudyTourViewer.viewType, new StudyTourViewer(context.extensionPath));
   vscode.window.registerCustomEditorProvider(QuizViewer.viewType, new QuizViewer(context.extensionPath));
@@ -255,8 +269,8 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerStudyTours(context);
   WebPanel.registerQuizzes(context);
 
-  WebPanel.registerLense(context, 'study.lenses.show-recommended-lenses', { command: 'LoadPlugin', lenseId: 'SuggestedLenses' });
+  WebPanel.registerLense(context, 'study.lenses.show-recommended-lenses', { command: 'LoadPlugin', lenseId: 'SuggestedLenses', title: 'Suggested Lenses' });
   WebPanel.registerLense(context, 'study.lenses.open-in-suggested-lens', { command: 'LoadPlugin', lenseId: 'OpenInSuggestedLens' });
-  WebPanel.registerLense(context, 'study.lenses.open-suggested-tour', { command: 'LoadPlugin', lenseId: 'OpenSuggestedTour' });
+  WebPanel.registerLense(context, 'study.lenses.open-suggested-tour', { command: 'LoadPlugin', lenseId: 'OpenSuggestedTour', title: 'Suggested Tour' });
 
 }

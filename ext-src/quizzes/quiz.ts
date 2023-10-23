@@ -51,7 +51,7 @@ export class QuizViewer implements vscode.CustomTextEditorProvider {
                 webviewPanel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'Quiz', lenseSpecificData: q });
         }, 1000);
 
-        registerControllers(webviewPanel.webview);
+        registerControllers(webviewPanel.webview, this.extensionPath);
     }
 
     private _getHtmlForWebview(panel: vscode.WebviewPanel): string {

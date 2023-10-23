@@ -57,7 +57,7 @@ export class StudyTourViewer implements vscode.CustomTextEditorProvider {
             }
           }, 1000);
 
-        registerControllers(webviewPanel.webview);
+        registerControllers(webviewPanel.webview, this.extensionPath);
     }
     
     private _getHtmlForWebview(panel: vscode.WebviewPanel): string {
