@@ -5,20 +5,25 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import { ParsonsJSLensComponent } from './components/parsons-jslens/parsons-jslens.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    ParsonsLensComponent
+    ParsonsLensComponent,
+    ParsonsJSLensComponent
   ],
   imports: [
     CommonModule,
     DragDropModule,
     MatSnackBarModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
-    ParsonsLensComponent
+    ParsonsLensComponent,
+    ParsonsJSLensComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

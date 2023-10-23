@@ -29,12 +29,19 @@
               "src/styles.scss",
               "node_modules/reveal.js/dist/reveal.css", 
               "node_modules/reveal.js/dist/theme/black.css",
-              "node_modules/reveal.js/plugin/highlight/monokai.css"
+              "node_modules/reveal.js/plugin/highlight/monokai.css",
+              "libs/js-parsons/parsons.css",
+              "libs/js-parsons/lib/prettify.css"
             ],
             "scripts": [
               { "input": "libs/aran-build.js" },
               { "input": "libs/astring.js" },
-              { "input": "libs/qlcjs.min.js" }
+              { "input": "libs/qlcjs.min.js" },
+              { "input": "libs/js-parsons/lib/jquery.min.js" },
+              { "input": "libs/js-parsons/lib/jquery-ui.min.js" },
+              { "input": "libs/js-parsons/lib/underscore-min.js" },
+              { "input": "libs/js-parsons/lib/lis.js" },
+              { "input": "libs/js-parsons/parsons.js" }
             ],
             "vendorChunk": true,
             "extractLicenses": false,

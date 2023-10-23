@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+.code-container {
+    display: flex;
+    flex-direction: row;
+    height: calc(100% - 26px);
+}
+
+.btn-containers {
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+::ng-deep {
+    #ul-sortable, #sortable, #ul-sortableTrash, #sortableTrash {
+        background-color: #cccccc33;
+        border: none;
+    }
+} 
