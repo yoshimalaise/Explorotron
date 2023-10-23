@@ -14,6 +14,10 @@ References
 
 Project was inspired by:
 * [Study Lenses](https://github.com/colevandersWands/study-lenses)
+* [JS Parsons](https://js-parsons.github.io)
+* [Reveal.js](https://revealjs.com)
+* [aran](https://github.com/lachrist/aran)
+* [qlcjs](https://github.com/teemulehtinen/qlcjs)
 
 ## Using the extension
 To open a specific JavaScript file using a study lens simply right click on the file and in the study lenses context menu select the lens you which to apply. If the repository you are working in contains any *.presentation.md fiels they will automatically be rendered as presentations using revealjs. Any .studytour files will also automatically be handled by the extension.
