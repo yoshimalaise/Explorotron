@@ -1,5 +1,5 @@
 {
-  "name": "vscode-study-lenses",
+  "name": "explorotron",
   "description": "Explore JavaScript using an interactive tour based on CER best practises",
   "version": "0.0.1",
   "engines": {
@@ -7,7 +7,7 @@
   },
   "activationEvents": [],
   "main": "./dist/ext-src/extension.js",
-  "publisher": "yoshi",
+  "publisher": "Yoshi Malaise",
   "extensionKind": [
     "workspace"
   ],
@@ -286,6 +286,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/4gray/vscode-webview-angular.git"
+    "url": "https://github.com/yoshimalaise/Explorotron.git"
   }
 }
