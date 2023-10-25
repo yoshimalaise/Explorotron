@@ -120,7 +120,7 @@
       "study.lenses": [
         {
           "command": "study.lenses.annotate",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceLangId == javascript"
         },
         {
@@ -140,57 +140,57 @@
         },
         {
           "command": "study.lenses.code-questions",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceLangId == javascript"
         },
         {
           "command": "study.lenses.blanks",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceLangId == javascript"
         },
         {
           "command": "study.lenses.trace",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceLangId == javascript"
         },
         {
           "command": "study.lenses.argument-picker",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceLangId == javascript"
         },
         {
           "command": "study.lenses.parsons",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceLangId == javascript"
         },
         {
           "command": "study.lenses.comment-slots",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceLangId == javascript"
         },
         {
           "command": "study.lenses.pseudify",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceLangId == javascript"
         },
         {
           "command": "study.lenses.flowchart",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceLangId == javascript"
         },
         {
           "command": "study.lenses.pick-flowchart",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceLangId == javascript"
         },
         {
           "command": "study.lenses.present",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceFilename =~ /.presentation.md/i || resourceFilename =~ /.slides.md/i"
         },
         {
           "command": "study.lenses.start-quiz",
-          "group": "navigation",
+          "group": "lens",
           "when": "resourceFilename =~ /.study-quiz/i"
         },
         {
