@@ -15,4 +15,12 @@ export class VSCodeCommunicationService {
       command
     })
   }
+
+  showNotification(message: string, type: 'error' | 'info') {
+    this.vscode.postMessage({
+      command: 'showNotification',
+      type,
+      message
+    });
+  }
 }

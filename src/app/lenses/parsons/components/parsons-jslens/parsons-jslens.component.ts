@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { CodeFormattingService } from 'src/app/services/code-formatting.service';
 import { SessionService } from 'src/app/services/session.service';
+import { VSCodeCommunicationService } from 'src/app/services/vscode-communication.service';
 
 
 @Component({
@@ -14,7 +16,7 @@ export class ParsonsJSLensComponent implements AfterViewInit {
   @ViewChild('sortable') sortableCode;
   parson: any;
 
-  constructor (private sessionService: SessionService) {}
+  constructor (private sessionService: SessionService, private vsService: VSCodeCommunicationService, private codeFormattingService: CodeFormattingService) {}
 
   ngAfterViewInit(): void {
     this.parson = new (window as any).ParsonsWidget({
@@ -22,9 +24,18 @@ export class ParsonsJSLensComponent implements AfterViewInit {
       'trashId': 'sortableTrash',
       'max_wrong_lines': 1,
       'feedback_cb' : (fb) => this.showFeedback(fb),
+
     });
-    this.parson.init(this.code);
-    this.parson.shuffleLines();
+
+    try {
+      this.parson.init(this.code);
+      this.parson.shuffleLines();
+    } catch {
+      // the js-parsons library doesn't like it when whitespace is inconsistent if we get an
+      // regenerate the code from the ast
+      this.parson.init(this.codeFormattingService.format(this.code));
+      this.parson.shuffleLines();
+    }
   }
 
   showFeedback(fb: any) {
@@ -32,7 +43,11 @@ export class ParsonsJSLensComponent implements AfterViewInit {
       this.sessionService.markExercixeComplete();
       return;
     }
-    console.log('Feedback: ', fb);
+    for (let err of fb.errors) {
+      console.log('err: ', err);
+      this.vsService.showNotification(err, 'error');
+    }
+    console.log('the feedback', fb);
   }
 
   getFeedback() {
