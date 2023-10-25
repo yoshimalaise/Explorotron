@@ -1,8 +1,11 @@
 <div class="outer-container">
-    <div class="inner-container">
+    <div *ngIf="functions.length > 0" class="inner-container">
         <app-argument-picker-function (doneEvent)="functionDone()" *ngFor="let f of functions" [func]="f">
 
         </app-argument-picker-function>
+    </div>
+    <div class="inner-container no-functions-found" *ngIf="functions.length === 0">
+        The code you selected contains no functions, please select another code file to generate an arguement picker exercise.
     </div>
 </div>
 
