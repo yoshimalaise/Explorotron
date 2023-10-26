@@ -242,6 +242,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "package": "vsce package --yarn",
+    "publish-patch": "npm run package && vsce publish patch",
+    "publish-minor": "npm run package && vsce publish minor",
+    "publish-major": "npm run package && vsce publish minor",
     "vscode:prepublish": "npm run build"
   },
   "private": false,
