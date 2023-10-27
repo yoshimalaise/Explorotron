@@ -6,7 +6,13 @@
   "engines": {
     "vscode": "^1.76.0"
   },
-  "activationEvents": [],
+  "activationEvents": [
+    "workspaceContains:**/*.js",
+    "workspaceContains:**/*.study-tour",
+    "workspaceContains:**/*.presentation.md",
+    "workspaceContains:**/*.slides.md"
+
+  ],
   "main": "./dist/ext-src/extension.js",
   "publisher": "YoshiMalaise",
   "extensionKind": [
@@ -118,6 +124,7 @@
           "group": "navigation"
         }
       ],
+
       "study.lenses": [
         {
           "command": "study.lenses.annotate",
@@ -232,6 +239,29 @@
           }
         ],
         "priority": "default"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "explorotron-explorer",
+          "title": "Explorotron",
+          "icon": "resources/explorer-icon.png"
+        }
+      ]
+    },
+    "views": {
+      "explorotron-explorer": [
+        {
+          "id": "explorotron-actions-view",
+          "name": "Explorotron"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "explorotron-actions-view",
+        "contents": "Create a study tour to provide your students with a curated set of exercises to be completed in sequential order.\n[Create Study Tour](command:study.lenses.create-study-tour)\nCreate a QUIZ to see how well the students are performing.\n[Create Quiz](command:study.lenses.create-quiz)\n"
       }
     ]
   },
