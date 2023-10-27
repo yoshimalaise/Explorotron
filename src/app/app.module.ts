@@ -29,6 +29,7 @@ import { QuizModule } from './lenses/quiz/quiz.module';
 import { SuggestedLensesComponent } from './components/suggested-lenses/suggested-lenses.component';
 import { OpenInSuggestedComponent } from './components/open-in-suggested/open-in-suggested.component';
 import { SuggestedTourLoaderComponent } from './components/suggested-tour-loader/suggested-tour-loader.component';
+import { ExportToMobileComponent } from './components/export-to-mobile/export-to-mobile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SuggestedTourLoaderComponent } from './components/suggested-tour-loader
     SuggestedLensesComponent,
     OpenInSuggestedComponent,
     SuggestedTourLoaderComponent,
+    ExportToMobileComponent,
   ],
   imports: [
     BrowserModule,

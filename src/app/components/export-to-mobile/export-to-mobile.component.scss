@@ -1,0 +1,14 @@
+.outer-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.inner-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+} 

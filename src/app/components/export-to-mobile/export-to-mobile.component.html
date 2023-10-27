@@ -1,0 +1,8 @@
+<div class="outer-container" *ngIf="state.lenseSpecificData?.externalUrlQr">
+    <div class="inner-container">
+        <img alt="QR Code to import exercises" [src]="state.lenseSpecificData.externalUrlQr" />
+    </div>
+    <div class="inner-container">
+        Scan the QR code above with the JS Study Buddy app to import the exercises.
+    </div>
+</div>
