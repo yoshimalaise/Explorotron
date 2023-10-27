@@ -27,6 +27,11 @@
         "category": "study.lenses"
       },
       {
+        "command": "study.lenses.export-mobile-exercises",
+        "title": "Export mobile exercises",
+        "category": "study.lenses"
+      },
+      {
         "command": "study.lenses.create-quiz",
         "title": "Create Quiz",
         "category": "study.lenses"
@@ -261,7 +266,7 @@
     "viewsWelcome": [
       {
         "view": "explorotron-actions-view",
-        "contents": "Create a study tour to provide your students with a curated set of exercises to be completed in sequential order.\n[Create Study Tour](command:study.lenses.create-study-tour)\nCreate a quiz to see how well the students are performing.\n[Create Quiz](command:study.lenses.create-quiz)\n"
+        "contents": "Generate mobile exercises based on the content in the workspace to be used in the JSStudybuddy mobile application.\n[Generate mobile exercises](command:study.lenses.export-mobile-exercises)\nCreate a study tour to provide your students with a curated set of exercises to be completed in sequential order.\n[Create Study Tour](command:study.lenses.create-study-tour)\nCreate a quiz to see how well the students are performing.\n[Create Quiz](command:study.lenses.create-quiz)\n"
       }
     ]
   },

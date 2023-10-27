@@ -234,6 +234,22 @@ export class WebPanel {
       })
     );
   }
+
+  public static registerMobileExport(context: vscode.ExtensionContext) {
+    // 'study.lenses.export-mobile-exercises'
+    context.subscriptions.push(
+      vscode.commands.registerCommand('study.lenses.export-mobile-exercises', () => {
+        const p = WebPanel.createOrShow(context.extensionPath);
+        setTimeout(() => {
+          if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+            p.panel.title = "Mobile exercise export";
+            p.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'MobileExport', title: 'Mobile export' });
+          }
+        }, 1000);
+
+      })
+    );
+  }
 }
 
 /**
@@ -272,5 +288,5 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerLense(context, 'study.lenses.show-recommended-lenses', { command: 'LoadPlugin', lenseId: 'SuggestedLenses', title: 'Suggested Lenses' });
   WebPanel.registerLense(context, 'study.lenses.open-in-suggested-lens', { command: 'LoadPlugin', lenseId: 'OpenInSuggestedLens' });
   WebPanel.registerLense(context, 'study.lenses.open-suggested-tour', { command: 'LoadPlugin', lenseId: 'OpenSuggestedTour', title: 'Suggested Tour' });
-
+  WebPanel.registerMobileExport(context);
 }
