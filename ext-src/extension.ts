@@ -241,13 +241,11 @@ export class WebPanel {
     context.subscriptions.push(
       vscode.commands.registerCommand('study.lenses.export-mobile-exercises', async () => {
         if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
-          await exportPhoneExercises(vscode.workspace.workspaceFolders[0].uri.fsPath);
+          const externalUrlQr = await exportPhoneExercises(vscode.workspace.workspaceFolders[0].uri.fsPath);
           const p = WebPanel.createOrShow(context.extensionPath);
           setTimeout(() => {
-            if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
               p.panel.title = "Mobile exercise export";
-              p.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'MobileExport', title: 'Mobile export' });
-            }
+              p.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'MobileExport', lenseSpecificData: { externalUrlQr }, title: 'Mobile export' });
           }, 1000);
         }
       })
