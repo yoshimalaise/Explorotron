@@ -142,7 +142,7 @@ export class WebPanel {
     context.subscriptions.push(
       vscode.commands.registerCommand(command, (resource: vscode.Uri) => {
         // analyse(resource.fsPath);
-        const code = readSourceCode(resource.fsPath);
+        const code = resource?.fsPath === undefined ? undefined : readSourceCode(resource.fsPath);
         const p = WebPanel.createOrShow(context.extensionPath);
         setTimeout(() => {
             if (messageBody.title) {
@@ -289,5 +289,6 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerLense(context, 'study.lenses.show-recommended-lenses', { command: 'LoadPlugin', lenseId: 'SuggestedLenses', title: 'Suggested Lenses' });
   WebPanel.registerLense(context, 'study.lenses.open-in-suggested-lens', { command: 'LoadPlugin', lenseId: 'OpenInSuggestedLens' });
   WebPanel.registerLense(context, 'study.lenses.open-suggested-tour', { command: 'LoadPlugin', lenseId: 'OpenSuggestedTour', title: 'Suggested Tour' });
+  WebPanel.registerLense(context, 'study.lenses.show-micromaterials', { command: 'LoadPlugin', lenseId: 'Micromaterials', title: 'Micromaterials' });
   WebPanel.registerMobileExport(context);
 }
