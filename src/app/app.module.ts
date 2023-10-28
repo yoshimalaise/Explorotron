@@ -30,6 +30,9 @@ import { SuggestedLensesComponent } from './components/suggested-lenses/suggeste
 import { OpenInSuggestedComponent } from './components/open-in-suggested/open-in-suggested.component';
 import { SuggestedTourLoaderComponent } from './components/suggested-tour-loader/suggested-tour-loader.component';
 import { ExportToMobileComponent } from './components/export-to-mobile/export-to-mobile.component';
+import { MicromaterialListComponent } from './components/micromaterial-list/micromaterial-list.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { ExportToMobileComponent } from './components/export-to-mobile/export-to
     OpenInSuggestedComponent,
     SuggestedTourLoaderComponent,
     ExportToMobileComponent,
+    MicromaterialListComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,8 @@ import { ExportToMobileComponent } from './components/export-to-mobile/export-to
     MatCardModule,
     MatSnackBarModule,
     MatButtonModule,
+    MatDividerModule,
+    MatChipsModule,
     AnnotateModule,
     PresentationModule,
     FlowchartModule,
@@ -63,7 +69,7 @@ import { ExportToMobileComponent } from './components/export-to-mobile/export-to
     StudyTourModule,
     TraceModule,
     CodeQuestionsModule,
-    QuizModule
+    QuizModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,7 +18,8 @@ export enum LenseIds {
     SUGGESTED_LENSES = "SuggestedLenses",
     OPEN_IN_SUGGESTED = "OpenInSuggestedLens",
     OPEN_SUGGESTED_TOUR = "OpenSuggestedTour",
-    MOBILE_EXPORT = "MobileExport"
+    MOBILE_EXPORT = "MobileExport",
+    MICROMATERIAL_LIST = "Micromaterials"
 }
 
 export const AVAILABLE_LENSES = [

@@ -1,0 +1,18 @@
+<mat-card *ngFor="let m of materials" class="micromaterial-card">
+    <mat-card-header>
+      <mat-card-title>{{ m.name }}</mat-card-title>
+      <mat-card-subtitle *ngIf="m.tags.length > 0">
+        <mat-chip-listbox>
+            <mat-chip *ngFor="let t of m.tags"> {{ t }} </mat-chip>
+          </mat-chip-listbox>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p> {{ m.description }}</p>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="openWebpage(m.url)" mat-button>Website</button>
+      <button *ngIf="m.github" (click)="openWebpage(m.github)" mat-button>Github</button>
+    </mat-card-actions>
+</mat-card>

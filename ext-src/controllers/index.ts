@@ -3,10 +3,12 @@ import { QuizController } from './quiz-controller';
 import { TourController } from './tour-controller';
 import { PersonalProfileController } from './personal-profile-controller';
 import { NotificationController } from './notification-controller';
+import { OpenWebpageController } from './open-webpage-controller';
 
 export function registerControllers(webview: vscode.Webview, extentionPath: string) {
     new QuizController(webview);
     new TourController(webview);
     new PersonalProfileController(webview, extentionPath);
     new NotificationController(webview);
+    new OpenWebpageController(webview);
 }
