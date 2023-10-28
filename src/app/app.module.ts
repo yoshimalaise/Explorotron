@@ -33,6 +33,11 @@ import { ExportToMobileComponent } from './components/export-to-mobile/export-to
 import { MicromaterialListComponent } from './components/micromaterial-list/micromaterial-list.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -56,6 +61,12 @@ import {MatChipsModule} from '@angular/material/chips';
     MatButtonModule,
     MatDividerModule,
     MatChipsModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatSelectModule,
     AnnotateModule,
     PresentationModule,
     FlowchartModule,
