@@ -11,6 +11,13 @@ export function loadMicromaterials(): MicroMaterial[] {
             url: 'https://kings-scroll.netlify.app',
             tags: ['javascript', 'tracing'],
             github: 'https://github.com/yoshimalaise/kings-scroll'
+        },
+        {
+            name: 'CSS Selectors Explained',
+            description: 'This micromaterial allows you to enter any valid CSS selector and it will translate into a description of what the selector does in plain English.',
+            url: 'https://in-tech-gration.github.io/WDX-180/resources/css/selectors-explained/index.html',
+            tags: ['css', 'css selectors'],
+            github: 'https://github.com/KittyGiraudel/selectors-explained'
         }
     ];
 
