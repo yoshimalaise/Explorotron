@@ -77,7 +77,9 @@ export class WebPanel {
       enableScripts: true,
 
       // And restrict the webview to only loading content from our extension's `media` directory.
-      localResourceRoots: [vscode.Uri.file(path.join(this.extensionPath, this.builtAppFolder))]
+      localResourceRoots: [vscode.Uri.file(path.join(this.extensionPath, this.builtAppFolder))],
+
+      retainContextWhenHidden: true
     });
 
     // Set the webview's initial html content
