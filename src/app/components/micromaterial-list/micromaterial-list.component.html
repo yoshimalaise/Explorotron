@@ -1,0 +1,47 @@
+<mat-card class="micromaterial-card">
+    <mat-card-header>
+      <mat-card-title>Search</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <form>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input [(ngModel)]="nameSearchStr" type="text" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tags</mat-label>
+          <mat-select [ngModel]="selectedTags" multiple>
+            <mat-option *ngFor="let tag of allTags" [value]="tag">
+              {{ tag }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="search()" mat-button>Search</button>
+      <button (click)="clearFilters()" mat-button>Clear filters</button>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card *ngFor="let m of materials" class="micromaterial-card">
+    <mat-card-header>
+      <mat-card-title>{{ m.name }}</mat-card-title>
+      <mat-card-subtitle *ngIf="m.tags.length > 0">
+        <mat-chip-listbox>
+            <mat-chip *ngFor="let t of m.tags"> {{ t }} </mat-chip>
+          </mat-chip-listbox>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p> {{ m.description }}</p>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="openWebpage(m.url)" mat-button>Website</button>
+      <button *ngIf="m.github" (click)="openWebpage(m.github)" mat-button>Github</button>
+    </mat-card-actions>
+</mat-card>

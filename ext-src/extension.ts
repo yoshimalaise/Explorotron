@@ -6,6 +6,7 @@ import { StudyTourViewer, createTour } from './study-tour/study-tour';
 import * as dirTree from 'directory-tree';
 import { createQuiz, QuizViewer } from './quizzes/quiz';
 import { registerControllers } from './controllers';
+import { exportPhoneExercises } from './app-export/app-export';
 
 /**
  * Manages webview panels
@@ -76,7 +77,9 @@ export class WebPanel {
       enableScripts: true,
 
       // And restrict the webview to only loading content from our extension's `media` directory.
-      localResourceRoots: [vscode.Uri.file(path.join(this.extensionPath, this.builtAppFolder))]
+      localResourceRoots: [vscode.Uri.file(path.join(this.extensionPath, this.builtAppFolder))],
+
+      retainContextWhenHidden: true
     });
 
     // Set the webview's initial html content
@@ -141,7 +144,7 @@ export class WebPanel {
     context.subscriptions.push(
       vscode.commands.registerCommand(command, (resource: vscode.Uri) => {
         // analyse(resource.fsPath);
-        const code = readSourceCode(resource.fsPath);
+        const code = resource?.fsPath === undefined ? undefined : readSourceCode(resource.fsPath);
         const p = WebPanel.createOrShow(context.extensionPath);
         setTimeout(() => {
             if (messageBody.title) {
@@ -234,6 +237,22 @@ export class WebPanel {
       })
     );
   }
+
+  public static registerMobileExport(context: vscode.ExtensionContext) {
+    // 'study.lenses.export-mobile-exercises'
+    context.subscriptions.push(
+      vscode.commands.registerCommand('study.lenses.export-mobile-exercises', async () => {
+        if (vscode.workspace && vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.fsPath) {
+          const externalUrlQr = await exportPhoneExercises(vscode.workspace.workspaceFolders[0].uri.fsPath);
+          const p = WebPanel.createOrShow(context.extensionPath);
+          setTimeout(() => {
+              p.panel.title = "Mobile exercise export";
+              p.panel.webview.postMessage({ command: 'LoadPlugin', lenseId: 'MobileExport', lenseSpecificData: { externalUrlQr }, title: 'Mobile export' });
+          }, 1000);
+        }
+      })
+    );
+  }
 }
 
 /**
@@ -272,5 +291,6 @@ export function activate(context: vscode.ExtensionContext) {
   WebPanel.registerLense(context, 'study.lenses.show-recommended-lenses', { command: 'LoadPlugin', lenseId: 'SuggestedLenses', title: 'Suggested Lenses' });
   WebPanel.registerLense(context, 'study.lenses.open-in-suggested-lens', { command: 'LoadPlugin', lenseId: 'OpenInSuggestedLens' });
   WebPanel.registerLense(context, 'study.lenses.open-suggested-tour', { command: 'LoadPlugin', lenseId: 'OpenSuggestedTour', title: 'Suggested Tour' });
-
+  WebPanel.registerLense(context, 'study.lenses.show-micromaterials', { command: 'LoadPlugin', lenseId: 'Micromaterials', title: 'Micromaterials' });
+  WebPanel.registerMobileExport(context);
 }

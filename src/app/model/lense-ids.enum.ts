@@ -17,7 +17,9 @@ export enum LenseIds {
     QUIZ_EDITOR = "QuizEditor",
     SUGGESTED_LENSES = "SuggestedLenses",
     OPEN_IN_SUGGESTED = "OpenInSuggestedLens",
-    OPEN_SUGGESTED_TOUR = "OpenSuggestedTour"
+    OPEN_SUGGESTED_TOUR = "OpenSuggestedTour",
+    MOBILE_EXPORT = "MobileExport",
+    MICROMATERIAL_LIST = "Micromaterials"
 }
 
 export const AVAILABLE_LENSES = [

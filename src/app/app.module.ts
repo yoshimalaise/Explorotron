@@ -29,6 +29,15 @@ import { QuizModule } from './lenses/quiz/quiz.module';
 import { SuggestedLensesComponent } from './components/suggested-lenses/suggested-lenses.component';
 import { OpenInSuggestedComponent } from './components/open-in-suggested/open-in-suggested.component';
 import { SuggestedTourLoaderComponent } from './components/suggested-tour-loader/suggested-tour-loader.component';
+import { ExportToMobileComponent } from './components/export-to-mobile/export-to-mobile.component';
+import { MicromaterialListComponent } from './components/micromaterial-list/micromaterial-list.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -38,6 +47,8 @@ import { SuggestedTourLoaderComponent } from './components/suggested-tour-loader
     SuggestedLensesComponent,
     OpenInSuggestedComponent,
     SuggestedTourLoaderComponent,
+    ExportToMobileComponent,
+    MicromaterialListComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +59,14 @@ import { SuggestedTourLoaderComponent } from './components/suggested-tour-loader
     MatCardModule,
     MatSnackBarModule,
     MatButtonModule,
+    MatDividerModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatSelectModule,
     AnnotateModule,
     PresentationModule,
     FlowchartModule,
@@ -61,7 +80,7 @@ import { SuggestedTourLoaderComponent } from './components/suggested-tour-loader
     StudyTourModule,
     TraceModule,
     CodeQuestionsModule,
-    QuizModule
+    QuizModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
