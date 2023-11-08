@@ -1,5 +1,5 @@
 {
-  "name": "explorotron",
+  "name": "Explorotron",
   "description": "Explore JavaScript using an interactive tour based on CER best practises",
   "version": "0.3.0",
   "icon": "dist/assets/logo.png",
@@ -269,7 +269,7 @@
     "viewsWelcome": [
       {
         "view": "explorotron-actions-view",
-        "contents": "Resources\n[Micromaterials](command:study.lenses.show-micromaterials)\n[De Nepo](https://github.com/DeNepo)\nContent Creation\n[Generate mobile exercises](command:study.lenses.export-mobile-exercises)\n[Create Study Tour](command:study.lenses.create-study-tour)\n[Create Quiz](command:study.lenses.create-quiz)\n"
+        "contents": "Resources\n[Micromaterials](command:study.lenses.show-micromaterials)\n[De Nepo](https://github.com/DeNepo)\nContent Creation\n[Generate Mobile Exercises](command:study.lenses.export-mobile-exercises)\n[Create Study Tour](command:study.lenses.create-study-tour)\n[Create Quiz](command:study.lenses.create-quiz)\n"
       }
     ]
   },
