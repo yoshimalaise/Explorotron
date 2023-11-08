@@ -7,3 +7,6 @@ ext-src
 src
 .angular
 **/*.ts
+
+mobile_screenshots.png
+screenshot-vs.png

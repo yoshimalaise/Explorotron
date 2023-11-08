@@ -27,6 +27,13 @@ To open a specific JavaScript file using a study lens simply right click on the 
 <img src="https://github.com/yoshimalaise/Explorotron/blob/master/screenshot-vs.png?raw=true" width="" alt="Screenshot" title="Screenshot of the explorotron Visual Studio Code plugin" />
 </div>
 
+## Get the companion mobile app
+The extension can generate exercises for the [JS StudyBuddy](https://play.google.com/store/apps/details?id=be.ac.vub.wise.jsStudyBuddy) mobile application, dowload the free app for android to make use of this feature!
+
+<div align="center">
+<img src="https://github.com/yoshimalaise/Explorotron/blob/master/mobile_screenshots.png?raw=true" width="" alt="Screenshot" title="Screenshot of the explorotron Visual Studio Code plugin" />
+</div>
+
 ## Development
 
 This project was generated with `Angular CLI`, so it can be be used for angular development by default.
@@ -37,7 +44,7 @@ $ yarn install
 $ yarn run build
 ```
 
-After build process you can press F5 to "Start Debugging" (or: select in menu "Debug" -> "Start Debugging"). A new window will open in which you need to open command palette (Ctrl/Cmd + Shift + P) and select "Angular: Open Webview" to start your extension.
+After build process you can press F5 to "Start Debugging" (or: select in menu "Debug" -> "Start Debugging"). A new window will open in which the extension will be running.
 
 ## Packaging
 
