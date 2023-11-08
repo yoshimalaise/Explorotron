@@ -269,7 +269,7 @@
     "viewsWelcome": [
       {
         "view": "explorotron-actions-view",
-        "contents": "Resources\n[Micromaterials](command:study.lenses.show-micromaterials)\n[De Nepo](https://github.com/DeNepo)\nContent Creation\n[Generate Mobile Exercises](command:study.lenses.export-mobile-exercises)\n[Create Study Tour](command:study.lenses.create-study-tour)\n[Create Quiz](command:study.lenses.create-quiz)\n"
+        "contents": "Resources\n[Introduction video](https://www.youtube.com/watch?v=u07cDcL49c8)\n[Micromaterials](command:study.lenses.show-micromaterials)\n[De Nepo](https://github.com/DeNepo)\nContent Creation\n[Generate Mobile Exercises](command:study.lenses.export-mobile-exercises)\n[Create Study Tour](command:study.lenses.create-study-tour)\n[Create Quiz](command:study.lenses.create-quiz)\n"
       }
     ]
   },
