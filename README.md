@@ -30,6 +30,10 @@ To open a specific JavaScript file using a study lens simply right click on the 
 ## Get the companion mobile app
 The extension can generate exercises for the [JS StudyBuddy](https://play.google.com/store/apps/details?id=be.ac.vub.wise.jsStudyBuddy) mobile application, dowload the free app for android to make use of this feature!
 
+<div align="center">
+<img src="https://github.com/yoshimalaise/Explorotron/blob/master/mobile_screenshots.png?raw=true" width="" alt="Screenshot" title="Screenshot of the explorotron Visual Studio Code plugin" />
+</div>
+
 ## Development
 
 This project was generated with `Angular CLI`, so it can be be used for angular development by default.
