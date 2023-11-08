@@ -3,7 +3,7 @@
 The explorotron is a spiritual successor to [Study lenses](https://github.com/colevandersWands/study-lenses). The extension allows learners to add new perspectives and layers of interactivity on top of existing JavaScript Code. Every lens focuses on a specific aspect of the code that has to be studied. Lenses follow CER best practices such as [PRIMM](https://primmportal.com), scaffolding and expertise reversal. For more information on the theory behind the extension we suggest reading our papers on Computing Education \[[1](https://www.researchgate.net/publication/369142710_Codeschool_in_a_Box_A_Low-barrier_Approach_to_Packaging_Programming_Curricula), [2](https://wise.vub.ac.be/publication/explorotron-ide-extension-guided-and-independent-code-exploration-and-learning)\].
 
 <div align="center">
-<img src="https://github.com/yoshimalaise/Explorotron/blob/master/screenshot-vs.png?raw=true" width="" alt="Screenshot" title="Screenshot of the explorotron Visual Studio Code plugin" />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u07cDcL49c8?si=R2wQrsqZr9uHDPag" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 References
@@ -22,6 +22,7 @@ Project was inspired by:
 ## Using the extension
 To open a specific JavaScript file using a study lens simply right click on the file and in the study lenses context menu select the lens you which to apply. If the repository you are working in contains any *.presentation.md fiels they will automatically be rendered as presentations using revealjs. Any .studytour files will also automatically be handled by the extension.
 
+If you are curious and want to explore everything the extension has to offer we recommend cloning the [Explortron Example Repository](https://github.com/yoshimalaise/explorotron-example-repo) and test out the functionality on the provided files.
 
 <div align="center">
 <img src="https://github.com/yoshimalaise/Explorotron/blob/master/screenshot-vs.png?raw=true" width="" alt="Screenshot" title="Screenshot of the explorotron Visual Studio Code plugin" />
