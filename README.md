@@ -22,6 +22,7 @@ Project was inspired by:
 ## Using the extension
 To open a specific JavaScript file using a study lens simply right click on the file and in the study lenses context menu select the lens you which to apply. If the repository you are working in contains any *.presentation.md fiels they will automatically be rendered as presentations using revealjs. Any .studytour files will also automatically be handled by the extension.
 
+If you are curious and want to explore everything the extension has to offer we recommend cloning the [Explortron Example Repository](https://github.com/yoshimalaise/explorotron-example-repo) and test out the functionality on the provided files.
 
 <div align="center">
 <img src="https://github.com/yoshimalaise/Explorotron/blob/master/screenshot-vs.png?raw=true" width="" alt="Screenshot" title="Screenshot of the explorotron Visual Studio Code plugin" />
