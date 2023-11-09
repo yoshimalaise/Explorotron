@@ -1,7 +1,7 @@
 {
   "name": "Explorotron",
   "description": "Explore JavaScript using an interactive tour based on CER best practises",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "icon": "dist/assets/logo.png",
   "engines": {
     "vscode": "^1.76.0"
