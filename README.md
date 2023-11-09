@@ -25,7 +25,7 @@ To open a specific JavaScript file using a study lens simply right click on the 
 If you are curious and want to explore everything the extension has to offer we recommend cloning the [Explortron Example Repository](https://github.com/yoshimalaise/explorotron-example-repo) and test out the functionality on the provided files.
 
 
-[![Link to the youtube video](https://github.com/yoshimalaise/Explorotron/blob/master/video_screenshot.png?raw=true)](https://www.youtube.com/watch?v=u07cDcL49c8)
+[![Link to the youtube video](https://github.com/yoshimalaise/Explorotron/blob/master/video_screenshot.png?raw=true)](https://youtu.be/101yLSn-2lc)
 
 
 ## Get the companion mobile app
