@@ -30,15 +30,15 @@ export async function exportPhoneExercises(workspacePath: string) {
                 res.json({ entries });
             });
 
-            app.listen(PORT, async (err: string) => {
+            app.listen(PORT, '0.0.0.0', async (err: string) => {
                 if (err) {
                     console.log('failed to start server:', err);
                     vscode.window.showErrorMessage('Could not start server: ' + err);
                 } else {
                     vscode.window.showInformationMessage('Server is listening on port: ' + PORT);
-                    const localtunnel = require('ngrok');
-                    const tunnel = await localtunnel.connect({addr: PORT});
-                    url = `${tunnel}`; 
+                    const localtunnel = require('localtunnel');
+                    const tunnel = await localtunnel({port: PORT});
+                    url = `${tunnel.url}`; 
                 }
                 resolve('ok');
             })
